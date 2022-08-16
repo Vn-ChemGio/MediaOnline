@@ -1,4 +1,6 @@
 {
   "name": "VOVMedia",
-  "displayName": "VOVMedia"
+  "displayName": "VOVMedia",
+
+  "softwareKeyboardLayoutMode": "pan"
 }

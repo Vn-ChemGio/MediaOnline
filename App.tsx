@@ -27,7 +27,7 @@ const App = () => {
     console.log( new Date() );
 
     return (
-        <SafeAreaProvider>
+        <SafeAreaProvider >
             <NavigationContainer>
                 <RootNavigator/>
             </NavigationContainer>
