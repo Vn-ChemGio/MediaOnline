@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { StyleSheet, View } from "react-native";
-import Svg, { G, Path } from "react-native-svg";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Svg, { Circle, G, Path }                     from "react-native-svg";
 
-import Animated, { Value, block, onChange, set, useCode, EasingNode, Easing } from "react-native-reanimated";
+import Animated, { Value, block, onChange, set, useCode, EasingNode, Easing, useSharedValue, useAnimatedStyle, withSpring } from "react-native-reanimated";
 //import Icon                                                         from "react-native-vector-icons/Ionicons"
 import { BottomTabBarProps, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
@@ -37,6 +37,18 @@ const Icon = ({ active }: IconProps) => (
 )
 
 const TabBar = ({ state, descriptors, navigation, insets }: BottomTabBarProps) => {
+    const [activeTab, setActiveTab] = useState<number>(0);
+    const activeTabSharedValue = useSharedValue<number>(activeTab)
+    const transitionState = withSpring(activeTabSharedValue.value);
+
+    const activeTransitionState = useSharedValue<number>(0)
+    const style = useAnimatedStyle(() => {
+        return {
+            width: activeTabSharedValue.value,
+        };
+    }, [activeTransitionState]);
+
+
 
     const active = new Value<number>(0);
     const transition = withTransition(active, { duration: DURATION, easing: EasingNode.linear });
@@ -98,10 +110,10 @@ const TabBar = ({ state, descriptors, navigation, insets }: BottomTabBarProps) =
                                   </Text>
                               </TouchableOpacity>*/
                             <View key={index} style={styles.tab}>
-                                <TabBarNavigationWeave {...{ active, transition, index }} />
+                                <TabBarNavigationWeave {...{ active: activeTab, index }} />
                                 <TabBarNavigationItem
-                                        onPress={() => active.setValue(index)}
-                                        {...{ active, transition, index }}
+                                    onPress={() => setActiveTab(index)}
+                                    {...{ active: activeTab, transition: transitionState, index }}
                                 >
                                     <Icon/>
                                 </TabBarNavigationItem>
@@ -109,7 +121,6 @@ const TabBar = ({ state, descriptors, navigation, insets }: BottomTabBarProps) =
                             </View>
                     );
                 })}
-                <TabBarNavigationParticules {...{ transition, activeTransition }} />
             </View>
     );
 }

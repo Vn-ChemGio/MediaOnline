@@ -7,11 +7,11 @@ export interface IconProps {
 }
 
 const numberOfIcons = 4;
-const horizontalPadding = 48;
+const horizontalPadding = 64;
 export const DURATION = 450;
 export const PADDING = 16;
 export const SEGMENT = PixelRatio.roundToNearestPixel(width / numberOfIcons);
-export const ICON_SIZE = SEGMENT - horizontalPadding*1.4;
+export const ICON_SIZE =24;
 
 export const Colors = {
     primary: "#0AC66F",

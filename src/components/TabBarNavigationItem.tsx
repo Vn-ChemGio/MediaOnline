@@ -4,7 +4,7 @@ import Animated, {
     cond, EasingNode,
     eq,
     greaterThan,
-    interpolate, interpolateNode,
+    interpolate, interpolateNode, SharedValue,
 } from "react-native-reanimated";
 import { withTransition } from "react-native-redash";
 import { DURATION, ICON_SIZE } from "../commons/defined";
@@ -12,15 +12,15 @@ import { DURATION, ICON_SIZE } from "../commons/defined";
 interface TabProps {
     children: ReactElement;
     onPress: () => void;
-    active: Animated.Node<number>;
-    transition: Animated.Node<number>;
+    active: number;
+    transition: number;
     index: number;
 }
 
 const TabBarNavigationItem = ({ children, active, transition, index, onPress }: TabProps) => {
     const isActive = eq(active, index);
     const activeTransition = withTransition(isActive, { duration: DURATION, easing: EasingNode.linear });
-    const isGoingLeft = greaterThan(transition, active);
+    const isGoingLeft = greaterThan(transition, active.value);
     const width = interpolateNode(activeTransition, { inputRange: [0, 1], outputRange: [0, ICON_SIZE] });
     const direction = cond<1|0>(
             isActive,
