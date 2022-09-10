@@ -44,6 +44,10 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = VOVMedia/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-VOVMedia-VOVMediaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VOVMedia-VOVMediaTests.release.xcconfig"; path = "Target Support Files/Pods-VOVMedia-VOVMediaTests/Pods-VOVMedia-VOVMediaTests.release.xcconfig"; sourceTree = "<group>"; };
 		B854F1F128CCC22800C6AD25 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		B8C2DC8428CCCFD400DA952C /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		B8C2DC8528CCD01F00DA952C /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		B8C2DC8628CCD01F00DA952C /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		B8C2DC8728CCD01F00DA952C /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -142,6 +146,10 @@
 		B854F1ED28CCC13500C6AD25 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				B8C2DC8428CCCFD400DA952C /* FontAwesome.ttf */,
+				B8C2DC8628CCD01F00DA952C /* FontAwesome5_Brands.ttf */,
+				B8C2DC8728CCD01F00DA952C /* FontAwesome5_Regular.ttf */,
+				B8C2DC8528CCD01F00DA952C /* FontAwesome5_Solid.ttf */,
 				B854F1F128CCC22800C6AD25 /* Ionicons.ttf */,
 			);
 			name = Fonts;
