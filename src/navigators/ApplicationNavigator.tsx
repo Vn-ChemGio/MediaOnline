@@ -1,6 +1,5 @@
 import React                        from "react";
 import LottieView                   from "lottie-react-native";
-import Icon                         from "react-native-vector-icons/Ionicons"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
     ScreenDiscover, ScreenIndividual,
@@ -25,36 +24,43 @@ export const ApplicationNavigator = () => {
 
                     switch ( route.name ) {
                         case "ScreenDiscover":
-                            filePath = require( "../assets/Lotties/BottomTabs/ScreenDiscover.json" );
-                            return focused ? <Icon name="ios-planet" size={ 24 }/> : <Icon name="ios-planet-outline" size={ 24 }/>
+                            filePath = require( "../assets/Lottie/BottomTabs/ScreenDiscover.json" );
                             break;
 
                         case "ScreenRadio":
-                            filePath = require( "../assets/Lotties/BottomTabs/ScreenRadio.json" );
-                            return focused ? <Icon name="disc" size={ 24 }/> : <Icon name="disc-outline" size={ 24 }/>
+                            filePath = require( "../assets/Lottie/BottomTabs/ScreenRadio.json" );
+                            break;
+
                         case "ScreenVOVCharts":
-                            filePath = require( "../assets/Lotties/BottomTabs/ScreenVOVCharts.json" );
-                            //return focused ? <Icon name="ios-pulse" size={ 24 }/> : <Icon name="ios-pulse-outline" size={ 24 }/>
+                            filePath = require( "../assets/Lottie/BottomTabs/ScreenVOVCharts.json" );
                             break;
+
                         case "ScreenIndividual":
-                            filePath = require( "../assets/Lotties/BottomTabs/ScreenIndividual.json" );
-                            //return focused ? <Icon name="ios-compass" size={ 24 }/> : <Icon name="ios-compass-outline" size={ 24 }/>
+                            filePath = require( "../assets/Lottie/BottomTabs/ScreenIndividual.json" );
                             break;
+
                         default:
-                            filePath = require( "../assets/Lotties/BottomTabs/ScreenDiscover.json" );
+                            filePath = require( "../assets/Lottie/BottomTabs/ScreenDiscover.json" );
                     }
-                    // return <Ionicons name={iconName} size={size} color={color} />;
                     return <LottieView source={ filePath } autoPlay={ focused }/>;
                 },
                 headerShown:     false,
-                tabBarShowLabel: false
+                tabBarActiveTintColor:"#797979"
             }
         ) }
         >
-            <Tab.Screen name="ScreenDiscover" component={ ScreenDiscover }/>
-            <Tab.Screen name="ScreenRadio" component={ ScreenRadio }/>
-            <Tab.Screen name="ScreenVOVCharts" component={ ScreenVOVCharts }/>
-            <Tab.Screen name="ScreenIndividual" component={ ScreenIndividual }/>
+            <Tab.Screen name="ScreenDiscover" component={ ScreenDiscover } options={{
+                tabBarLabel:"Khám phá"
+            }}/>
+            <Tab.Screen name="ScreenRadio" component={ ScreenRadio } options={{
+                tabBarLabel:"Radio"
+            }}/>
+            <Tab.Screen name="ScreenVOVCharts" component={ ScreenVOVCharts } options={{
+                tabBarLabel:"#VOV-Chart"
+            }}/>
+            <Tab.Screen name="ScreenIndividual" component={ ScreenIndividual } options={{
+                tabBarLabel:"Cá nhân"
+            }}/>
         </Tab.Navigator>
     );
 };

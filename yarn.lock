@@ -4071,11 +4071,6 @@
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
 
-"fsevents@^2.3.2":
-  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
-  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
-  "version" "2.3.2"
-
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
   "resolved" "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz"
@@ -7202,6 +7197,13 @@
   dependencies:
     "prop-types" "^15.5.6"
 
+"react-native-sticky-parallax-header@^0.4.2":
+  "integrity" "sha512-fcS2jvid2PLNNP8JkHEsA4sdp9uUr+y82rkB9VcnQCqpS6baUzP8PnEsy4L9j7mqCpu6/AlpA77RpiC9WLvFJg=="
+  "resolved" "https://registry.npmjs.org/react-native-sticky-parallax-header/-/react-native-sticky-parallax-header-0.4.2.tgz"
+  "version" "0.4.2"
+  dependencies:
+    "prop-types" "^15.7.2"
+
 "react-native-svg@^13.1.0":
   "integrity" "sha512-drYa+0piaQ27xFEp1MxRBSu6eHbR37qQITKTHNOmPv1NhPUyZ5tH4ICWe7aTLlB2u6KEhpSHl63HJi3jpZFtvw=="
   "resolved" "https://registry.npmjs.org/react-native-svg/-/react-native-svg-13.1.0.tgz"
@@ -7243,14 +7245,7 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
-"react-native-volume-control@^1.0.1":
-  "integrity" "sha512-LbFD6AoFltkYxFQEn5SlZsdHGtY4x/A7kkh6CJuzSWjyJMvNDNLTXiQ8YnSVTGiio/qhhWLXXfOMOothxo/16Q=="
-  "resolved" "https://registry.npmjs.org/react-native-volume-control/-/react-native-volume-control-1.0.1.tgz"
-  "version" "1.0.1"
-  dependencies:
-    "prop-types" "^15.6.0"
-
-"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.69 || 1000.0.0", "react-native@>=0.31.0", "react-native@>=0.42.0", "react-native@>=0.46", "react-native@>=0.48.4", "react-native@>=0.57", "react-native@>=0.59", "react-native@>=0.59.0", "react-native@>=0.64.1", "react-native@0.69.4":
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.69 || 1000.0.0", "react-native@>=0.42.0", "react-native@>=0.46", "react-native@>=0.48.4", "react-native@>=0.57", "react-native@>=0.59", "react-native@>=0.59.0", "react-native@>=0.64.1", "react-native@0.69.4":
   "integrity" "sha512-rqNMialM/T4pHRKWqTIpOxA65B/9kUjtnepxwJqvsdCeMP9Q2YdSx4VASFR9RoEFYcPRU41yGf6EKrChNfns3g=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.69.4.tgz"
   "version" "0.69.4"
