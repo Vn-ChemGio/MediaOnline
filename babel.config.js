@@ -22,6 +22,8 @@ module.exports = {
                     '.tsx',
                     '.ts',
                     '.native.js',
+                    '.png',
+                    '.jpg'
                 ],
             }
         ]

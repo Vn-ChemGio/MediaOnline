@@ -1,69 +1,75 @@
-import React                                                           from "react";
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
-import { Colors }                                                      from "react-native-ui-lib";
+import React                      from "react";
+import {
+    StatusBar, StyleSheet, View,
+    useColorScheme
+}                                 from "react-native";
+import { AvatarHeaderScrollView } from "react-native-sticky-parallax-header";
+import Icon                       from "react-native-vector-icons/Ionicons"
+import { Colors }                 from "react-native-ui-lib";
+import { Devices }                from "~commons";
 
-const UPPER_HEADER_HEIGHT      = 32;
-const UPPER_HEADER_PADDING_TOP = 4;
-const LOWER_HEADER_HEIGHT      = 96;
 
 const ScreenRadio = () => {
+    const isDarkTheme = useColorScheme() === "dark";
+
     return (
-        <View style={ styles.container }>
-            <StatusBar translucent backgroundColor="transparent" barStyle={"light-content"}/>
-            <SafeAreaView>
-                <View style={ styles.upperHeaderPlaceholder }/>
-            </SafeAreaView>
-            <SafeAreaView style={ styles.header }>
-                <View style={ styles.upperHeader }></View>
-                <View style={ styles.lowerHeader }></View>
-            </SafeAreaView>
-
-            <ScrollView
+        <>
+            <AvatarHeaderScrollView
+                leftTopIconOnPress={ () => {
+                } }
+                rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ Colors.white }/> }
+                contentContainerStyle={ [
+                    isDarkTheme ? styles.darkBackground : styles.lightBackground,
+                ] }
+                containerStyle={ styles.stretchContainer }
+                // contentIcon={ require('~assets/images/momo/avatar.png') }
+                // contentIconNumber={ 10 }
+                backgroundColor={ "rgb(78,15,255)" }
+                hasBorderRadius
+                image={ require( "~assets/images/logo-light.png" ) }
+                title={ "VOVMedia" }
+                titleStyle={ styles.title }
                 showsVerticalScrollIndicator={ false }
+                subtitle={ "Ứng dụng nghe Radio độc quyền của \nĐài Tiếng Nói Việt Nam. \nMake with ❤ by WindBlade" }
+                parallaxHeight={ Devices.height * 0.4 }
+            >
+                <View style={ styles.content }>
 
-                scrollEventThrottle={ 16 }>
-                <View style={ styles.spaceForHeader }/>
-                <View style={ styles.scrollViewContent }/>
-            </ScrollView>
-        </View>
+                </View>
+            </AvatarHeaderScrollView>
+            <StatusBar barStyle="light-content" backgroundColor="transparent" translucent/>
+        </>
     );
 };
 
 export default ScreenRadio;
 
 const styles = StyleSheet.create( {
-    container: {
-        flex:           1,
+    container:       {
+        flex: 1,
     },
-    upperHeaderPlaceholder: {
-        height:     UPPER_HEADER_HEIGHT + UPPER_HEADER_PADDING_TOP,
-        paddingTop: UPPER_HEADER_PADDING_TOP,
-    },
-    header:                 {
-        position:        "absolute",
-        width:           "100%",
-        backgroundColor: Colors.primary,
-    },
-    upperHeader:            {
-        flexDirection:     "row",
+    content:         {
         alignItems:        "center",
-        paddingHorizontal: 16,
-        height:            UPPER_HEADER_HEIGHT + UPPER_HEADER_PADDING_TOP,
-        paddingTop:        UPPER_HEADER_PADDING_TOP,
+        flex:              1,
+        paddingHorizontal: 24,
+        minHeight:         Devices.height
     },
-    lowerHeader:            {
-        flexDirection:     "row",
-        justifyContent:    "space-between",
-        alignItems:        "center",
-        width:             "100%",
-        height:            LOWER_HEADER_HEIGHT,
-        paddingHorizontal: 16,
+    darkBackground:  {
+        backgroundColor: Colors.black,
     },
-    spaceForHeader:         {
-        height: LOWER_HEADER_HEIGHT,
+    lightBackground: {
+        backgroundColor: Colors.white,
     },
-    scrollViewContent:      {
-        height:          1000,
-        backgroundColor: "white",
+
+    stretch:          {
+        alignSelf: "stretch",
+    },
+    stretchContainer: {
+        alignSelf: "stretch",
+        flex:      1,
+    },
+    title:            {
+        fontFamily: "AvertaStd-Regular",
     },
 } )
+
