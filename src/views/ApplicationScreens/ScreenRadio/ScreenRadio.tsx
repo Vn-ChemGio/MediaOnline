@@ -7,6 +7,7 @@ import { AvatarHeaderScrollView } from "react-native-sticky-parallax-header";
 import Icon                       from "react-native-vector-icons/Ionicons"
 import { Colors }                 from "react-native-ui-lib";
 import { Devices }                from "~commons";
+import { EventCarousel, NewsCarousel } from "~views/ApplicationScreens/ScreenRadio/components";
 
 
 const ScreenRadio = () => {
@@ -34,6 +35,9 @@ const ScreenRadio = () => {
                 parallaxHeight={ Devices.height * 0.4 }
             >
                 <View style={ styles.content }>
+                    <EventCarousel/>
+                    <NewsCarousel/>
+
 
                 </View>
             </AvatarHeaderScrollView>
@@ -52,7 +56,7 @@ const styles = StyleSheet.create( {
         alignItems:        "center",
         flex:              1,
         paddingHorizontal: 24,
-        minHeight:         Devices.height
+        minHeight:         Devices.height,
     },
     darkBackground:  {
         backgroundColor: Colors.black,
