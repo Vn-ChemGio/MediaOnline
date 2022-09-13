@@ -17,7 +17,7 @@ const ScreenRadio = () => {
             <AvatarHeaderScrollView
                 leftTopIconOnPress={ () => {
                 } }
-                rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ Colors.white }/> }
+                rightTopIcon={ () => <Icon name="ios-search" size={ 24 } color={ Colors.white }/> }
                 contentContainerStyle={ [
                     isDarkTheme ? styles.darkBackground : styles.lightBackground,
                 ] }
@@ -32,6 +32,7 @@ const ScreenRadio = () => {
                 showsVerticalScrollIndicator={ false }
                 subtitle={ "Ứng dụng nghe Radio độc quyền của \nĐài Tiếng Nói Việt Nam. \nMake with ❤ by WindBlade" }
                 parallaxHeight={ Devices.height * 0.4 }
+
             >
                 <View style={ styles.content }>
 
