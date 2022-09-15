@@ -109,7 +109,7 @@ const styles = StyleSheet.create( {
         alignItems:       "center",
         paddingHorizontal: Spacings.s4,
         paddingTop:        Spacings.s4,
-        minHeight:         Devices.height + 100,
+        minHeight:         Devices.height + Devices.height * 0.4 -100,
     },
     darkBackground:   {
         backgroundColor: Colors.black,

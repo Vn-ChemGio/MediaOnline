@@ -1,6 +1,6 @@
 import React                                           from "react";
 import { StatusBar, StyleSheet, View, useColorScheme } from "react-native";
-import { Colors }                                      from "react-native-ui-lib";
+import { Colors, Spacings }                            from "react-native-ui-lib";
 import { AvatarHeaderScrollView }                      from "react-native-sticky-parallax-header";
 import Icon                                            from "react-native-vector-icons/Ionicons"
 
@@ -18,6 +18,7 @@ const ScreenRadio = () => {
                 } }
                 rightTopIcon={ () => <Icon name="ios-search" size={ 24 } color={ Colors.white }/> }
                 contentContainerStyle={ [
+                    styles.content,
                     isDarkTheme ? styles.darkBackground : styles.lightBackground,
                 ] }
                 containerStyle={ styles.stretchContainer }
@@ -33,7 +34,7 @@ const ScreenRadio = () => {
                 parallaxHeight={ Devices.height * 0.4 }
 
             >
-                <View style={ styles.content }>
+                <View>
                     <EventCarousel/>
                     <NewsCarousel/>
 
@@ -52,10 +53,10 @@ const styles = StyleSheet.create( {
         flex: 1,
     },
     content:         {
-        alignItems:        "center",
-        flex:              1,
-        paddingHorizontal: 24,
-        minHeight:         Devices.height,
+        alignItems:       "center",
+        paddingHorizontal: Spacings.s4,
+        paddingTop:        Spacings.s4,
+        minHeight:         Devices.height + Devices.height * 0.4 -100,
     },
     darkBackground:  {
         backgroundColor: Colors.black,
