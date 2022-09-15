@@ -27,3 +27,30 @@ export interface MusicItem {
     id: number,
 
 }
+
+interface RSSParseItemInterface {
+    title: string;
+    description: string;
+    link: string;
+    published: number;
+    created: number,
+    category: string [];
+    enclosures: string[];
+    media: object
+}
+
+export interface RSSParseInterface {
+    feedUrl?: string;
+    title: string;
+    description: string;
+    link: string;
+    items: RSSParseItemInterface []
+}
+
+export interface RSSItemNews {
+    title: string;
+    description: string;
+    link: string;
+    published: number;
+    thumbnail: string
+}

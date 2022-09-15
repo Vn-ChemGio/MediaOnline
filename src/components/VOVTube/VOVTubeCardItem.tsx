@@ -1,6 +1,6 @@
 import React                   from "react";
 import { ImageSourcePropType } from "react-native";
-import { Card }                from "react-native-ui-lib";
+import { Card, Spacings }      from "react-native-ui-lib";
 
 import { Devices }         from "~commons";
 
@@ -19,10 +19,10 @@ const VOVTubeCardItem = ( { chanelName, chanelFollower, iconOnRight, image, titl
     return (
         <>
 
-            <Card c containerStyle={ { marginBottom: 15 } } onPress={ () => {
+            <Card c containerStyle={ { marginTop: Spacings.s4 } } onPress={ () => {
             } }>
 
-                <Card.Section center-H imageStyle={ { height: 200, width: Devices.width - 50, resizeMode: "cover" } }
+                <Card.Section center-H imageStyle={ { height: 200, width: Devices.width - Spacings.s8, resizeMode: "cover" } }
                               imageSource={ image }
                               style={ { paddingBottom: 10 } }
                 />

@@ -1,23 +1,36 @@
-import React                                           from "react";
-import { StatusBar, StyleSheet, View, useColorScheme } from "react-native";
-import { Colors }                                      from "react-native-ui-lib";
-import { AvatarHeaderScrollView }                      from "react-native-sticky-parallax-header";
-import Icon                                            from "react-native-vector-icons/Ionicons"
+import React, { useEffect, useState }            from "react";
+import { StatusBar, StyleSheet, useColorScheme } from "react-native";
+import { Colors, Spacings }                      from "react-native-ui-lib";
+import { AvatarHeaderFlatList }                  from "react-native-sticky-parallax-header";
+import Icon                                      from "react-native-vector-icons/Ionicons"
+import parse                                     from "rss-to-json";
 
-import { Devices } from "~commons";
+import { Devices, RSSItemNews, RSSParseInterface, getRssData } from "~commons";
+import { VOVNewsCardItem }                                     from "~components/VOVNews";
 
 const ScreenVOVNews = () => {
     const isDarkTheme = useColorScheme() === "dark";
 
+    let [ data, setData ] = useState<RSSItemNews[]>( [] )
+    useEffect( () => {
+        (
+            async () => {
+                let rss: RSSParseInterface = await parse( "https://vnexpress.net/rss/tin-moi-nhat.rss" );
+
+                setData( getRssData( rss, 30 ) )
+            }
+        )();
+    }, [] )
     return (
         <>
-            <AvatarHeaderScrollView
+            <AvatarHeaderFlatList
                 leftTopIconOnPress={ () => {
                 } }
                 rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ Colors.white }/> }
                 rightTopIconOnPress={ () => {
                 } }
                 contentContainerStyle={ [
+                    styles.content,
                     isDarkTheme ? styles.darkBackground : styles.lightBackground,
                 ] }
                 containerStyle={ styles.stretchContainer }
@@ -31,11 +44,14 @@ const ScreenVOVNews = () => {
                 showsVerticalScrollIndicator={ false }
                 subtitle={ "Thông tin nhanh chóng, chính xác.\nTin tức cập nhật liên tục! " }
                 parallaxHeight={ Devices.height * 0.4 }
-            >
-                <View style={ styles.content }>
+                data={ data }
+                keyExtractor={ ( item ) => item.link }
+                decelerationRate="normal"
 
-                </View>
-            </AvatarHeaderScrollView>
+                renderItem={ ( { item } ) => (
+                    <VOVNewsCardItem title={ item.title } image={ { uri: item.thumbnail } } description={ item.description } published={ item.published }/>
+                ) }
+            />
             <StatusBar barStyle="light-content" backgroundColor="transparent" translucent/>
         </>
     );
@@ -48,10 +64,10 @@ const styles = StyleSheet.create( {
         flex: 1,
     },
     content:          {
-        alignItems:        "center",
-        flex:              1,
-        paddingHorizontal: 24,
-        minHeight:         Devices.height
+        alignItems:       "center",
+        paddingHorizontal: Spacings.s4,
+        paddingTop:        Spacings.s4,
+        minHeight:        Devices.height
     },
     darkBackground:   {
         backgroundColor: Colors.black,

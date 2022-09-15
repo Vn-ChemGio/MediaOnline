@@ -25,6 +25,7 @@ const ScreenVOVTube = () => {
                 rightTopIconOnPress={ () => {
                 } }
                 contentContainerStyle={ [
+                    styles.content,
                     isDarkTheme ? styles.darkBackground : styles.lightBackground,
                 ] }
                 containerStyle={ styles.stretchContainer }
@@ -39,7 +40,7 @@ const ScreenVOVTube = () => {
                 subtitle={ "Sóng xanh trên Internet.\nTruyền thông không giới hạn." }
                 parallaxHeight={ Devices.height * 0.4 }
             >
-                <View style={ styles.content }>
+                <>
                     <IOSSegmentedControl
                         segments={ [
                             {
@@ -60,7 +61,7 @@ const ScreenVOVTube = () => {
                         } }
 
                     />
-                    <View margin-20 width={ "100%" }>
+                    <View width={ "100%" }>
                         {
                             (
                                 () => {
@@ -91,7 +92,7 @@ const ScreenVOVTube = () => {
 
                         }
                     </View>
-                </View>
+                </>
             </AvatarHeaderScrollView>
             <StatusBar barStyle="light-content" backgroundColor="transparent" translucent/>
         </>
@@ -105,11 +106,10 @@ const styles = StyleSheet.create( {
         flex: 1,
     },
     content:          {
-        alignItems:        "center",
-        flex:              1,
-        paddingHorizontal: 24,
-        minHeight:         Devices.height,
-        marginTop:         32
+        alignItems:       "center",
+        paddingHorizontal: Spacings.s4,
+        paddingTop:        Spacings.s4,
+        minHeight:         Devices.height + 100,
     },
     darkBackground:   {
         backgroundColor: Colors.black,

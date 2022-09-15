@@ -19,6 +19,7 @@
         "@react-navigation/native": "^6.0.11",
         "@react-navigation/stack": "^6.2.2",
         "axios": "^0.27.2",
+        "himalaya": "^1.1.0",
         "i": "^0.3.7",
         "lodash": "^4.17.21",
         "lottie-react-native": "^5.1.4",
@@ -37,7 +38,8 @@
         "react-native-sticky-parallax-header": "^1.0.0-rc.9",
         "react-native-svg": "^13.1.0",
         "react-native-ui-lib": "^6.19.2",
-        "react-native-vector-icons": "^9.2.0"
+        "react-native-vector-icons": "^9.2.0",
+        "rss-to-json": "^2.1.0"
     },
     "devDependencies": {
         "@babel/core": "^7.18.10",
