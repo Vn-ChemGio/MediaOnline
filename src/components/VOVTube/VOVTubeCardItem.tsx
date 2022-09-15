@@ -1,12 +1,13 @@
 import React                   from "react";
-import { Card }                from "react-native-ui-lib";
 import { ImageSourcePropType } from "react-native";
+import { Card }                from "react-native-ui-lib";
 
 import { Devices }         from "~commons";
-import ButtonVOVTubeFollow from "./ButtonVOVTubeFollow";
-import InfoVovTubeFollow   from "./InfoVOVTubeFollow";
 
-interface CardItemProps {
+import VOVTubeInfoFollow   from "./VOVTubeInfoFollow";
+import VOVTubeButtonFollow from "./VOVTubeButtonFollow";
+
+interface VOVTubeCardItemProps {
     title: string,
     iconOnRight: string,
     chanelName: string,
@@ -14,7 +15,7 @@ interface CardItemProps {
     image: ImageSourcePropType
 }
 
-const CardItem = ( { chanelName, chanelFollower, iconOnRight, image, title }: CardItemProps ) => {
+const VOVTubeCardItem = ( { chanelName, chanelFollower, iconOnRight, image, title }: VOVTubeCardItemProps ) => {
     return (
         <>
 
@@ -28,7 +29,7 @@ const CardItem = ( { chanelName, chanelFollower, iconOnRight, image, title }: Ca
 
                 <Card.Section
                     content={ [
-                        { text: title, text60: true, $textDefault: true, maxLines:2 },
+                        { text: title, text60: true, $textDefault: true, maxLines: 2 },
                         { text: iconOnRight, text60: true, $textDefault: true },
                     ] }
                     style={ { paddingHorizontal: 10 } }
@@ -38,9 +39,9 @@ const CardItem = ( { chanelName, chanelFollower, iconOnRight, image, title }: Ca
 
                 <Card.Section
                     content={ [
-                        { text: <InfoVovTubeFollow name={ chanelName } follower={ chanelFollower }/> },
+                        { text: <VOVTubeInfoFollow name={ chanelName } follower={ chanelFollower }/> },
                         {
-                            text: <ButtonVOVTubeFollow onPress={ () => {
+                            text: <VOVTubeButtonFollow onPress={ () => {
                             } }/>
                         }
                     ] }
@@ -52,4 +53,4 @@ const CardItem = ( { chanelName, chanelFollower, iconOnRight, image, title }: Ca
     );
 };
 
-export default CardItem;
+export default VOVTubeCardItem;

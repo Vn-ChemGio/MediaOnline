@@ -1,13 +1,11 @@
-import React, { useCallback, useState }  from "react";
-import {
-    StatusBar, StyleSheet,
-    useColorScheme,
-}                                        from "react-native";
-import { Colors, Spacings, View }        from "react-native-ui-lib";
-import { AvatarHeaderScrollView }        from "react-native-sticky-parallax-header";
-import Icon                              from "react-native-vector-icons/Ionicons"
-import { Devices }                       from "~commons";
-import { CardItem, IOSSegmentedControl } from "~components";
+import React, { useCallback, useState }          from "react";
+import { StatusBar, StyleSheet, useColorScheme } from "react-native";
+import { Colors, Spacings, View }                from "react-native-ui-lib";
+import { AvatarHeaderScrollView }                from "react-native-sticky-parallax-header";
+import Icon                                      from "react-native-vector-icons/Ionicons"
+
+import { Devices }                              from "~commons";
+import { IOSSegmentedControl, VOVTubeCardItem } from "~components";
 
 const ScreenVOVTube = () => {
     const isDarkTheme = useColorScheme() === "dark";
@@ -58,7 +56,7 @@ const ScreenVOVTube = () => {
                         ] }
                         onChangeIndex={ onChangeIndex }
                         containerStyle={ {
-                            width:'100%'
+                            width: "100%"
                         } }
 
                     />
@@ -68,17 +66,20 @@ const ScreenVOVTube = () => {
                                 () => {
                                     switch ( segmentsIndex ) {
                                         case 0:
-                                            return <CardItem title={ "Kể Chuyện Đêm Khuya!" } chanelName={ "VOV Live - Đọc Truyện" } chanelFollower={ 514 } iconOnRight={ "📻" }
-                                                             image={ { uri: "https://i3.ytimg.com/vi/HzvSKVI_twY/maxresdefault.jpg" } }/>
+                                            return <VOVTubeCardItem title={ "Kể Chuyện Đêm Khuya!" } chanelName={ "VOV Live - Đọc Truyện" } chanelFollower={ 514 }
+                                                                    iconOnRight={ "📻" }
+                                                                    image={ { uri: "https://i3.ytimg.com/vi/HzvSKVI_twY/maxresdefault.jpg" } }/>
 
                                         case 1:
                                             return <>
-                                                <CardItem title={ "Truyện Đêm Khuya: BIẾN HÌNH" } chanelName={ "VOV Live - Đọc Truyện" } chanelFollower={ 514 } iconOnRight={ "📻" }
-                                                          image={ { uri: "https://i3.ytimg.com/vi/zY3Dx4szras/maxresdefault.jpg" } }/>
-                                                <CardItem title={ "Truyện Đêm Khuya: LÁ MẤN RƠI NGOÀI CỬA" } chanelName={ "VOV Live - Đọc Truyện" } chanelFollower={ 514 } iconOnRight={ "📻" }
-                                                          image={ { uri: "https://i3.ytimg.com/vi/RD9cik1KvL8/maxresdefault.jpg" } }/>
-                                                <CardItem title={ "Kể Chuyện Đêm Khuya!" } chanelName={ "VOV Live - Đọc Truyện" } chanelFollower={ 514 } iconOnRight={ "📻" }
-                                                          image={ { uri: "https://vcdn1-kinhdoanh.vnecdn.net/2022/09/12/-5148-1662993085.jpg?w=220&h=132&q=100&dpr=1&fit=crop&s=u9LBROjOEEp4Nc_TgWMv2Q" } }/>
+                                                <VOVTubeCardItem title={ "Truyện Đêm Khuya: BIẾN HÌNH" } chanelName={ "VOV Live - Đọc Truyện" } chanelFollower={ 514 }
+                                                                 iconOnRight={ "📻" }
+                                                                 image={ { uri: "https://i3.ytimg.com/vi/zY3Dx4szras/maxresdefault.jpg" } }/>
+                                                <VOVTubeCardItem title={ "Truyện Đêm Khuya: LÁ MẤN RƠI NGOÀI CỬA" } chanelName={ "VOV Live - Đọc Truyện" } chanelFollower={ 514 }
+                                                                 iconOnRight={ "📻" }
+                                                                 image={ { uri: "https://i3.ytimg.com/vi/RD9cik1KvL8/maxresdefault.jpg" } }/>
+                                                <VOVTubeCardItem title={ "Kể Chuyện Đêm Khuya!" } chanelName={ "VOV Live - Đọc Truyện" } chanelFollower={ 514 } iconOnRight={ "📻" }
+                                                                 image={ { uri: "https://vcdn1-kinhdoanh.vnecdn.net/2022/09/12/-5148-1662993085.jpg?w=220&h=132&q=100&dpr=1&fit=crop&s=u9LBROjOEEp4Nc_TgWMv2Q" } }/>
                                             </>
 
 

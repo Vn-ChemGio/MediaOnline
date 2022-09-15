@@ -1,13 +1,11 @@
-import React                      from "react";
-import {
-    StatusBar, StyleSheet, View,
-    useColorScheme
-}                                 from "react-native";
-import { AvatarHeaderScrollView } from "react-native-sticky-parallax-header";
-import Icon                       from "react-native-vector-icons/Ionicons"
-import { Colors }                 from "react-native-ui-lib";
-import { Devices }                from "~commons";
-import { EventCarousel, NewsCarousel } from "~views/ApplicationScreens/ScreenRadio/components";
+import React                                           from "react";
+import { StatusBar, StyleSheet, View, useColorScheme } from "react-native";
+import { Colors }                                      from "react-native-ui-lib";
+import { AvatarHeaderScrollView }                      from "react-native-sticky-parallax-header";
+import Icon                                            from "react-native-vector-icons/Ionicons"
+
+import { Devices }                     from "~commons";
+import { EventCarousel, NewsCarousel } from "./components";
 
 
 const ScreenRadio = () => {
