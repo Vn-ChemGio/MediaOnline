@@ -1,1 +1,1 @@
-export { default as VOVTubeCardItem }            from "./VOVTubeCardItem";
+export { default as VOVTubeCardItem } from "./VOVTubeCardItem";

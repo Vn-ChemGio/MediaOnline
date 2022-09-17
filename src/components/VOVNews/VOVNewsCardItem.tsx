@@ -19,10 +19,10 @@ export interface VOVTubeCardItemProps {
 }
 
 
-const VOVNewsCardItem = ( {  image, title, description, published }: VOVTubeCardItemProps ) => {
+const VOVNewsCardItem = ( { image, title, description, published }: VOVTubeCardItemProps ) => {
     return (
         <>
-            <Card c containerStyle={ { marginTop: Spacings.s4 } }  onPress={ () => {
+            <Card c containerStyle={ { marginTop: Spacings.s4 } } onPress={ () => {
             } }>
                 <Card.Section
                     content={ [
@@ -48,7 +48,7 @@ const VOVNewsCardItem = ( {  image, title, description, published }: VOVTubeCard
                     content={ [
                         { text: description, descriptionNews: true, $textDefault: true, maxLines: 4, color: "rgb(69, 69, 69)" },
                     ] }
-                    style={ { paddingHorizontal: Spacings.s2, marginVertical: Spacings.s2  } }
+                    style={ { paddingHorizontal: Spacings.s2, marginVertical: Spacings.s2 } }
                     contentStyle={ { flexDirection: "row", justifyContent: "space-between" } }
                 />
             </Card>
