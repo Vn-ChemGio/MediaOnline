@@ -2,6 +2,7 @@ import React                                                        from "react"
 import { MD3LightTheme as DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import { ThemeManager, }                                            from "react-native-ui-lib";
 import { SafeAreaProvider }                                         from "react-native-safe-area-context";
+import IonIcon from 'react-native-vector-icons/Ionicons';
 import { NavigationContainer }                                      from "@react-navigation/native";
 
 import { RootNavigator } from "./src/navigators";
@@ -16,11 +17,11 @@ ThemeManager.setComponentTheme( "Card", {
 
 const theme = {
     ...DefaultTheme,
-    colors: {
-        ...DefaultTheme.colors,
-        primary:   "tomato",
-        secondary: "yellow",
-    },
+    // colors: {
+    //     ...DefaultTheme.colors,
+    //     primary:   "tomato",
+    //     secondary: "yellow",
+    // },
 };
 
 const App = () => {
@@ -28,7 +29,9 @@ const App = () => {
 
     return (
         <SafeAreaProvider>
-            <PaperProvider theme={ theme }>
+            <PaperProvider theme={ theme }  settings={{
+                icon: props => <IonIcon {...props} />,
+            }}>
                 <NavigationContainer>
                     <RootNavigator/>
                 </NavigationContainer>
