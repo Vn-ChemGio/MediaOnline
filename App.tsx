@@ -1,7 +1,8 @@
-import React                   from "react";
-import { ThemeManager, }       from "react-native-ui-lib";
-import { SafeAreaProvider }    from "react-native-safe-area-context";
-import { NavigationContainer } from "@react-navigation/native";
+import React                                                        from "react";
+import { MD3LightTheme as DefaultTheme, Provider as PaperProvider } from "react-native-paper";
+import { ThemeManager, }                                            from "react-native-ui-lib";
+import { SafeAreaProvider }                                         from "react-native-safe-area-context";
+import { NavigationContainer }                                      from "@react-navigation/native";
 
 import { RootNavigator } from "./src/navigators";
 
@@ -12,25 +13,26 @@ ThemeManager.setComponentTheme( "Card", {
     borderTopWidth:    1,
     borderTopColor:    "#e5e4ec",
 } );
-// with a dynamic function
-// @ts-ignore
-ThemeManager.setComponentTheme( "Button", ( props, context ) => {
-    // 'square' is not an original Button prop, but a custom prop that can
-    // be used to create different variations of buttons in your app
-    if ( props.square ) {
-        return {
-            borderRadius: 4,
-        };
-    }
-} );
+
+const theme = {
+    ...DefaultTheme,
+    colors: {
+        ...DefaultTheme.colors,
+        primary:   "tomato",
+        secondary: "yellow",
+    },
+};
+
 const App = () => {
     console.log( new Date() );
 
     return (
-        <SafeAreaProvider >
-            <NavigationContainer>
-                <RootNavigator/>
-            </NavigationContainer>
+        <SafeAreaProvider>
+            <PaperProvider theme={ theme }>
+                <NavigationContainer>
+                    <RootNavigator/>
+                </NavigationContainer>
+            </PaperProvider>
         </SafeAreaProvider>
     );
 };

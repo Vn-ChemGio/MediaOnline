@@ -1,5 +1,5 @@
 import React                          from "react";
-import { ImageSourcePropType }        from "react-native";
+import { ImageSourcePropType, View }  from "react-native";
 import { Card, Spacings, Typography } from "react-native-ui-lib";
 
 import { Devices } from "~commons";
@@ -17,7 +17,17 @@ export interface VOVTubeCardItemProps {
     image: ImageSourcePropType;
     published: number;
 }
+export interface VOVTubeCardHeaderItemProps {
+    title: string;
+    published: number;
+}
 
+
+const HeaderNews =  ({ title, published }: VOVTubeCardHeaderItemProps)=> {
+    return (
+        <View/>
+    )
+}
 
 const VOVNewsCardItem = ( { image, title, description, published }: VOVTubeCardItemProps ) => {
     return (
