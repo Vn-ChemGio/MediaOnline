@@ -1,15 +1,8 @@
-import React                          from "react";
-import { ImageSourcePropType, View }  from "react-native";
-import { Spacings, Typography } from "react-native-ui-lib";
-import { Avatar, Button, Card, IconButton, MD3Colors, Paragraph, Title, List } from "react-native-paper"
-import { Devices } from "~commons";
-
-Typography.loadTypographies(
-    {
-        titleNews:         { fontSize: 14, fontWeight: "500", lineHeight: 20 },
-        publishedDateNews: { fontSize: 10, fontWeight: "300", lineHeight: 18 },
-        descriptionNews:   { fontSize: 12, fontWeight: "400", lineHeight: 18 },
-    } );
+import React                                                      from "react";
+import { ImageSourcePropType, View }                              from "react-native";
+import { Colors, Spacings }                                       from "react-native-ui-lib";
+import { Card, Divider, IconButton, MD3Colors, Paragraph, Title } from "react-native-paper"
+import { Devices }                                                from "~commons";
 
 export interface VOVTubeCardItemProps {
     title: string;
@@ -17,75 +10,41 @@ export interface VOVTubeCardItemProps {
     image: ImageSourcePropType;
     published: number;
 }
-export interface VOVTubeCardHeaderItemProps {
-    title: string;
-    published: number;
-}
-
-
-const HeaderNews =  ({ title, published }: VOVTubeCardHeaderItemProps)=> {
-    return (
-        <View/>
-    )
-}
 
 const VOVNewsCardItem = ( { image, title, description, published }: VOVTubeCardItemProps ) => {
     return (
-        <View style={{width : Devices.width - Spacings.s8, paddingBottom: Spacings.s4}}>
-            <Card>
-                <Card.Title
-                        title={title}
-                        subtitle={`${new Date( published ).toLocaleDateString()} ${new Date( published ).toLocaleTimeString()}`}
-                       // left={(props) => <Avatar.Icon {...props} icon="newspaper" />}
-                        right={(props) => <IconButton {...props} icon="ellipsis-vertical-outline" onPress={() => {}} />}
-                />
-                <Card.Cover source={image } />
-                <Card.Content>
-                    <Paragraph style={{textAlign :"justify", marginTop: Spacings.s4}}>{description}</Paragraph>
-                </Card.Content>
+        <View style={ { width: Devices.width - Spacings.s8, paddingBottom: Spacings.s4 } }>
+            <Title style={ { fontSize: 16, lineHeight: 22, fontWeight: "700", textAlign: "justify", marginBottom: Spacings.s4 } } numberOfLines={ 1 }>{ title }</Title>
+            <Paragraph style={ { fontSize: 14, textAlign: "justify", marginBottom: Spacings.s2 } } numberOfLines={ 3 }>{ description } </Paragraph>
+            <Card.Cover source={ image }/>
 
-                <Card.Actions>
-                    <List.Icon
-                            icon="heart"
-                            color={MD3Colors.error50}
+            <View style={ { flex: 1, flexDirection: "row", justifyContent: "space-between", alignItems: "center" } }>
+                <Paragraph style={ {
+                    fontSize: 12,
+                    color:    Colors.grey30
+                } }> { `${ new Date( published ).toLocaleDateString() } ${ new Date( published ).toLocaleTimeString() }` }</Paragraph>
+                <View style={ { flex: 1, flexDirection: "row", justifyContent: "flex-end", alignItems: "center" } }>
+                    <IconButton
+                        icon="heart"
+                        iconColor={ MD3Colors.error50 }
+                        size={ 20 }
+                        onPress={ () => console.log( "Pressed" ) }
                     />
-                    <List.Icon
-                            icon="arrow-redo"
-                            color={MD3Colors.primary50}
+                    <IconButton
+                        icon="bookmark"
+                        iconColor={ MD3Colors.primary60 }
+                        size={ 20 }
+                        onPress={ () => console.log( "Pressed" ) }
                     />
-                </Card.Actions>
-            </Card>
-
-            {/*<Card c containerStyle={ { marginTop: Spacings.s4 } } onPress={ () => {
-            } }>
-                <Card.Section
-                    content={ [
-                        { text: title, titleNews: true, $textDefault: true, maxLines: 2, color: "rgb(3, 3, 3)" },
-                    ] }
-                    style={ { paddingHorizontal: Spacings.s2, marginVertical: Spacings.s1 } }
-                    contentStyle={ { flexDirection: "row", justifyContent: "space-between" } }
-                />
-                <Card.Section
-                    content={ [
-                        { text: new Date( published ).toISOString(), publishedDateNews: true, $textDefault: true, maxLines: 1, color: "rgba(96,96,96,0.6)" },
-                    ] }
-                    style={ { paddingHorizontal: Spacings.s2, marginBottom: Spacings.s1 } }
-
-                />
-
-                <Card.Section center-H imageStyle={ { height: 240, width: Devices.width - Spacings.s8, resizeMode: "cover" } }
-                              imageSource={ image }
-                              style={ { paddingBottom: 10 } }
-                />
-
-                <Card.Section
-                    content={ [
-                        { text: description, descriptionNews: true, $textDefault: true, maxLines: 4, color: "rgb(69, 69, 69)" },
-                    ] }
-                    style={ { paddingHorizontal: Spacings.s2, marginVertical: Spacings.s2 } }
-                    contentStyle={ { flexDirection: "row", justifyContent: "space-between" } }
-                />
-            </Card>*/}
+                    <IconButton
+                        icon="arrow-redo"
+                        iconColor={ MD3Colors.primary50 }
+                        size={ 20 }
+                        onPress={ () => console.log( "Pressed" ) }
+                    />
+                </View>
+            </View>
+            <Divider bold style={ { marginTop: 10, backgroundColor: "rgb(234,17,126)" } }/>
         </View>
     );
 };
