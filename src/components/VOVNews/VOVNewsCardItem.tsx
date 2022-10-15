@@ -3,18 +3,26 @@ import { ImageSourcePropType, View }                              from "react-na
 import { Colors, Spacings }                                       from "react-native-ui-lib";
 import { Card, Divider, IconButton, MD3Colors, Paragraph, Title } from "react-native-paper"
 import { Devices }                                                from "~commons";
+import { useNavigation }                                          from "@react-navigation/native";
+import { ScreenVOVNewsParamList }                                 from "~views/ApplicationScreens/ScreenVOVNews/ScreenVOVNews";
 
 export interface VOVTubeCardItemProps {
     title: string;
     description: string;
     image: ImageSourcePropType;
     published: number;
+    link: string
 }
 
-const VOVNewsCardItem = ( { image, title, description, published }: VOVTubeCardItemProps ) => {
+const VOVNewsCardItem = ( { image, title, description, published, link }: VOVTubeCardItemProps ) => {
+    const navigation = useNavigation<ScreenVOVNewsParamList>();
+    const openNew    = () => {
+        navigation.navigate( "ScreenWebView", { uri: link } )
+    }
     return (
         <View style={ { width: Devices.width - Spacings.s8, paddingBottom: Spacings.s4 } }>
-            <Title style={ { fontSize: 16, lineHeight: 22, fontWeight: "700", textAlign: "justify", marginBottom: Spacings.s4 } } numberOfLines={ 1 }>{ title }</Title>
+            <Title style={ { fontSize: 16, lineHeight: 22, fontWeight: "700", textAlign: "justify", marginBottom: Spacings.s4 } } numberOfLines={ 1 }
+                   onPress={ openNew }>{ title }</Title>
             <Paragraph style={ { fontSize: 14, textAlign: "justify", marginBottom: Spacings.s2 } } numberOfLines={ 3 }>{ description } </Paragraph>
             <Card.Cover source={ image }/>
 

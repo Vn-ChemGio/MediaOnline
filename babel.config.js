@@ -26,7 +26,12 @@ module.exports = {
                     '.jpg'
                 ],
             }
-        ]
+        ],
+        ["module:react-native-dotenv", {
+            allowUndefined: true,
+            moduleName: "@env",
+            path:'.env'
+        }]
     ],
     env: {
         production: {

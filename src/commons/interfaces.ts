@@ -28,6 +28,16 @@ export interface MusicItem {
 
 }
 
+export interface VOVNewsChannelItem {
+    source: string;
+    path: string;
+    name: string;
+    icon: string;
+    rssUrl: string;
+    imageUrl: string;
+
+}
+
 interface RSSParseItemInterface {
     title: string;
     description: string;
