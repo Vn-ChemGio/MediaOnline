@@ -10,6 +10,7 @@ import { RSSItemNews, RSSParseInterface, getRssData } from "~commons";
 import { AvatarHeaderFlatList, VOVNewsCardItem }      from "~components";
 import { DrawerScreenProps }                          from "@react-navigation/drawer";
 import { ScreenVOVNewsParamList }                     from "~views/ApplicationScreens/ScreenVOVNews/ScreenVOVNews";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 
 const ScreenVOVNewsChannel = ( props: DrawerScreenProps<ScreenVOVNewsParamList> ) => {
 
@@ -26,9 +27,8 @@ const ScreenVOVNewsChannel = ( props: DrawerScreenProps<ScreenVOVNewsParamList> 
         )();
     }, [ channel.rssUrl ] )
 
-    return (
-        <>
-
+    return data.length ?
+            (<>
             <AvatarHeaderFlatList
                 rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ Colors.white }/> }
                 rightTopIconOnPress={ () => {
@@ -45,8 +45,11 @@ const ScreenVOVNewsChannel = ( props: DrawerScreenProps<ScreenVOVNewsParamList> 
                 ) }
             />
             <StatusBar barStyle="light-content" backgroundColor="transparent" translucent/>
-        </>
-    );
+        </>)
+            : <ActivityIndicator animating={true} color={MD2Colors.red800} />
+
+
+
 };
 
 export default ScreenVOVNewsChannel;

@@ -1,13 +1,13 @@
-import axios                          from "axios";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { createDrawerNavigator }      from "@react-navigation/drawer";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import ScreenVOVNewsChannel          from "./ScreenVOVNewsChannel";
-import { CustomDrawerContent }       from "./components";
-import { VOVNewsChannelItem }        from "~commons";
-import { API_HOST }                  from "@env";
-import Icon                          from "react-native-vector-icons/Ionicons";
+import { CustomDrawerContent } from "./components";
+import { ICON_SIZE, SEGMENT, VOVNewsChannelItem } from "~commons";
+import { API_HOST } from "@env";
+import Icon from "react-native-vector-icons/Ionicons";
 import ScreenVOVNewsChannelNavigator from "./ScreenVOVNewsChannelNavigator";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 
 export type ScreenVOVNewsParamList = {
     [screenName: string]: {
@@ -15,47 +15,53 @@ export type ScreenVOVNewsParamList = {
     }
 }
 
-const Drawer        = createDrawerNavigator<ScreenVOVNewsParamList>();
+const Drawer = createDrawerNavigator<ScreenVOVNewsParamList>();
 const ScreenVOVNews = () => {
-    const [ listChannels, setListChannels ] = useState<VOVNewsChannelItem[]>( [] );
-    const [ active, setActive ]             = React.useState<number>( 0 );
-    useEffect( () => {
+    console.log(API_HOST)
+    const [listChannels, setListChannels] = useState<VOVNewsChannelItem[]>([]);
+    useEffect(() => {
         (
-            async () => {
-                let list: VOVNewsChannelItem[] = (
-                    await axios.get( `${ API_HOST }/VOVNews` )
-                ).data;
+                async () => {
+                    let list: VOVNewsChannelItem[] = (
+                            await axios.get(`${API_HOST}/VOVNews`)
+                    ).data;
 
-                setListChannels( list );
-            }
+                    setListChannels(list);
+                }
         )()
-    }, [ active ] )
+    }, [])
 
 
     return (
-         listChannels.length ? <Drawer.Navigator screenOptions={ {
-            headerShown:                 false,
-            drawerPosition:              "right",
-            drawerActiveBackgroundColor: "rgb(234,17,126)",
-            drawerActiveTintColor:       "#fff",
-            drawerInactiveTintColor:     "#333",
-            drawerLabelStyle:{
-                marginLeft: -25,
-                fontFamily:"Roboto-Medium",
-                fontSize:15
-            }
-        } }
-                          drawerContent={ ( props ) => <CustomDrawerContent { ...{ ...props, listChannels } } /> }>
+            listChannels.length ? <Drawer.Navigator screenOptions={{
+                        headerShown: false,
+                        drawerPosition: "right",
+                        drawerActiveBackgroundColor: "rgb(234,17,126)",
+                        drawerActiveTintColor: "#fff",
+                        drawerInactiveTintColor: "#333",
+                        drawerLabelStyle: {
+                            marginLeft: -25,
+                            //fontFamily:"Roboto-Medium",
+                            fontSize: 15
+                        }
+                    }}
+                                                    drawerContent={(props) => <CustomDrawerContent {...{
+                                                        ...props,
+                                                        listChannels
+                                                    }} />}>
 
-            {
-                listChannels.map((channel, index)=>
-                <Drawer.Screen name={channel.name} component={ ScreenVOVNewsChannelNavigator } initialParams={ { channel: channel } } options={{
-                    drawerIcon: ({ color, focused })=> <Icon name={ focused ? "heart" : "heart-outline" } { ...{ color } } size={18}/>
-                }} key={index}/>
-            )}
-            
-        </Drawer.Navigator> 
-         : null
+                        {
+                            listChannels.map((channel, index) =>
+                                    <Drawer.Screen name={channel.name} component={ScreenVOVNewsChannelNavigator}
+                                                   initialParams={{ channel: channel }} options={{
+                                        drawerIcon: ({ color, focused }) => <Icon
+                                                name={focused ? channel.iconFocussed : channel.icon} {...{ color }}
+                                                size={ICON_SIZE}/>
+                                    }} key={index}/>
+                            )}
+
+                    </Drawer.Navigator>
+                    : <ActivityIndicator animating={true} color={MD2Colors.red800}/>
     );
 };
 

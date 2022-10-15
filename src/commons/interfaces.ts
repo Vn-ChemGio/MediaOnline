@@ -33,6 +33,7 @@ export interface VOVNewsChannelItem {
     path: string;
     name: string;
     icon: string;
+    iconFocussed: string;
     rssUrl: string;
     imageUrl: string;
 
