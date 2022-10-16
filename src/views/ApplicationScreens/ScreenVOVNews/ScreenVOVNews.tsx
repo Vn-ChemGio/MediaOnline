@@ -1,21 +1,19 @@
+import { API_HOST }                   from "@env";
+import { createDrawerNavigator }      from "@react-navigation/drawer";
 import axios                          from "axios";
 import React, { useEffect, useState } from "react";
-import { createDrawerNavigator }      from "@react-navigation/drawer";
+import { useTheme }                   from "react-native-paper";
+import Icon                           from "react-native-vector-icons/Ionicons";
 
-import { API_HOST }                     from "@env";
-import { ActivityIndicator, MD2Colors } from "react-native-paper";
-import Icon                             from "react-native-vector-icons/Ionicons";
+import { ICON_SIZE, ScreenVOVNewsNavigationParamList, VOVNewsChannelItem, theme } from "~commons";
+import { ActivityIndicatorView }                                                  from "~components";
 
-import { CustomDrawerContent }                                             from "./components";
-import { ICON_SIZE, ScreenVOVNewsNavigationParamList, VOVNewsChannelItem } from "~commons";
-
-
+import { CustomDrawerContent }       from "./components";
 import ScreenVOVNewsChannelNavigator from "./ScreenVOVNewsChannelNavigator";
 
 
 const Drawer        = createDrawerNavigator<ScreenVOVNewsNavigationParamList>();
 const ScreenVOVNews = () => {
-    
     const [ listChannels, setListChannels ] = useState<VOVNewsChannelItem[]>( [] );
     useEffect( () => {
         (
@@ -34,7 +32,7 @@ const ScreenVOVNews = () => {
         listChannels.length ? <Drawer.Navigator screenOptions={ {
                                 headerShown:                 false,
                                 drawerPosition:              "right",
-                                drawerActiveBackgroundColor: "rgb(234,17,126)",
+                                drawerActiveBackgroundColor: theme.colors.primaryVOVNews,
                                 drawerActiveTintColor:       "#fff",
                                 drawerInactiveTintColor:     "#333",
                                 drawerLabelStyle:            {
@@ -59,7 +57,7 @@ const ScreenVOVNews = () => {
                                     ) }
 
                             </Drawer.Navigator>
-                            : <ActivityIndicator animating={ true } color={ MD2Colors.red800 }/>
+                            : <ActivityIndicatorView theme={ theme } color={ theme.colors.primaryVOVNews }/>
     );
 };
 

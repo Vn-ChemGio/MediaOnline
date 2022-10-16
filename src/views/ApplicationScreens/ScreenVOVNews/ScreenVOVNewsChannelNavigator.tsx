@@ -12,12 +12,14 @@ const Stack                         = createStackNavigator<ScreenVOVNewsChannelS
 const ScreenVOVNewsChannelNavigator = ( props: DrawerScreenProps<ScreenVOVNewsNavigationParamList> ) => {
     return (
         <>
-            <Stack.Navigator>
+            <Stack.Navigator screenOptions={{
+                presentation: "transparentModal"
+            }}>
                 <Stack.Screen name="ScreenVOVNewsChannel" component={ ScreenVOVNewsChannel }
                               options={ { headerShown: false } }
                               initialParams={ props.route.params }
                 />
-                <Stack.Screen name="ScreenWebView" component={ ScreenWebView } initialParams={ { uri: "" } }/>
+                <Stack.Screen name="ScreenWebView" component={ ScreenWebView } initialParams={ { uri: "" } } />
             </Stack.Navigator>
         </>
     );

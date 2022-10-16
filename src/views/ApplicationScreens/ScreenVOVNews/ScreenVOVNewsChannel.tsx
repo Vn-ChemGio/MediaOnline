@@ -1,13 +1,11 @@
 import React, { useEffect, useState }   from "react";
-import { StatusBar }                    from "react-native";
 import { DrawerScreenProps }            from "@react-navigation/drawer";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
-import { Colors }                       from "react-native-ui-lib";
 import Icon                             from "react-native-vector-icons/Ionicons"
 import parse                            from "rss-to-json";
 
-import { RSSItemNews, RSSParseInterface, ScreenVOVNewsNavigationParamList, getRssData } from "~commons";
-import { AvatarHeaderFlatList, VOVNewsCardItem }                                        from "~components";
+import { RSSItemNews, RSSParseInterface, ScreenVOVNewsNavigationParamList, getRssData, theme } from "~commons";
+import { ActivityIndicatorView, AvatarHeaderFlatList, VOVNewsCardItem }                        from "~components";
 
 const ScreenVOVNewsChannel = ( props: DrawerScreenProps<ScreenVOVNewsNavigationParamList> ) => {
 
@@ -26,26 +24,24 @@ const ScreenVOVNewsChannel = ( props: DrawerScreenProps<ScreenVOVNewsNavigationP
 
     return data.length ?
            (
-               <>
-                   <AvatarHeaderFlatList
-                       rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ Colors.white }/> }
-                       rightTopIconOnPress={ () => {
-                           props.navigation.toggleDrawer();
-                       } }
-                       backgroundColor={ "rgb(234,17,126)" }
-                       hasBorderRadius
-                       title={ "VOV News" }
-                       subtitle={ "Thông tin nhanh chóng, chính xác.\nTin tức cập nhật liên tục! " }
-                       data={ data }
-                       keyExtractor={ ( item: RSSItemNews ) => item.link }
-                       renderItem={ ( { item: { description, published, title, thumbnail, link } }: { item: RSSItemNews } ) => (
-                           <VOVNewsCardItem { ...{ description, published, title, link, image: { uri: thumbnail } } }/>
-                       ) }
-                   />
-                   <StatusBar barStyle="light-content" backgroundColor="transparent" translucent/>
-               </>
+               <AvatarHeaderFlatList
+                   rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ MD2Colors.white }/> }
+                   rightTopIconOnPress={ () => {
+                       props.navigation.toggleDrawer();
+                   } }
+                   title={ "VOV News" }
+                   subtitle={ "Thông tin nhanh chóng, chính xác.\nTin tức cập nhật liên tục! " }
+                   data={ data }
+                   keyExtractor={ ( item: RSSItemNews ) => item.link }
+                   renderItem={ ( { item: { description, published, title, thumbnail, link } }: { item: RSSItemNews } ) => (
+                       <VOVNewsCardItem { ...{ description, published, title, link, image: { uri: thumbnail } } }/>
+                   ) }
+               />
            )
-                       : <ActivityIndicator animating={ true } color={ MD2Colors.red800 }/>
+                       :
+           (
+               <ActivityIndicatorView theme={ theme } color={ theme.colors.primaryVOVNews }/>
+           )
 
 
 };

@@ -1,10 +1,12 @@
-import React                                                      from "react";
-import { ImageSourcePropType, View }                              from "react-native";
-import { Colors, Spacings }                                       from "react-native-ui-lib";
-import { Card, Divider, IconButton, MD3Colors, Paragraph, Title } from "react-native-paper"
-import { Devices, ScreenVOVNewsChannelStackNavigationParamList }  from "~commons";
-import { useNavigation }                                          from "@react-navigation/native";
-import { StackNavigationProp }                                    from "@react-navigation/stack";
+import { useNavigation }       from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+
+import React                                                                 from "react";
+import { ImageSourcePropType, View }                                         from "react-native";
+import { Spacings }                                                          from "react-native-ui-lib";
+import { Card, Divider, IconButton, MD2Colors, MD3Colors, Paragraph, Title } from "react-native-paper";
+
+import { Devices, ScreenVOVNewsChannelStackNavigationParamList } from "~commons";
 
 
 export interface VOVTubeCardItemProps {
@@ -30,7 +32,7 @@ const VOVNewsCardItem = ( { image, title, description, published, link }: VOVTub
             <View style={ { flex: 1, flexDirection: "row", justifyContent: "space-between", alignItems: "center" } }>
                 <Paragraph style={ {
                     fontSize: 12,
-                    color:    Colors.grey30
+                    color:    MD2Colors.grey300
                 } }> { `${ new Date( published ).toLocaleDateString() } ${ new Date( published ).toLocaleTimeString() }` }</Paragraph>
                 <View style={ { flex: 1, flexDirection: "row", justifyContent: "flex-end", alignItems: "center" } }>
                     <IconButton

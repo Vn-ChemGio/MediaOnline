@@ -1,8 +1,12 @@
 import React, { useCallback, useState } from "react";
-import { Colors, Spacings, View }       from "react-native-ui-lib";
+import { View }                         from "react-native";
+import { MD2Colors }                    from "react-native-paper";
+import { Spacings }                     from "react-native-ui-lib";
 import Icon                             from "react-native-vector-icons/Ionicons"
 
 import { AvatarHeaderScrollView, IOSSegmentedControl, VOVTubeCardItem } from "~components";
+import { theme }                                                        from "~commons";
+
 
 const ScreenVOVTube = () => {
     const [ segmentsIndex, setSegmentsIndex ] = useState<number>( 0 )
@@ -13,10 +17,10 @@ const ScreenVOVTube = () => {
 
     return (
         <AvatarHeaderScrollView
-            rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ Colors.white }/> }
+            rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ MD2Colors.white }/> }
             rightTopIconOnPress={ () => {
             } }
-            backgroundColor={ "rgb(234,17,57)" }
+            backgroundColor={ theme.colors.primaryVOVTube }
             title={ "VOV Tube" }
             subtitle={ "Sóng xanh trên Internet.\nTruyền thông không giới hạn." }
         >
@@ -40,7 +44,7 @@ const ScreenVOVTube = () => {
                     } }
 
                 />
-                <View width={ "100%" }>
+                <View>
                     {
                         (
                             () => {
