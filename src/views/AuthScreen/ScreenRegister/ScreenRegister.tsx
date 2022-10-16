@@ -11,7 +11,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import AsyncStorage            from "@react-native-async-storage/async-storage";
 
 import { ButtonAuthenticate, MaterialTextField } from "../../../components";
-import { AuthenticateStackParamList }            from "../AuthenticateNavigation";
+import { AuthenticateStackNavigationParamList }  from "~commons";
 
 const DURATION          = 400;
 const { width, height } = Dimensions.get( "window" )
@@ -21,7 +21,7 @@ Typography.loadTypographies( {
     h3: { fontSize: 14, fontWeight: "300", lineHeight: 24 },
 } );
 
-type registerScreenProp = StackNavigationProp<AuthenticateStackParamList, "ScreenRegister">;
+type registerScreenProp = StackNavigationProp<AuthenticateStackNavigationParamList, "ScreenRegister">;
 
 
 const SignUp = () => {

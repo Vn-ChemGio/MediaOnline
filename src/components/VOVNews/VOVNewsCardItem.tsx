@@ -2,9 +2,10 @@ import React                                                      from "react";
 import { ImageSourcePropType, View }                              from "react-native";
 import { Colors, Spacings }                                       from "react-native-ui-lib";
 import { Card, Divider, IconButton, MD3Colors, Paragraph, Title } from "react-native-paper"
-import { Devices }                                                from "~commons";
+import { Devices, ScreenVOVNewsChannelStackNavigationParamList }  from "~commons";
 import { useNavigation }                                          from "@react-navigation/native";
-import { ScreenVOVNewsParamList }                                 from "~views/ApplicationScreens/ScreenVOVNews/ScreenVOVNews";
+import { StackNavigationProp }                                    from "@react-navigation/stack";
+
 
 export interface VOVTubeCardItemProps {
     title: string;
@@ -15,7 +16,7 @@ export interface VOVTubeCardItemProps {
 }
 
 const VOVNewsCardItem = ( { image, title, description, published, link }: VOVTubeCardItemProps ) => {
-    const navigation = useNavigation<ScreenVOVNewsParamList>();
+    const navigation = useNavigation<StackNavigationProp<ScreenVOVNewsChannelStackNavigationParamList>>();
     const openNew    = () => {
         navigation.navigate( "ScreenWebView", { uri: link } )
     }

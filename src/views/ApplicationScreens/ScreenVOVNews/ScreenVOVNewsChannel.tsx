@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { StatusBar }                  from "react-native";
-import { Colors }                     from "react-native-ui-lib";
-import Icon                           from "react-native-vector-icons/Ionicons"
-import parse                          from "rss-to-json";
-
-import { useNavigation } from "@react-navigation/native";
-
-import { RSSItemNews, RSSParseInterface, getRssData } from "~commons";
-import { AvatarHeaderFlatList, VOVNewsCardItem }      from "~components";
-import { DrawerScreenProps }                          from "@react-navigation/drawer";
-import { ScreenVOVNewsParamList }                     from "~views/ApplicationScreens/ScreenVOVNews/ScreenVOVNews";
+import React, { useEffect, useState }   from "react";
+import { StatusBar }                    from "react-native";
+import { DrawerScreenProps }            from "@react-navigation/drawer";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
+import { Colors }                       from "react-native-ui-lib";
+import Icon                             from "react-native-vector-icons/Ionicons"
+import parse                            from "rss-to-json";
 
-const ScreenVOVNewsChannel = ( props: DrawerScreenProps<ScreenVOVNewsParamList> ) => {
+import { RSSItemNews, RSSParseInterface, ScreenVOVNewsNavigationParamList, getRssData } from "~commons";
+import { AvatarHeaderFlatList, VOVNewsCardItem }                                        from "~components";
+
+const ScreenVOVNewsChannel = ( props: DrawerScreenProps<ScreenVOVNewsNavigationParamList> ) => {
 
     let [ data, setData ] = useState<RSSItemNews[]>( [] )
     let channel           = props.route.params.channel;
@@ -28,26 +25,27 @@ const ScreenVOVNewsChannel = ( props: DrawerScreenProps<ScreenVOVNewsParamList> 
     }, [ channel.rssUrl ] )
 
     return data.length ?
-            (<>
-            <AvatarHeaderFlatList
-                rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ Colors.white }/> }
-                rightTopIconOnPress={ () => {
-                    props.navigation.toggleDrawer();
-                } }
-                backgroundColor={ "rgb(234,17,126)" }
-                hasBorderRadius
-                title={ "VOV News" }
-                subtitle={ "Thông tin nhanh chóng, chính xác.\nTin tức cập nhật liên tục! " }
-                data={ data }
-                keyExtractor={ ( item: RSSItemNews ) => item.link }
-                renderItem={ ( { item: { description, published, title, thumbnail, link } }: { item: RSSItemNews } ) => (
-                    <VOVNewsCardItem { ...{ description, published, title, link, image: { uri: thumbnail } } }/>
-                ) }
-            />
-            <StatusBar barStyle="light-content" backgroundColor="transparent" translucent/>
-        </>)
-            : <ActivityIndicator animating={true} color={MD2Colors.red800} />
-
+           (
+               <>
+                   <AvatarHeaderFlatList
+                       rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ Colors.white }/> }
+                       rightTopIconOnPress={ () => {
+                           props.navigation.toggleDrawer();
+                       } }
+                       backgroundColor={ "rgb(234,17,126)" }
+                       hasBorderRadius
+                       title={ "VOV News" }
+                       subtitle={ "Thông tin nhanh chóng, chính xác.\nTin tức cập nhật liên tục! " }
+                       data={ data }
+                       keyExtractor={ ( item: RSSItemNews ) => item.link }
+                       renderItem={ ( { item: { description, published, title, thumbnail, link } }: { item: RSSItemNews } ) => (
+                           <VOVNewsCardItem { ...{ description, published, title, link, image: { uri: thumbnail } } }/>
+                       ) }
+                   />
+                   <StatusBar barStyle="light-content" backgroundColor="transparent" translucent/>
+               </>
+           )
+                       : <ActivityIndicator animating={ true } color={ MD2Colors.red800 }/>
 
 
 };

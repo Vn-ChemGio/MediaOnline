@@ -1,24 +1,13 @@
 import React                        from "react";
 import LottieView                   from "lottie-react-native";
 import { BottomNavigation, Text }   from "react-native-paper";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-    ScreenDiscover,
-    ScreenRadio,
-    ScreenVOVNews,
-    ScreenVOVTube
-}                                   from "~views/ApplicationScreens";
+import { createBottomTabNavigator }          from "@react-navigation/bottom-tabs";
+import { ApplicationTabNavigationParamList } from "~commons";
 
-export type ApplicationTabParamList = {
-    ScreenDiscover: undefined;
-    ScreenRadio: undefined;
-    ScreenVOVCharts: undefined;
-    ScreenIndividual: undefined;
-    ScreenVOVNews: undefined;
-    ScreenVOVTube: undefined;
-};
+import { ScreenDiscover, ScreenRadio, ScreenVOVNews, ScreenVOVTube } from "~views/ApplicationScreens";
 
-const Tab = createBottomTabNavigator<ApplicationTabParamList>();
+
+const Tab = createBottomTabNavigator<ApplicationTabNavigationParamList>();
 
 export const ApplicationNavigator = () => {
     const [ index, setIndex ] = React.useState( 0 );

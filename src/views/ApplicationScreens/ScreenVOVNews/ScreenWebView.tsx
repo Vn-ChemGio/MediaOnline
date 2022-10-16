@@ -1,13 +1,12 @@
-import React            from "react";
+import React                from "react";
+import { StackScreenProps } from "@react-navigation/stack";
+import { WebView }          from "react-native-webview";
 
-import { WebView }                                from 'react-native-webview';
-import { StackScreenProps }                       from "@react-navigation/stack";
-import { ScreenVOVNewsChannelNavigatorParamList } from "~views/ApplicationScreens/ScreenVOVNews/ScreenVOVNewsChannelNavigator";
+import { ScreenVOVNewsChannelStackNavigationParamList } from "~commons";
 
 
-const ScreenVOVNewsChannel = (props: StackScreenProps<ScreenVOVNewsChannelNavigatorParamList, 'ScreenVOVNewsChannel'>) => {
-    //@ts-ignore
-    return <WebView source={{ uri: props.route.params.uri  }} />;
+const ScreenVOVNewsChannel = ( props: StackScreenProps<ScreenVOVNewsChannelStackNavigationParamList, "ScreenWebView"> ) => {
+    return <WebView source={ { uri: props.route.params.uri } }/>;
 };
 
 export default ScreenVOVNewsChannel;

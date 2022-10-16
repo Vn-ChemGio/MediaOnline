@@ -4,7 +4,6 @@ import Icon             from "react-native-vector-icons/Ionicons"
 
 import { AvatarHeaderScrollView } from "~components";
 
-import { EventCarousel, NewsCarousel } from "./components";
 
 
 const ScreenRadio = () => {
@@ -18,8 +17,7 @@ const ScreenRadio = () => {
             subtitle={ "Ứng dụng nghe Radio Việt Nam trực tuyến độc quyền " }
         >
             <View>
-                <EventCarousel/>
-                <NewsCarousel/>
+               
             </View>
         </AvatarHeaderScrollView>
 

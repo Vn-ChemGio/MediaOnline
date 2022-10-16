@@ -1,17 +1,13 @@
 import React                    from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
+import { AuthenticateStackNavigationParamList } from "~commons";
+
 import { ScreenLogin }          from "./ScreenLogin";
 import { ScreenRegister }       from "./ScreenRegister";
 import { ScreenForgotPassword } from "./ScreenForgotPassword";
 
-export type AuthenticateStackParamList = {
-    ScreenLogin: undefined;
-    ScreenRegister: undefined;
-    ScreenForgotPassword: undefined;
-};
-
-const Stack = createStackNavigator<AuthenticateStackParamList>();
+const Stack = createStackNavigator<AuthenticateStackNavigationParamList>();
 
 const AuthenticateNavigation = () => (
     <Stack.Navigator screenOptions={ { headerShown: false } }>

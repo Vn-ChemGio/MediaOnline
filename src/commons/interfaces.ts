@@ -1,10 +1,46 @@
+import { ComponentType }        from "react";
 
-import {ComponentType} from "react";
+// Router NavigationParamList
+export type RootStackNavigationParamList = {
+    Application: undefined,
+    Authenticate: undefined,
+}
+
+export type ApplicationTabNavigationParamList = {
+    ScreenDiscover: undefined;
+    ScreenRadio: undefined;
+    ScreenVOVCharts: undefined;
+    ScreenIndividual: undefined;
+    ScreenVOVNews: undefined;
+    ScreenVOVTube: undefined;
+};
+
+export type AuthenticateStackNavigationParamList = {
+    ScreenLogin: undefined;
+    ScreenRegister: undefined;
+    ScreenForgotPassword: undefined;
+};
+
+export type ScreenVOVNewsNavigationParamList = {
+    [screenName: string]: {
+        channel: VOVNewsChannelItem
+    }
+}
+
+export type ScreenVOVNewsChannelStackNavigationParamList = {
+    ScreenVOVNewsChannel: {
+        channel: VOVNewsChannelItem
+    },
+    ScreenWebView: {
+        uri: string
+    }
+}
+
 
 
 export interface TabBarItem {
-   // type: typeof AntDesign ;
-    icon:  string;
+    // type: typeof AntDesign ;
+    icon: string;
     label: string;
     route: string;
     component: ComponentType<any> | undefined
