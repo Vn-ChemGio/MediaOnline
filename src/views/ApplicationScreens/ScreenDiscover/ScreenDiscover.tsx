@@ -3,8 +3,9 @@ import { View }      from "react-native";
 import { MD2Colors } from "react-native-paper";
 import Icon          from "react-native-vector-icons/Ionicons";
 
-import { AvatarHeaderScrollView } from "~components";
-import { theme }                  from "~commons";
+import { AvatarHeaderScrollView }                                from "~components";
+import { Devices, theme }                                        from "~commons";
+import { CardDiscoverNews, CardDiscoverRadio, CardDiscoverTube } from "./components";
 
 const ScreenDiscover = () => {
     return (
@@ -16,7 +17,20 @@ const ScreenDiscover = () => {
             title={ "VOV Center" }
             subtitle={ "Ứng dụng nghe thông tin độc quyền của \nĐài Tiếng Nói Việt Nam. \nMake with ❤ by WindBlade" }
         >
-            <View>
+            <View style={ { minHeight: Devices.height*2 } }>
+
+                <CardDiscoverRadio/>
+                <CardDiscoverNews/>
+                <CardDiscoverNews/>
+                <CardDiscoverNews/>
+                <CardDiscoverNews/>
+                <CardDiscoverNews/>
+                <CardDiscoverNews/>
+                <CardDiscoverNews/>
+                <CardDiscoverNews/>
+                <CardDiscoverTube/>
+
+
             </View>
         </AvatarHeaderScrollView>
     );
