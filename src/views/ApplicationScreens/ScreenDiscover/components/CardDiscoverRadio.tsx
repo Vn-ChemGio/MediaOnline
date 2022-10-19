@@ -1,5 +1,5 @@
 import * as React               from "react";
-import { FlatList }             from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { Card, Surface, Title } from "react-native-paper";
 
 const data = [
@@ -46,17 +46,17 @@ const data = [
 
 ]
 
-function Index() {
+const CardDiscoverRadio = () => {
     return (
-        <Surface elevation={ 0 }>
-            <Title>Radio Online</Title>
+        <Surface elevation={ 0 } style={ styles.container }>
+            <Title style={ { fontSize: 18, fontWeight: "700" } }>Radio Online</Title>
             <FlatList horizontal
                       data={ data }
                       showsHorizontalScrollIndicator={ false }
                       renderItem={ ( { item } ) => (
-                          <Card style={ { width: 100, height: 100, marginHorizontal: 4 } }>
-                              <Card.Cover source={ item.image } resizeMethod={ "scale" } resizeMode={ "center" } style={ { height: 75 } }/>
-                              <Card.Content style={ { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginHorizontal: -10 } }>
+                          <Card style={ styles.cardItem }>
+                              <Card.Cover source={ item.image } resizeMethod={ "scale" } resizeMode={ "center" } style={ styles.cardCover }/>
+                              <Card.Content style={ styles.cardContent }>
                                   <Title style={ { fontSize: 10, fontWeight: "700" } }>{ item.name }</Title>
                                   <Title style={ { fontSize: 10 } }>{ item.description }</Title>
                               </Card.Content>
@@ -70,4 +70,25 @@ function Index() {
     );
 }
 
-export default Index;
+export default CardDiscoverRadio;
+
+const styles = StyleSheet.create( {
+    container:   {
+        flex:   1,
+        height: 150
+    },
+    cardItem:    {
+        width:            100,
+        height:           100,
+        marginHorizontal: 4
+    },
+    cardCover:   {
+        height: 75
+    },
+    cardContent: {
+        flexDirection:    "row",
+        alignItems:       "center",
+        justifyContent:   "space-between",
+        marginHorizontal: -10
+    }
+} )
