@@ -16,17 +16,17 @@ const ScreenDiscover = () => {
             title={ "VOV Center" }
             subtitle={ "Ứng dụng nghe thông tin độc quyền của \nĐài Tiếng Nói Việt Nam. \nMake with ❤ by WindBlade" }
         >
-           
+
 
                 <CardDiscoverRadio/>
 
                 <CardDiscoverEvents/>
-            
+
                 <CardDiscoverNews/>
 
 
 
-         
+
         </AvatarHeaderScrollView>
     );
 };

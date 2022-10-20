@@ -74,7 +74,6 @@ export default CardDiscoverRadio;
 
 const styles = StyleSheet.create( {
     container:   {
-        flex:   1,
         height: 150
     },
     cardItem:    {

@@ -50,16 +50,35 @@ const CardDiscoverEvents = () => {
 
                               <View>
                                   <Card>
-                                      <Card.Cover source={ { uri: item.thumbnail } } resizeMethod={ "scale" } resizeMode={ "center" } style={ styles.cardCover }/>
+                                      <Card.Cover source={ { uri: item.thumbnail } } resizeMethod={ "scale" } resizeMode={ "cover" } style={ styles.cardCover }/>
                                   </Card>
 
                                   <View style={ { ...StyleSheet.absoluteFillObject } }>
                                       <View style={ styles.cardContent }>
 
-                                          <Paragraph style={ { fontSize: 12, fontWeight: "700", color: MD2Colors.white, lineHeight: 16, textTransform: "uppercase" } }
-                                                     numberOfLines={ 1 }>{ item.title }</Paragraph>
-                                          <Paragraph style={ { fontSize: 10, fontWeight: "700", color: MD2Colors.white, lineHeight: 16 } }
-                                                     numberOfLines={ 1 }>{ item.content }</Paragraph>
+                                          {
+                                              item.label && (<View style={{
+                                                  flex: 1,
+                                                  flexDirection: "row",
+                                                  justifyContent: "flex-start"
+                                              }}>
+                                                  <Text style={{
+                                                      backgroundColor: MD2Colors.red500,
+                                                      color: MD2Colors.white,
+                                                      borderRadius: 6,
+                                                      padding: 3,
+                                                      textTransform: "uppercase",
+                                                      fontSize: 8,
+                                                      fontWeight: "700"
+
+                                                  }}>{item.label}</Text>
+                                              </View>)
+                                          }
+
+                                          <Text style={ { fontSize: 12, fontWeight: "700", color: MD2Colors.white, lineHeight: 16, textTransform: "uppercase", marginTop:4 } }
+                                                     numberOfLines={ 1 }>{ item.title }</Text>
+                                          <Text style={ { fontSize: 10, fontWeight: "700", color: MD2Colors.white, lineHeight: 16 } }
+                                                     numberOfLines={ 1 }>{ item.content }</Text>
 
                                       </View>
                                   </View>
@@ -77,9 +96,26 @@ const CardDiscoverEvents = () => {
                                       </View>
                                   </View>
                                   <View style={ { width: coverWidth / 3 } }>
-                                      <Button icon="add" mode="contained" onPress={ () => console.log( "Pressed" ) } uppercase>
-                                          Hóng tin
-                                      </Button>
+                                      <View style={{
+                                          flex: 1,
+                                          flexDirection: "column",
+                                          justifyContent: "center",
+                                          alignItems:"center",
+                                          borderRadius: 10,
+                                      }}>
+                                          <Text style={{
+                                              backgroundColor: MD2Colors.purple700,
+                                              color: MD2Colors.white,
+                                              borderRadius: 6,
+                                              padding: 3,
+                                              textTransform: "uppercase",
+                                              fontSize: 8,
+                                              fontWeight: "700",
+                                              justifyContent:"center",
+                                              alignItems:"center"
+
+                                          }}>Hóng tin</Text>
+                                      </View>
                                   </View>
                               </View>
                           </View>
@@ -108,13 +144,12 @@ const styles = StyleSheet.create( {
     },
     cardCover:   {
         height:       coverHeight,
-        borderRadius: 5
+        borderTopLeftRadius: 5,
+        borderTopRightRadius: 5
     },
     cardContent: {
-
-
         position:         "absolute",
-        bottom:           0,
+        bottom:           10,
         marginHorizontal: 4
         //backgroundColor:"red"
     }
