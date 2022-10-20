@@ -1,8 +1,9 @@
-import React                                                                from "react";
-import { FlatList, PixelRatio, StyleSheet, Text, View }                     from "react-native";
-import { Avatar, Button, Card, List, MD2Colors, Paragraph, Surface, Title } from "react-native-paper";
-import { Devices }                                                          from "~commons";
-import { Spacings }                                                         from "react-native-ui-lib";
+import React                                           from "react";
+import { FlatList, PixelRatio, StyleSheet, View }      from "react-native";
+import { Avatar, MD2Colors, Paragraph, Surface, }      from "react-native-paper";
+import { Devices }                                     from "~commons";
+import { Button, Card, Colors, Image, Spacings, Text } from "react-native-ui-lib";
+import IonIcon                                         from "react-native-vector-icons/Ionicons";
 
 const data               = [
     {
@@ -40,51 +41,40 @@ const data               = [
 ]
 const CardDiscoverEvents = () => {
     return (
-        <View style={ { width: Devices.width - Spacings.s8 } }>
-            <Title style={ { fontSize: 18, fontWeight: "700" } }>Sự kiện trong tuần</Title>
+        <Surface elevation={ 0 } style={ styles.container }>
+            <Text title style={ styles.title }>Sự kiện trong tuần</Text>
             <FlatList horizontal
                       data={ data }
                       showsHorizontalScrollIndicator={ false }
+                      style={ { marginHorizontal: -Spacings.s1 } }
                       renderItem={ ( { item } ) => (
-                          <View style={ styles.cardItem }>
+                          <Card
+                              style={ styles.cardContainer }
+                              onPress={ () => console.log( "press on a card" ) }
+                          >
+                              <View style={ styles.cardItemImage }>
+                                  <Card.Section
+                                      flex
+                                      imageSource={ { uri: item.thumbnail } }
+                                      imageStyle={ styles.cardItemImage }
+                                      overlayType={ Image.overlayTypes.BOTTOM }
+                                      content={ [
+                                          { text: item.title, text90: true, $textGeneral: true, numberOfLines: 1, color: Colors.white },
+                                          { text: item.content, text100: true, $textGeneral: true, numberOfLines: 1, color: Colors.white }
+                                      ] }
+                                      contentStyle={ {
+                                          flex:             1,
+                                          alignItems:       "flex-start",
+                                          justifyContent:   "flex-end",
+                                          marginHorizontal: Spacings.s2,
 
-                              <View>
-                                  <Card>
-                                      <Card.Cover source={ { uri: item.thumbnail } } resizeMethod={ "scale" } resizeMode={ "cover" } style={ styles.cardCover }/>
-                                  </Card>
+                                      } }
+                                  />
 
-                                  <View style={ { ...StyleSheet.absoluteFillObject } }>
-                                      <View style={ styles.cardContent }>
-
-                                          {
-                                              item.label && (<View style={{
-                                                  flex: 1,
-                                                  flexDirection: "row",
-                                                  justifyContent: "flex-start"
-                                              }}>
-                                                  <Text style={{
-                                                      backgroundColor: MD2Colors.red500,
-                                                      color: MD2Colors.white,
-                                                      borderRadius: 6,
-                                                      padding: 3,
-                                                      textTransform: "uppercase",
-                                                      fontSize: 8,
-                                                      fontWeight: "700"
-
-                                                  }}>{item.label}</Text>
-                                              </View>)
-                                          }
-
-                                          <Text style={ { fontSize: 12, fontWeight: "700", color: MD2Colors.white, lineHeight: 16, textTransform: "uppercase", marginTop:4 } }
-                                                     numberOfLines={ 1 }>{ item.title }</Text>
-                                          <Text style={ { fontSize: 10, fontWeight: "700", color: MD2Colors.white, lineHeight: 16 } }
-                                                     numberOfLines={ 1 }>{ item.content }</Text>
-
-                                      </View>
-                                  </View>
                               </View>
 
-                              <View style={ { flexDirection: "row", justifyContent: "space-between", alignItems: "center" } }>
+
+                              <View style={ styles.cardFollowers }>
                                   <View style={ { flex: 1 } }>
                                       <Paragraph style={ { fontSize: 8, color: MD2Colors.grey500, lineHeight: 10, } }
                                                  numberOfLines={ 1 }>100 người đã hóng: </Paragraph>
@@ -96,32 +86,18 @@ const CardDiscoverEvents = () => {
                                       </View>
                                   </View>
                                   <View style={ { width: coverWidth / 3 } }>
-                                      <View style={{
-                                          flex: 1,
-                                          flexDirection: "column",
-                                          justifyContent: "center",
-                                          alignItems:"center",
-                                          borderRadius: 10,
-                                      }}>
-                                          <Text style={{
-                                              backgroundColor: MD2Colors.purple700,
-                                              color: MD2Colors.white,
-                                              borderRadius: 6,
-                                              padding: 3,
-                                              textTransform: "uppercase",
-                                              fontSize: 8,
-                                              fontWeight: "700",
-                                              justifyContent:"center",
-                                              alignItems:"center"
-
-                                          }}>Hóng tin</Text>
-                                      </View>
+                                      <Button label={ "Hóng tin" } size={ Button.sizes.xSmall } backgroundColor={ Colors.red30 } iconOnRight={ false }
+                                              iconSource={ () => <IonIcon name="add" size={ 14 } color={ Colors.white }/> } labelStyle={ {
+                                          fontSize: 8
+                                      } }/>
                                   </View>
+
                               </View>
-                          </View>
+                          </Card>
+
                       ) }
             />
-        </View>
+        </Surface>
     );
 };
 
@@ -131,26 +107,37 @@ const coverWidth  = PixelRatio.roundToNearestPixel( Devices.width / 6 * 3 );
 const coverHeight = PixelRatio.roundToNearestPixel( coverWidth / 3 * 2 );
 
 const styles = StyleSheet.create( {
-    container:   {
-        flex:      1,
-        height:    150,
-        marginTop: 10
+    container:     {
+        height:    coverHeight + 90,
+        marginTop: Spacings.s2
     },
-    cardItem:    {
+    title:         {
+        fontSize:     18,
+        fontWeight:   "700",
+        marginBottom: Spacings.s2
+    },
+    cardContainer: {
         width:            coverWidth,
-        height:           coverHeight + 50,
-        marginHorizontal: 4,
-        backgroundColor:  "#fff",
+        height:           coverHeight + 40,
+        marginHorizontal: Spacings.s1,
     },
-    cardCover:   {
-        height:       coverHeight,
-        borderTopLeftRadius: 5,
-        borderTopRightRadius: 5
+    cardItemImage: {
+        width:  coverWidth,
+        height: coverHeight,
+        //backgroundColor: "#fff",
+        borderRadius: Spacings.s1,
     },
-    cardContent: {
-        position:         "absolute",
-        bottom:           10,
-        marginHorizontal: 4
-        //backgroundColor:"red"
-    }
+    cardCover:     {
+        height: coverHeight,
+    },
+    cardFollowers: {
+        flex:             1,
+        flexDirection:    "row",
+        alignItems:       "center",
+        justifyContent:   "space-between",
+        marginHorizontal: Spacings.s1,
+
+    },
+
+
 } )

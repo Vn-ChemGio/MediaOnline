@@ -1,8 +1,8 @@
 import React                                from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet,  View } from "react-native";
 import { Card, List, Surface, Title }       from "react-native-paper";
 import { Devices }                          from "~commons";
-import { Spacings }                         from "react-native-ui-lib";
+import { Spacings,Text }                         from "react-native-ui-lib";
 
 const data             = [
     {
@@ -40,46 +40,11 @@ const data             = [
         "published": 1666180800000,
         "thumbnail": "https://vcdn1-vnexpress.vnecdn.net/2022/10/18/-3104-1666069324.png?w=1200&h=0&q=100&dpr=1&fit=crop&s=9FBRDQw6UNtlaTm5daK9NQ"
     },
-    {
-        "title":     "Bạn trai cục tính",
-        "content":   "Tôi và anh quen nhau sáu tháng; anh nóng tính nhưng mỗi lần cãi nhau luôn là người làm hòa trước, chủ động xin lỗi tôi.",
-        "link":      "https://vnexpress.net/ban-trai-cuc-tinh-4524426.html",
-        "published": 1666180800000,
-        "thumbnail": "https://vcdn1-vnexpress.vnecdn.net/2022/10/19/-1704-1666169199.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=Vs9HjvAteR0-ISnmFVaH5w"
-    },
-    {
-        "title":     "Dat Bike khai trương cửa hàng tại Đà Nẵng",
-        "content":   "Ngày 16/10, start up xe máy điện Dat Bike chính thức khai trương cửa hàng mới tại TP Đà Nẵng.",
-        "link":      "https://vnexpress.net/dat-bike-khai-truong-cua-hang-tai-da-nang-4525509.html",
-        "published": 1666180800000,
-        "thumbnail": "https://vcdn1-vnexpress.vnecdn.net/2022/10/19/-2574-1666175349.png?w=1200&h=0&q=100&dpr=1&fit=crop&s=s6vyzfoVV8qeU_m3WNhltQ"
-    },
-    {
-        "title":     "Thừa Thiên Huế sẽ là trung tâm văn hóa của châu Á",
-        "content":   "Thừa Thiên Huế sẽ là thành phố Festival, trung tâm văn hóa, giáo dục, du lịch, y tế của châu Á vào năm 2045, theo nhiệm vụ quy hoạch được Thủ tướng phê duyệt.",
-        "link":      "https://vnexpress.net/thua-thien-hue-se-la-trung-tam-van-hoa-cua-chau-a-4525519.html",
-        "published": 1666180315000,
-        "thumbnail": "https://vcdn1-vnexpress.vnecdn.net/2022/10/19/-2849-1666176929.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=lvmbBKHSuMXI77dWaXWJqQ"
-    },
-    {
-        "title":     "Vướng mắc về kinh phí di dời công trình quốc phòng để làm cao tốc",
-        "content":   "Tỉnh muốn di dời trường bắn ở huyện Cẩm Xuyên và kho đạn tại huyện Thạch Hà vì không đảm bảo phạm vi an toàn, song gặp khó trong bố trí kinh phí.",
-        "link":      "https://vnexpress.net/vuong-mac-ve-kinh-phi-di-doi-cong-trinh-quoc-phong-de-lam-cao-toc-4525474.html",
-        "published": 1666180031000,
-        "thumbnail": "https://vcdn1-vnexpress.vnecdn.net/2022/10/19/-2109-1666172606.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=eAnvG238NUO2BImXjQsOTw"
-    },
-    {
-        "title":     "Pogba hồi sinh hy vọng World Cup",
-        "content":   "Tiền vệ Paul Pogba trở lại sau phẫu thuật, và còn một tháng để giành suất dự World Cup 2022 với tuyển Pháp.",
-        "link":      "https://vnexpress.net/pogba-hoi-sinh-hy-vong-world-cup-4525485.html",
-        "published": 1666178642000,
-        "thumbnail": "https://vcdn1-thethao.vnecdn.net/2022/10/19/-7486-1666173942.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=U4G9197MIAD3ykg3abVsmg"
-    }
 ]
 const CardDiscoverNews = () => {
     return (
         <Surface elevation={ 0 } style={ styles.container }>
-            <Title style={ { fontSize: 18, fontWeight: "700" } }>Tin mới nhất</Title>
+            <Text title style={ styles.title }>Tin mới nhất</Text>
             <Card>
 
                 {
@@ -102,7 +67,12 @@ export default CardDiscoverNews;
 
 const styles = StyleSheet.create( {
     container: {
-        width:     Devices.width - Spacings.s8,
-        marginTop: 10
-    }
+        width:     "100%",
+        marginTop: Spacings.s2
+    },
+    title:         {
+        fontSize:     18,
+        fontWeight:   "700",
+        marginBottom: Spacings.s2
+    },
 } )

@@ -1,7 +1,7 @@
-import * as React                                   from "react";
-import { FlatList, StyleSheet }                     from "react-native";
-import { Surface, Title }                           from "react-native-paper";
-import { Card, Spacings, Text, ThemeManager, View } from "react-native-ui-lib";
+import * as React                                           from "react";
+import { FlatList, StyleSheet }                             from "react-native";
+import { Surface }                                          from "react-native-paper";
+import { Card, Colors, Spacings, Text, ThemeManager, View } from "react-native-ui-lib";
 
 const data = [
     {
@@ -43,8 +43,6 @@ const data = [
         description: "Tây Bắc",
         image:       require( "~assets/images/logo-vov4.png" )
     }
-
-
 ]
 
 
@@ -56,13 +54,13 @@ ThemeManager.setComponentTheme( "Card", {
 const CardDiscoverRadio = () => {
     return (
         <Surface elevation={ 0 } style={ styles.container }>
-            <Text title style={ { fontSize: 18, fontWeight: "700", marginBottom: Spacings.s2 } }>Radio Online</Text>
+            <Text title style={ styles.title }>Radio Online</Text>
             <FlatList horizontal
                       data={ data }
                       showsHorizontalScrollIndicator={ false }
+                      style={ { marginHorizontal: -Spacings.s1 } }
                       renderItem={ ( { item } ) => (
                           <Card
-
                               style={ styles.cardContainer }
                               onPress={ () => console.log( "press on a card" ) }
                           >
@@ -89,8 +87,6 @@ const CardDiscoverRadio = () => {
                       ) }
             />
         </Surface>
-
-
     );
 }
 
@@ -98,7 +94,13 @@ export default CardDiscoverRadio;
 
 const styles = StyleSheet.create( {
     container:     {
-        height: 150
+        height:    150,
+        marginTop: Spacings.s2
+    },
+    title:         {
+        fontSize:     18,
+        fontWeight:   "700",
+        marginBottom: Spacings.s2
     },
     cardContainer: {
         width:            100,
@@ -106,13 +108,16 @@ const styles = StyleSheet.create( {
         marginHorizontal: Spacings.s1,
     },
     cardItemImage: {
-        width:  100,
-        height: 75,
+        width:           100,
+        height:          75,
+        backgroundColor: Colors.yellow50,
+        borderRadius:    Spacings.s1
     },
     cardCover:     {
         height: 75,
     },
     cardContent:   {
+        flex:             1,
         flexDirection:    "row",
         alignItems:       "center",
         justifyContent:   "space-between",
