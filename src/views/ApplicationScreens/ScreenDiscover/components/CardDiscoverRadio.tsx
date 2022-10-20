@@ -1,6 +1,7 @@
-import * as React               from "react";
-import { FlatList, StyleSheet } from "react-native";
-import { Card, Surface, Title } from "react-native-paper";
+import * as React                                   from "react";
+import { FlatList, StyleSheet }                     from "react-native";
+import { Surface, Title }                           from "react-native-paper";
+import { Card, Spacings, Text, ThemeManager, View } from "react-native-ui-lib";
 
 const data = [
     {
@@ -46,22 +47,45 @@ const data = [
 
 ]
 
+
+ThemeManager.setComponentTheme( "Card", {
+    borderRadius: Spacings.s1,
+} );
+
+
 const CardDiscoverRadio = () => {
     return (
         <Surface elevation={ 0 } style={ styles.container }>
-            <Title style={ { fontSize: 18, fontWeight: "700" } }>Radio Online</Title>
+            <Text title style={ { fontSize: 18, fontWeight: "700", marginBottom: Spacings.s2 } }>Radio Online</Text>
             <FlatList horizontal
                       data={ data }
                       showsHorizontalScrollIndicator={ false }
                       renderItem={ ( { item } ) => (
-                          <Card style={ styles.cardItem }>
-                              <Card.Cover source={ item.image } resizeMethod={ "scale" } resizeMode={ "center" } style={ styles.cardCover }/>
-                              <Card.Content style={ styles.cardContent }>
-                                  <Title style={ { fontSize: 10, fontWeight: "700" } }>{ item.name }</Title>
-                                  <Title style={ { fontSize: 10 } }>{ item.description }</Title>
-                              </Card.Content>
+                          <Card
 
+                              style={ styles.cardContainer }
+                              onPress={ () => console.log( "press on a card" ) }
+                          >
+                              <View style={ styles.cardItemImage }>
+                                  <Card.Image
+                                      source={ item.image }
+                                      style={ styles.cardCover }
+                                      resizeMethod={ "scale" } resizeMode={ "contain" }
+                                  />
+                              </View>
+
+
+                              <View style={ styles.cardContent }>
+                                  <Text text90 $textDefault>
+                                      { item.name }
+                                  </Text>
+
+                                  <Text text100 $textDefault>
+                                      { item.description }
+                                  </Text>
+                              </View>
                           </Card>
+
                       ) }
             />
         </Surface>
@@ -73,21 +97,25 @@ const CardDiscoverRadio = () => {
 export default CardDiscoverRadio;
 
 const styles = StyleSheet.create( {
-    container:   {
+    container:     {
         height: 150
     },
-    cardItem:    {
+    cardContainer: {
         width:            100,
         height:           100,
-        marginHorizontal: 4
+        marginHorizontal: Spacings.s1,
     },
-    cardCover:   {
-        height: 75
+    cardItemImage: {
+        width:  100,
+        height: 75,
     },
-    cardContent: {
+    cardCover:     {
+        height: 75,
+    },
+    cardContent:   {
         flexDirection:    "row",
         alignItems:       "center",
         justifyContent:   "space-between",
-        marginHorizontal: -10
+        marginHorizontal: Spacings.s1
     }
 } )

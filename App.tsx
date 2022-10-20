@@ -9,14 +9,6 @@ import IonIcon                       from "react-native-vector-icons/Ionicons";
 import { RootNavigator } from "./src/navigators";
 import { theme }         from "~commons";
 
-ThemeManager.setComponentTheme( "Card", {
-    borderRadius:      8,
-    borderBottomWidth: 2,
-    borderBottomColor: "#d6d5db",
-    borderTopWidth:    1,
-    borderTopColor:    "#e5e4ec",
-} );
-
 const App = () => {
     console.log( new Date() );
 
