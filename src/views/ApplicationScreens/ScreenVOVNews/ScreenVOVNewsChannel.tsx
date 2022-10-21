@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { DrawerScreenProps }          from "@react-navigation/drawer";
-import { MD2Colors }                  from "react-native-paper";
 import { Colors }                     from "react-native-ui-lib";
 import Icon                           from "react-native-vector-icons/Ionicons"
 import parse                          from "rss-to-json";
@@ -26,7 +25,7 @@ const ScreenVOVNewsChannel = ( props: DrawerScreenProps<ScreenVOVNewsNavigationP
     return data.length ?
            (
                <AvatarHeaderFlatList
-                   rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ MD2Colors.white }/> }
+                   rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ Colors.white }/> }
                    rightTopIconOnPress={ () => {
                        props.navigation.toggleDrawer();
                    } }

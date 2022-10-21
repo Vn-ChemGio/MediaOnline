@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from "react";
 import { View }                         from "react-native";
-import { MD2Colors }                    from "react-native-paper";
 import { Colors, Spacings }             from "react-native-ui-lib";
 import Icon                             from "react-native-vector-icons/Ionicons"
 
@@ -16,7 +15,7 @@ const ScreenVOVTube = () => {
 
     return (
         <AvatarHeaderScrollView
-            rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ MD2Colors.white }/> }
+            rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ Colors.white }/> }
             rightTopIconOnPress={ () => {
             } }
             backgroundColor={ Colors.primaryVOVTube }
