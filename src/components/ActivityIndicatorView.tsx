@@ -1,8 +1,9 @@
-import React                                                    from "react";
-import { StyleSheet, View }                                     from "react-native";
-import { ActivityIndicator, ActivityIndicatorProps, MD2Colors } from "react-native-paper";
+import React                            from "react";
+import { StyleSheet, View }             from "react-native";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
+import { UIActivityIndicatorProps }     from "react-native-indicators";
 
-const ActivityIndicatorView = ( props: ActivityIndicatorProps ) => {
+const ActivityIndicatorView = ( props: UIActivityIndicatorProps ) => {
     return (
         <View style={ styles.container }>
             <ActivityIndicator animating={ true } color={ MD2Colors.red800 } size={ 32 } { ...props }/>

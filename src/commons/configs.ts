@@ -22,13 +22,26 @@ export const DARKER_COLOR = '#1F1F39';
 
 
  const configColor = {
-    primaryColor: '#3D5CFF',
-    secondaryColor: '#FFEBF0',
-    textColor: '#1F1F39',
-    errorColor: '#E63B2E',
-    successColor: '#ADC76F',
-    warnColor: '#FF963C',
-    textHeading:'#1F1F39'
+    // primaryColor: '#3D5CFF',
+    // secondaryColor: '#FFEBF0',
+    // textColor: '#1F1F39',
+    // errorColor: '#E63B2E',
+    // successColor: '#ADC76F',
+    // warnColor: '#FF963C',
+    // textHeading:'#1F1F39',
+
+     light: {
+         primaryVOVDiscover: Colors.rgba( 255, 145, 0, 1 ),
+         primaryVOVRadio:    Colors.rgba( 78, 15, 255, 1 ),
+         primaryVOVNews:     Colors.rgba( 234, 17, 126, 1 ),
+         primaryVOVTube:     Colors.rgba( 234, 17, 57, 1 ),
+     },
+     dark:  {
+         primaryVOVDiscover: Colors.orange80,
+         primaryVOVRadio:    Colors.blue80,
+         primaryVOVNews:     Colors.getColorTint( Colors.rgba( 234, 17, 126, 1 ), 80 ),
+         primaryVOVTube:     Colors.red80,
+     }
 }
 
  const configTypography = {
@@ -111,4 +124,4 @@ export const DARKER_COLOR = '#1F1F39';
 
 
 
-export const configTheme = {configColor, configTypography, configSpacing }
+export const configTheme = { configColor, configTypography, configSpacing }

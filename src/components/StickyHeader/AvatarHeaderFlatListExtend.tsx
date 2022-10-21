@@ -1,10 +1,10 @@
 import React                                               from "react";
 import { StatusBar, StyleSheet, useColorScheme }           from "react-native";
 import { MD2Colors }                                       from "react-native-paper";
-import { Spacings }                                        from "react-native-ui-lib";
+import { Colors, Spacings }                                from "react-native-ui-lib";
 import { AvatarHeaderFlatList, AvatarHeaderFlatListProps } from "react-native-sticky-parallax-header";
 
-import { Devices, theme } from "~commons";
+import { Devices } from "~commons";
 
 
 const AvatarHeaderFlatListExtend = ( props: AvatarHeaderFlatListProps<any> ) => {
@@ -18,7 +18,7 @@ const AvatarHeaderFlatListExtend = ( props: AvatarHeaderFlatListProps<any> ) => 
                     isDarkTheme ? styles.darkBackground : styles.lightBackground,
                 ] }
                 containerStyle={ styles.stretchContainer }
-                backgroundColor={ theme.colors.primaryVOVNews }
+                backgroundColor={ Colors.primaryVOVNews }
                 hasBorderRadius
                 image={ require( "~assets/images/logo-light.png" ) }
 

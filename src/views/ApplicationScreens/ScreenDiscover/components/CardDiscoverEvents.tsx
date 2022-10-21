@@ -1,9 +1,10 @@
 import React                                           from "react";
 import { FlatList, PixelRatio, StyleSheet, View }      from "react-native";
 import { Avatar, MD2Colors, Paragraph, Surface, }      from "react-native-paper";
-import { Devices }                                     from "~commons";
 import { Button, Card, Colors, Image, Spacings, Text } from "react-native-ui-lib";
 import IonIcon                                         from "react-native-vector-icons/Ionicons";
+import { Devices }                                     from "~commons";
+
 
 const data               = [
     {

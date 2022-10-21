@@ -1,8 +1,8 @@
-import React                                from "react";
-import { FlatList, StyleSheet,  View } from "react-native";
-import { Card, List, Surface, Title }       from "react-native-paper";
-import { Devices }                          from "~commons";
-import { Spacings,Text }                         from "react-native-ui-lib";
+import React                   from "react";
+import { StyleSheet }          from "react-native";
+import { Card, List, Surface } from "react-native-paper";
+import { Spacings, Text }      from "react-native-ui-lib";
+
 
 const data             = [
     {
@@ -70,7 +70,7 @@ const styles = StyleSheet.create( {
         width:     "100%",
         marginTop: Spacings.s2
     },
-    title:         {
+    title:     {
         fontSize:     18,
         fontWeight:   "700",
         marginBottom: Spacings.s2

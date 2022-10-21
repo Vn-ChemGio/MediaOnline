@@ -1,11 +1,12 @@
-import React, { useEffect, useState }   from "react";
-import { DrawerScreenProps }            from "@react-navigation/drawer";
-import { ActivityIndicator, MD2Colors } from "react-native-paper";
-import Icon                             from "react-native-vector-icons/Ionicons"
-import parse                            from "rss-to-json";
+import React, { useEffect, useState } from "react";
+import { DrawerScreenProps }          from "@react-navigation/drawer";
+import { MD2Colors }                  from "react-native-paper";
+import { Colors }                     from "react-native-ui-lib";
+import Icon                           from "react-native-vector-icons/Ionicons"
+import parse                          from "rss-to-json";
 
-import { RSSItemNews, RSSParseInterface, ScreenVOVNewsNavigationParamList, getRssData, theme } from "~commons";
-import { ActivityIndicatorView, AvatarHeaderFlatList, VOVNewsCardItem }                        from "~components";
+import { RSSItemNews, RSSParseInterface, ScreenVOVNewsNavigationParamList, getRssData } from "~commons";
+import { ActivityIndicatorView, AvatarHeaderFlatList, VOVNewsCardItem }                 from "~components";
 
 const ScreenVOVNewsChannel = ( props: DrawerScreenProps<ScreenVOVNewsNavigationParamList> ) => {
 
@@ -40,7 +41,7 @@ const ScreenVOVNewsChannel = ( props: DrawerScreenProps<ScreenVOVNewsNavigationP
            )
                        :
            (
-               <ActivityIndicatorView theme={ theme } color={ theme.colors.primaryVOVNews }/>
+               <ActivityIndicatorView color={ Colors.primaryVOVNews }/>
            )
 
 

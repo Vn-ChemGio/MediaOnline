@@ -1,11 +1,10 @@
 import React, { useCallback, useState } from "react";
 import { View }                         from "react-native";
 import { MD2Colors }                    from "react-native-paper";
-import { Spacings }                     from "react-native-ui-lib";
+import { Colors, Spacings }             from "react-native-ui-lib";
 import Icon                             from "react-native-vector-icons/Ionicons"
 
 import { AvatarHeaderScrollView, IOSSegmentedControl, VOVTubeCardItem } from "~components";
-import { theme }                                                        from "~commons";
 
 
 const ScreenVOVTube = () => {
@@ -20,7 +19,7 @@ const ScreenVOVTube = () => {
             rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ MD2Colors.white }/> }
             rightTopIconOnPress={ () => {
             } }
-            backgroundColor={ theme.colors.primaryVOVTube }
+            backgroundColor={ Colors.primaryVOVTube }
             title={ "VOV Tube" }
             subtitle={ "Sóng xanh trên Internet.\nTruyền thông không giới hạn." }
         >

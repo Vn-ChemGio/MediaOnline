@@ -2,11 +2,11 @@ import { API_HOST }                   from "@env";
 import { createDrawerNavigator }      from "@react-navigation/drawer";
 import axios                          from "axios";
 import React, { useEffect, useState } from "react";
-import { useTheme }                   from "react-native-paper";
+import { Colors }                     from "react-native-ui-lib";
 import Icon                           from "react-native-vector-icons/Ionicons";
 
-import { ICON_SIZE, ScreenVOVNewsNavigationParamList, VOVNewsChannelItem, theme } from "~commons";
-import { ActivityIndicatorView }                                                  from "~components";
+import { ICON_SIZE, ScreenVOVNewsNavigationParamList, VOVNewsChannelItem } from "~commons";
+import { ActivityIndicatorView }                                           from "~components";
 
 import { CustomDrawerContent }       from "./components";
 import ScreenVOVNewsChannelNavigator from "./ScreenVOVNewsChannelNavigator";
@@ -32,7 +32,7 @@ const ScreenVOVNews = () => {
         listChannels.length ? <Drawer.Navigator screenOptions={ {
                                 headerShown:                 false,
                                 drawerPosition:              "right",
-                                drawerActiveBackgroundColor: theme.colors.primaryVOVNews,
+                                drawerActiveBackgroundColor: Colors.primaryVOVNews,
                                 drawerActiveTintColor:       "#fff",
                                 drawerInactiveTintColor:     "#333",
                                 drawerLabelStyle:            {
@@ -57,7 +57,7 @@ const ScreenVOVNews = () => {
                                     ) }
 
                             </Drawer.Navigator>
-                            : <ActivityIndicatorView theme={ theme } color={ theme.colors.primaryVOVNews }/>
+                            : <ActivityIndicatorView color={ Colors.primaryVOVNews }/>
     );
 };
 

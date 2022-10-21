@@ -1,10 +1,10 @@
 import React                                                   from "react";
 import { StatusBar, StyleSheet, useColorScheme }               from "react-native";
 import { MD2Colors }                                           from "react-native-paper";
-import { Spacings }                                            from "react-native-ui-lib";
+import { Colors, Spacings }                                    from "react-native-ui-lib";
 import { AvatarHeaderScrollView, AvatarHeaderScrollViewProps } from "react-native-sticky-parallax-header";
 
-import { Devices, theme } from "~commons";
+import { Devices } from "~commons";
 
 
 const AvatarHeaderScrollViewExtend = ( props: AvatarHeaderScrollViewProps ) => {
@@ -19,7 +19,7 @@ const AvatarHeaderScrollViewExtend = ( props: AvatarHeaderScrollViewProps ) => {
                     isDarkTheme ? styles.darkBackground : styles.lightBackground,
                 ] }
                 containerStyle={ styles.stretchContainer }
-                backgroundColor={ theme.colors.primaryVOVTube }
+                backgroundColor={ Colors.primaryVOVTube }
                 hasBorderRadius
                 image={ require( "~assets/images/logo-light.png" ) }
                 titleStyle={ styles.title }

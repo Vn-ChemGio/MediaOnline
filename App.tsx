@@ -1,14 +1,15 @@
 import { NavigationContainer }       from "@react-navigation/native";
 import React                         from "react";
 import { Provider as PaperProvider } from "react-native-paper";
-import { ThemeManager }              from "react-native-ui-lib";
+import { Colors }                    from "react-native-ui-lib";
 import { SafeAreaProvider }          from "react-native-safe-area-context";
 import IonIcon                       from "react-native-vector-icons/Ionicons";
 
+import { configTheme, theme } from "~commons";
+import { RootNavigator }      from "./src/navigators";
 
-import { RootNavigator } from "./src/navigators";
-import { theme }         from "~commons";
 
+Colors.loadSchemes( configTheme.configColor )
 const App = () => {
     console.log( new Date() );
 
