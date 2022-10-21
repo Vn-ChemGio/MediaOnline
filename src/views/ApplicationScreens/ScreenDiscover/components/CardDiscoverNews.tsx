@@ -1,7 +1,7 @@
 import React                   from "react";
 import { StyleSheet }          from "react-native";
-import { Card, List, Surface } from "react-native-paper";
-import { Spacings, Text }      from "react-native-ui-lib";
+import { Card, List }                   from "react-native-paper";
+import { Colors, Spacings, Text, View } from "react-native-ui-lib";
 
 
 const data             = [
@@ -43,9 +43,9 @@ const data             = [
 ]
 const CardDiscoverNews = () => {
     return (
-        <Surface elevation={ 0 } style={ styles.container }>
+        <View style={ styles.container }>
             <Text title style={ styles.title }>Tin mới nhất</Text>
-            <Card>
+            <Card   style={  { marginLeft: Spacings.s4, marginRight: Spacings.s4 } }>
 
                 {
                     data.map( ( item, index ) => (
@@ -59,7 +59,7 @@ const CardDiscoverNews = () => {
                     ) )
                 }
             </Card>
-        </Surface>
+        </View>
     );
 };
 
@@ -68,11 +68,12 @@ export default CardDiscoverNews;
 const styles = StyleSheet.create( {
     container: {
         width:     "100%",
-        marginTop: Spacings.s2
+        marginTop:       Spacings.s2,
     },
     title:     {
         fontSize:     18,
         fontWeight:   "700",
-        marginBottom: Spacings.s2
+        marginBottom:      Spacings.s2,
+        paddingHorizontal: Spacings.s4,
     },
 } )

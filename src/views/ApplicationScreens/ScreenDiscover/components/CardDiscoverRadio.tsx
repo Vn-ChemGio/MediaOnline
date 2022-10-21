@@ -1,7 +1,7 @@
 import * as React                                           from "react";
-import { FlatList, StyleSheet }                             from "react-native";
-import { Surface }                                          from "react-native-paper";
+import { FlatList, PixelRatio, StyleSheet }                 from "react-native";
 import { Card, Colors, Spacings, Text, ThemeManager, View } from "react-native-ui-lib";
+import { Devices }                                          from "~commons";
 
 const data = [
     {
@@ -53,15 +53,21 @@ ThemeManager.setComponentTheme( "Card", {
 
 const CardDiscoverRadio = () => {
     return (
-        <Surface elevation={ 0 } style={ styles.container }>
+        <View style={ styles.container }>
             <Text title style={ styles.title }>Radio Online</Text>
             <FlatList horizontal
                       data={ data }
                       showsHorizontalScrollIndicator={ false }
                       style={ { marginHorizontal: -Spacings.s1 } }
-                      renderItem={ ( { item } ) => (
+                      renderItem={ ( { item, index, separators } ) => (
                           <Card
-                              style={ styles.cardContainer }
+                              style={ [
+                                  styles.cardContainer,
+                                  index == 0 ? { marginLeft: Spacings.s4 } : {},
+                                  index == (
+                                      data.length - 1
+                                  ) ? { marginRight: Spacings.s4 } : {}
+                              ] }
                               onPress={ () => console.log( "press on a card" ) }
                           >
                               <View style={ styles.cardItemImage }>
@@ -86,30 +92,35 @@ const CardDiscoverRadio = () => {
 
                       ) }
             />
-        </Surface>
+        </View>
     );
 }
 
 export default CardDiscoverRadio;
 
+const coverWidth  = PixelRatio.roundToNearestPixel( Devices.width / 7 * 2 );
+const coverHeight = PixelRatio.roundToNearestPixel( coverWidth / 3 * 2 );
+
 const styles = StyleSheet.create( {
     container:     {
-        height:    150,
-        marginTop: Spacings.s2
+        height:          coverHeight + 25 + 24 + Spacings.s4,
+        marginTop:       Spacings.s2,
     },
     title:         {
         fontSize:     18,
+        lineHeight:   24,
         fontWeight:   "700",
-        marginBottom: Spacings.s2
+        marginBottom: Spacings.s2,
+        paddingHorizontal: Spacings.s4,
     },
     cardContainer: {
-        width:            100,
-        height:           100,
+        width:            coverWidth,
+        height:           coverHeight + 25,
         marginHorizontal: Spacings.s1,
     },
     cardItemImage: {
-        width:           100,
-        height:          75,
+        width:           coverWidth,
+        height:          coverHeight,
         backgroundColor: Colors.yellow50,
         borderRadius:    Spacings.s1
     },

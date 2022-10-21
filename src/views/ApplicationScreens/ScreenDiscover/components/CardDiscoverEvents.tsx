@@ -1,9 +1,8 @@
-import React                                           from "react";
-import { FlatList, PixelRatio, StyleSheet, View }      from "react-native";
-import { Avatar, MD2Colors, Paragraph, Surface, }      from "react-native-paper";
-import { Button, Card, Colors, Image, Spacings, Text } from "react-native-ui-lib";
-import IonIcon                                         from "react-native-vector-icons/Ionicons";
-import { Devices }                                     from "~commons";
+import React                                                         from "react";
+import { FlatList, PixelRatio, StyleSheet, View }                    from "react-native";
+import { Avatar, Button, Card, Colors, Icon, Image, Spacings, Text } from "react-native-ui-lib";
+import IonIcon                                                       from "react-native-vector-icons/Ionicons";
+import { Devices }                                                   from "~commons";
 
 
 const data               = [
@@ -42,15 +41,21 @@ const data               = [
 ]
 const CardDiscoverEvents = () => {
     return (
-        <Surface elevation={ 0 } style={ styles.container }>
+        <View style={ styles.container }>
             <Text title style={ styles.title }>Sự kiện trong tuần</Text>
             <FlatList horizontal
                       data={ data }
                       showsHorizontalScrollIndicator={ false }
                       style={ { marginHorizontal: -Spacings.s1 } }
-                      renderItem={ ( { item } ) => (
+                      renderItem={ ( { item, index, separators } ) => (
                           <Card
-                              style={ styles.cardContainer }
+                              style={ [
+                                  styles.cardContainer,
+                                  index == 0 ? { marginLeft: Spacings.s4 } : {},
+                                  index == (
+                                      data.length - 1
+                                  ) ? { marginRight: Spacings.s4 } : {}
+                              ] }
                               onPress={ () => console.log( "press on a card" ) }
                           >
                               <View style={ styles.cardItemImage }>
@@ -77,17 +82,22 @@ const CardDiscoverEvents = () => {
 
                               <View style={ styles.cardFollowers }>
                                   <View style={ { flex: 1 } }>
-                                      <Paragraph style={ { fontSize: 8, color: MD2Colors.grey500, lineHeight: 10, } }
-                                                 numberOfLines={ 1 }>100 người đã hóng: </Paragraph>
+                                      <Text style={ { fontSize: 8, color: Colors.grey50, lineHeight: 10, } }
+                                            numberOfLines={ 1 }>100 người quan tâm: </Text>
                                       <View style={ { flexDirection: "row", justifyContent: "flex-start", alignItems: "center" } }>
-                                          <Avatar.Image size={ 16 } source={ require( "~/assets/images/avatar-03.png" ) }/>
-                                          <Avatar.Image size={ 16 } source={ require( "~/assets/images/avatar-04.png" ) } style={ { marginLeft: -4 } }/>
-                                          <Avatar.Image size={ 16 } source={ require( "~/assets/images/avatar-03.png" ) } style={ { marginLeft: -4 } }/>
-                                          <Avatar.Image size={ 16 } source={ require( "~/assets/images/avatar-04.png" ) } style={ { marginLeft: -4 } }/>
+                                          <Avatar size={ 16 } source={ require( "~/assets/images/avatar-03.png" ) } animate={ true }/>
+                                          <Avatar size={ 16 } source={ require( "~/assets/images/avatar-04.png" ) } animate={ true }
+                                                  containerStyle={ { marginLeft: -Spacings.s2 } }/>
+                                          <Avatar size={ 16 } source={ require( "~/assets/images/avatar-03.png" ) } animate={ true }
+                                                  containerStyle={ { marginLeft: -Spacings.s2 } }/>
+                                          <Avatar size={ 16 } animate={ true } containerStyle={ { marginLeft: -Spacings.s2 } } name={ "JQ" } backgroundColor={ Colors.red80 }/>
+                                          <Avatar size={ 16 } animate={ true } containerStyle={ { marginLeft: -Spacings.s2 } } name={ "Q" } backgroundColor={ Colors.grey50 }/>
+                                          <Avatar size={ 16 } source={ require( "~/assets/images/avatar-04.png" ) } animate={ true }
+                                                  containerStyle={ { marginLeft: -Spacings.s2 } }/>
                                       </View>
                                   </View>
                                   <View style={ { width: coverWidth / 3 } }>
-                                      <Button label={ "Hóng tin" } size={ Button.sizes.xSmall } backgroundColor={ Colors.red30 } iconOnRight={ false }
+                                      <Button label={ "Theo dõi" } size={ Button.sizes.xSmall } backgroundColor={ Colors.red30 } iconOnRight={ false }
                                               iconSource={ () => <IonIcon name="add" size={ 14 } color={ Colors.white }/> } labelStyle={ {
                                           fontSize: 8
                                       } }/>
@@ -98,7 +108,7 @@ const CardDiscoverEvents = () => {
 
                       ) }
             />
-        </Surface>
+        </View>
     );
 };
 
@@ -109,13 +119,15 @@ const coverHeight = PixelRatio.roundToNearestPixel( coverWidth / 3 * 2 );
 
 const styles = StyleSheet.create( {
     container:     {
-        height:    coverHeight + 90,
-        marginTop: Spacings.s2
+        height:          coverHeight + 40 + 24 + Spacings.s4,
+        marginTop:       Spacings.s2,
     },
     title:         {
-        fontSize:     18,
-        fontWeight:   "700",
-        marginBottom: Spacings.s2
+        fontSize:          18,
+        lineHeight:        24,
+        fontWeight:        "700",
+        marginBottom:      Spacings.s2,
+        paddingHorizontal: Spacings.s4,
     },
     cardContainer: {
         width:            coverWidth,
