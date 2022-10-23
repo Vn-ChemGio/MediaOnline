@@ -44,7 +44,7 @@ const data             = [
 const CardDiscoverNews = () => {
     return (
         <View style={ styles.container }>
-            <Text title style={ styles.title }>Tin mới nhất</Text>
+            <Text sectionTitle>Radio Online</Text>
             <Card   style={  { marginLeft: Spacings.s4, marginRight: Spacings.s4 } }>
 
                 {
@@ -69,11 +69,5 @@ const styles = StyleSheet.create( {
     container: {
         width:     "100%",
         marginTop:       Spacings.s2,
-    },
-    title:     {
-        fontSize:     18,
-        fontWeight:   "700",
-        marginBottom:      Spacings.s2,
-        paddingHorizontal: Spacings.s4,
-    },
+    }
 } )

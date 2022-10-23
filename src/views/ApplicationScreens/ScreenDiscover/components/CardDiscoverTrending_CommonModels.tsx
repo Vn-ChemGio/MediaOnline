@@ -3,8 +3,9 @@ import { parse }       from "react-native-redash";
 import { scaleLinear } from "d3-scale";
 import * as shape      from "d3-shape";
 
-import { Devices } from "~commons";
-import data        from "./data.json";
+import { Devices }  from "~commons";
+import data         from "./data.json";
+import { Spacings } from "react-native-ui-lib";
 
 interface Amount {
     amount: string;
@@ -46,7 +47,7 @@ interface Prices {
 
 export { data };
 export type GraphIndex = 0 | 1 | 2 | 3 | 4;
-export const SIZE = Devices.width;
+export const SIZE = Devices.width - Spacings.s4 * 2;
 
 const POINTS = 60;
 const values = data.data.prices as Prices;
@@ -74,7 +75,7 @@ const buildGraph = ( dataPoints: DataPoints, label: string ) => {
                 .line()
                 .x( ( [ , x ] ) => scaleX( x ) as number )
                 .y( ( [ y ] ) => scaleY( y ) as number )
-                .curve( shape.curveBasis )( formattedValues ) as string
+                .curve( shape.curveBasis )( formattedValues ) as string,
         ),
     };
 };

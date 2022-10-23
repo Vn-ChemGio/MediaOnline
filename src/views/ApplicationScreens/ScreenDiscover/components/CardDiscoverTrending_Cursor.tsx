@@ -1,14 +1,15 @@
-import React                      from "react";
-import { StyleSheet, View } from "react-native";
-import { PanGestureHandler }      from "react-native-gesture-handler";
+import React                        from "react";
+import { StyleSheet, View }         from "react-native";
+import { PanGestureHandler }        from "react-native-gesture-handler";
 import Animated, {
     useAnimatedGestureHandler,
     useAnimatedStyle,
     useSharedValue,
     withSpring,
-}                                 from "react-native-reanimated";
-import { Vector, getYForX }       from "react-native-redash";
-import { GraphIndex, graphs }     from "./CardDiscoverTrending_CommonModels";
+}                                   from "react-native-reanimated";
+import { Vector, getYForX }         from "react-native-redash";
+import { GraphIndex, graphs, SIZE } from "./CardDiscoverTrending_CommonModels";
+import { Spacings }                 from "react-native-ui-lib";
 
 
 const CURSOR = 50;
@@ -27,6 +28,7 @@ const CardDiscoverTrendingCursor = ( { index, translation }: CardDiscoverTrendin
             isActive.value = true;
         },
         onActive: ( event ) => {
+            if ( event.x < 0 || event.x > SIZE ) return;
             translation.x.value = event.x;
             translation.y.value =
                 getYForX( graphs[ index.value ].data.path, translation.x.value ) || 0;
@@ -49,9 +51,9 @@ const CardDiscoverTrendingCursor = ( { index, translation }: CardDiscoverTrendin
     } );
 
     return (
-        <View style={ StyleSheet.absoluteFill }>
+        <View style={ styles.container }>
             <PanGestureHandler { ...{ onGestureEvent } }>
-                <Animated.View style={ StyleSheet.absoluteFill }>
+                <Animated.View style={ StyleSheet.absoluteFillObject }>
                     <Animated.View style={ [ styles.cursor, style ] }>
                         <View style={ styles.cursorBody }/>
                     </Animated.View>
@@ -64,6 +66,10 @@ const CardDiscoverTrendingCursor = ( { index, translation }: CardDiscoverTrendin
 export default CardDiscoverTrendingCursor;
 
 const styles = StyleSheet.create( {
+    container:  {
+        ...StyleSheet.absoluteFillObject,
+        paddingHorizontal: Spacings.s4,
+    },
     cursor:     {
         width:           CURSOR,
         height:          CURSOR,

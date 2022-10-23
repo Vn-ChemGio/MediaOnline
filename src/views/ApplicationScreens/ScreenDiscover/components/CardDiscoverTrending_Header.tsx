@@ -17,10 +17,8 @@ interface CardDiscoverTrendingHeaderProps {
 
 
 const CardDiscoverTrendingHeader = ( { translation, index }: CardDiscoverTrendingHeaderProps ) => {
-    const data          = useDerivedValue( () => graphs[ index.value ].data );
-    console.log(index.value,"===========")
-    console.log(data)
- 
+    const data = useDerivedValue( () => graphs[ index.value ].data );
+
     const price         = useDerivedValue( () => {
         const p = interpolate(
             translation.y.value,
@@ -33,24 +31,23 @@ const CardDiscoverTrendingHeader = ( { translation, index }: CardDiscoverTrendin
         () => `${ round( data.value.percentChange, 3 ) }%`
     );
     const label         = useDerivedValue( () => data.value.label );
+    const name         = useDerivedValue( () => "Etherum" );
     const style         = useAnimatedStyle( () => (
         {
             fontWeight: "500",
-            fontSize:   24,
+            fontSize:   18,
             color:      data.value.percentChange > 0 ? "green" : "red",
         }
     ) );
     return (
-        <View style={ styles.container }>
-            <View style={ styles.values }>
-                <View>
-                    <ReText style={ styles.value } text={ price }/>
-                    <Text style={ styles.label }>Etherum</Text>
-                </View>
-                <View>
-                    <ReText style={ style } text={ percentChange }/>
-                    <ReText style={ styles.label } text={ label }/>
-                </View>
+        <View style={ styles.values }>
+            <View>
+                <ReText style={ style } text={ price }/>
+                <ReText style={ styles.label } text={ name }/>
+            </View>
+            <View>
+                <ReText style={ style } text={ percentChange }/>
+                <ReText style={ styles.label } text={ label }/>
             </View>
         </View>
     );
@@ -59,19 +56,15 @@ const CardDiscoverTrendingHeader = ( { translation, index }: CardDiscoverTrendin
 export default CardDiscoverTrendingHeader;
 
 const styles = StyleSheet.create( {
-    container: {
-        padding: 16,
-    },
-    values:    {
-        marginTop:      16,
+    values: {
         flexDirection:  "row",
         justifyContent: "space-between",
     },
-    value:     {
+    value:  {
         fontWeight: "500",
-        fontSize:   24,
+        fontSize:   18,
     },
-    label:     {
-        fontSize: 18,
+    label:  {
+        fontSize: 14,
     },
 } )

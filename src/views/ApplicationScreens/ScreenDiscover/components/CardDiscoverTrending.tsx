@@ -1,21 +1,21 @@
-import React                        from "react";
-import { StyleSheet, Text, View }   from "react-native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-import { mixPath, useVector }       from "react-native-redash";
+import React                          from "react";
+import { FlatList, StyleSheet, View } from "react-native";
+import { TouchableWithoutFeedback }   from "react-native-gesture-handler";
+import { mixPath, useVector }         from "react-native-redash";
 import Animated, {
     useAnimatedProps,
     useAnimatedStyle,
     useSharedValue,
     withTiming,
-}                                   from "react-native-reanimated";
-import Svg, { Path }                from "react-native-svg";
+}                                     from "react-native-reanimated";
+import Svg, { Path }                  from "react-native-svg";
 
 import { GraphIndex, SIZE, graphs } from "./CardDiscoverTrending_CommonModels";
 import Cursor                       from "./CardDiscoverTrending_Cursor";
 import Header                       from "./CardDiscoverTrending_Header";
 
-import { Devices } from "~commons";
-import { Surface } from "react-native-paper";
+import { Devices }         from "~commons";
+import { Spacings, Text, } from "react-native-ui-lib";
 
 const AnimatedPath = Animated.createAnimatedComponent( Path );
 
@@ -38,57 +38,62 @@ const CardDiscoverTrendingGraph = () => {
         }
     ) );
     return (
-        <Surface elevation={ 0 }>
-            <Header translation={ translation } index={ current }/>
-            <View>
-                <Svg width={ SIZE } height={ SIZE }>
-                    <AnimatedPath
-                        animatedProps={ animatedProps }
-                        fill="transparent"
-                        stroke="black"
-                        strokeWidth={ 3 }
-                    />
-                </Svg>
-                <Cursor translation={ translation } index={ current }/>
-            </View>
-            <View style={ styles.selection }>
-                <View style={ StyleSheet.absoluteFill }>
-                    <Animated.View style={ [ styles.backgroundSelection, style ] }/>
+        <View style={ styles.container }>
+            <Text sectionTitle>Radio Online</Text>
+            <View style={ styles.chart }>
+                <Header translation={ translation } index={ current }/>
+                <View>
+                    <Svg width={ SIZE } height={ SIZE }>
+                        <AnimatedPath
+                            animatedProps={ animatedProps }
+                            fill="transparent"
+                            stroke="black"
+                            strokeWidth={ 3 }
+                        />
+                    </Svg>
+                    <Cursor translation={ translation } index={ current }/>
                 </View>
-                { graphs.map( ( graph, index ) => {
-                    return (
-                        <TouchableWithoutFeedback
-                            key={ graph.label }
-                            onPress={ () => {
-                                previous.value   = current.value;
-                                transition.value = 0;
-                                current.value    = index as GraphIndex;
-                                transition.value = withTiming( 1 );
-                            } }
-                        >
-                            <Animated.View style={ [ styles.labelContainer ] }>
-                                <Text style={ styles.label }>{ graph.label }</Text>
-                            </Animated.View>
-                        </TouchableWithoutFeedback>
-                    );
-                } ) }
+                <View style={ styles.selection }>
+                    <View style={ StyleSheet.absoluteFill }>
+                        <Animated.View style={ [ styles.backgroundSelection, style ] }/>
+                    </View>
+                    { graphs.map( ( graph, index ) => {
+                        return (
+                            <TouchableWithoutFeedback
+                                key={ graph.label }
+                                onPress={ () => {
+                                    previous.value   = current.value;
+                                    transition.value = 0;
+                                    current.value    = index as GraphIndex;
+                                    transition.value = withTiming( 1 );
+                                } }
+                            >
+                                <Animated.View style={ [ styles.labelContainer ] }>
+                                    <Text style={ styles.label }>{ graph.label }</Text>
+                                </Animated.View>
+                            </TouchableWithoutFeedback>
+                        );
+                    } ) }
+                </View>
             </View>
-        </Surface>
+        </View>
     );
 };
 
 export default CardDiscoverTrendingGraph;
 
 
-const SELECTION_WIDTH = Devices.width - 32;
+const SELECTION_WIDTH = Devices.width - Spacings.s4 * 2;
 const BUTTON_WIDTH    = (
-                            Devices.width - 32
+                            Devices.width - Spacings.s4 * 2
                         ) / graphs.length;
 const styles          = StyleSheet.create( {
     container:           {
-        flex:            1,
-        backgroundColor: "red",
-        height:400
+        marginTop: Spacings.s2,
+        height:    SIZE +200,
+    },
+    chart:               {
+        marginHorizontal: Spacings.s4,
     },
     backgroundSelection: {
         backgroundColor: "#f3f3f3",

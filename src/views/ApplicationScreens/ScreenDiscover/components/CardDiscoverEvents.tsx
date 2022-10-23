@@ -42,7 +42,7 @@ const data               = [
 const CardDiscoverEvents = () => {
     return (
         <View style={ styles.container }>
-            <Text title style={ styles.title }>Sự kiện trong tuần</Text>
+            <Text sectionTitle>Sự kiện trong tuần</Text>
             <FlatList horizontal
                       data={ data }
                       showsHorizontalScrollIndicator={ false }
@@ -107,6 +107,7 @@ const CardDiscoverEvents = () => {
                           </Card>
 
                       ) }
+                      keyExtractor={(item , index)=> `Discovery-Card-Event-${index}`}
             />
         </View>
     );
@@ -121,13 +122,6 @@ const styles = StyleSheet.create( {
     container:     {
         height:          coverHeight + 40 + 24 + Spacings.s4,
         marginTop:       Spacings.s2,
-    },
-    title:         {
-        fontSize:          18,
-        lineHeight:        24,
-        fontWeight:        "700",
-        marginBottom:      Spacings.s2,
-        paddingHorizontal: Spacings.s4,
     },
     cardContainer: {
         width:            coverWidth,
