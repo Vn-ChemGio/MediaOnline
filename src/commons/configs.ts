@@ -46,20 +46,25 @@ const configColor = {
 
 const configTypography = {
     sectionTitle: {
-        fontSize:          PixelRatio.roundToNearestPixel( 18 ),
-        lineHeight:        24,
-        fontWeight:        "700",
-        fontFamily:        "AvertaStd-Semibold",
+        fontSize:   18,
+        lineHeight: 24,
+        fontWeight: "800",
+        //fontFamily: "AvertaStd-Semibold",
         marginBottom:      Spacings.s2,
         paddingHorizontal: Spacings.s4,
     },
     bodyTitle:    {
-        fontSize:   PixelRatio.roundToNearestPixel( 18 ),
-        fontWeight: "700",
+        fontSize:   PixelRatio.roundToNearestPixel( 12 ),
+        //fontWeight: "700",
         fontFamily: "AvertaStd-Semibold",
         //color: Colors.white,
     },
-
+    bodyContent:    {
+        fontSize:   PixelRatio.roundToNearestPixel( 10 ),
+        //fontWeight: "700",
+        fontFamily: "AvertaStd-Regular",
+        //color: Colors.white,
+    },
     welcomeText:     {
         fontSize:   normalizedFontSize( 24 ),
         fontWeight: "700",

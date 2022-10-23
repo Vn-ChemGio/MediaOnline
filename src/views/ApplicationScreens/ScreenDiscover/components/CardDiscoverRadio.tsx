@@ -19,19 +19,20 @@ const data = [
         description: "Âm Nhạc",
         image:       require( "~assets/images/logo-vov3.png" )
     },
+   
+    {
+        name:        "VOV 4",
+        description: "Đông Bắc",
+        image:       require( "~assets/images/logo-vov4.png" )
+    },
+    {
+        name:        "VOV 4",
+        description: "Tây Bắc",
+        image:       require( "~assets/images/logo-vov4.png" )
+    },
     {
         name:        "VOV 4",
         description: "Tây Nguyên",
-        image:       require( "~assets/images/logo-vov4.png" )
-    },
-    {
-        name:        "VOV 4",
-        description: "Tây Bắc",
-        image:       require( "~assets/images/logo-vov4.png" )
-    },
-    {
-        name:        "VOV 4",
-        description: "Tây Bắc",
         image:       require( "~assets/images/logo-vov4.png" )
     },
     {
@@ -80,11 +81,9 @@ const CardDiscoverRadio = () => {
 
 
                               <View style={ styles.cardContent }>
-                                  <Text text90 $textDefault>
-                                      { item.name }
-                                  </Text>
+                                  <Text bodyTitle>{ item.name }</Text>
 
-                                  <Text text100 $textDefault>
+                                  <Text bodyContent>
                                       { item.description }
                                   </Text>
                               </View>
