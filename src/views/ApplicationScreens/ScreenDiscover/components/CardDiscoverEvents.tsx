@@ -58,13 +58,14 @@ const CardDiscoverEvents = () => {
                               ] }
                               onPress={ () => console.log( "press on a card" ) }
                           >
+
                               <View style={ styles.cardItemImage }>
+                                  <Card.Image source={ { uri: item.thumbnail } } style={ styles.cardCover }
+                                              overlayColor={ Colors.grey1 }
+                                              overlayType={ Image.overlayTypes.BOTTOM }/>
+
                                   <Card.Section
                                       flex
-                                      imageSource={ { uri: item.thumbnail } }
-                                      imageStyle={ styles.cardItemImage }
-                                      overlayColor={Colors.grey1}
-                                      overlayType={ Image.overlayTypes.BOTTOM }
                                       content={ [
                                           { text: item.label, cardBodyHighLight: true },
                                           { text: item.title, bodyTitle: true, numberOfLines: 2, color: Colors.white },
@@ -78,10 +79,11 @@ const CardDiscoverEvents = () => {
                                           marginBottom:     Spacings.s2
 
                                       } }
+                                      containerStyle={{
+                                          zIndex:99
+                                      }}
                                   />
-
                               </View>
-
 
                               <View style={ styles.cardFollowers }>
                                   <View style={ { flex: 1 } }>
@@ -138,7 +140,7 @@ const styles = StyleSheet.create( {
         borderRadius: Spacings.s1,
     },
     cardCover:     {
-        height: coverHeight,
+       ...StyleSheet.absoluteFillObject
     },
     cardFollowers: {
         flex:             1,

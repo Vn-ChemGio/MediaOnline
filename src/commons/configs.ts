@@ -63,11 +63,11 @@ const configTypography = {
     },
     cardBodyHighLight:{
         fontSize:   PixelRatio.roundToNearestPixel( 8 ),
-        padding: 1,
+        padding: 2,
         borderRadius: 2,
         fontFamily: "AvertaStd-Semibold",
-        backgroundColor:Colors.white,
-        color:Colors.red10,
+        backgroundColor:Colors.red10,
+        color:Colors.white,
         textTransform:"uppercase"
     },
     

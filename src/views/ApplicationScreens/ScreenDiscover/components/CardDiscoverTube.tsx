@@ -34,7 +34,7 @@ const data             = [
                 }
             },
             "channelTitle":         "VOV Live - Đọc Truyện",
-            "liveBroadcastContent": "none",
+            "liveBroadcastContent": "live",
             "publishTime":          "2021-08-31T11:00:20Z"
         }
     },
@@ -127,33 +127,27 @@ const CardDiscoverTube = () => {
                               onPress={ () => console.log( "press on a card" ) }
                           >
                               <View style={ styles.cardItemImage }>
+                                  <Card.Image source={ { uri: item.snippet.thumbnails.default.url } } style={ styles.cardCover }
+                                              overlayColor={ Colors.grey1 }
+                                              overlayType={ Image.overlayTypes.BOTTOM }/>
+
                                   <Card.Section
                                       flex
-                                      imageSource={ { uri: item.snippet.thumbnails.default.url } }
-                                      imageStyle={ styles.cardItemImage }
-                                      overlayType={ Image.overlayTypes.BOTTOM }
                                       content={ [
-                                          ...(
-                                              item.snippet.liveBroadcastContent ? [] : [
-                                                  {
-                                                      text:          item.snippet.title,
-                                                      text90:        true,
-                                                      $textGeneral:  true,
-                                                      numberOfLines: 1,
-                                                      color:         Colors.white
-                                                  }
-                                              ]
-                                          )
-                                      ].concat( [
-                                          { text: item.snippet.title, text90: true, $textGeneral: true, numberOfLines: 2, color: Colors.white },
-                                      ] ) }
+                                          item.snippet.liveBroadcastContent == "live" ? { text: item.snippet.liveBroadcastContent, cardBodyHighLight: true } : undefined,
+                                          { text: item.snippet.title, bodyTitle: true, numberOfLines: 2, color: Colors.white },
+                                          //  { text: item.content, text100: true, $textGeneral: true, numberOfLines: 1, color: Colors.white }
+                                      ] }
                                       contentStyle={ {
                                           flex:             1,
                                           alignItems:       "flex-start",
                                           justifyContent:   "flex-end",
                                           marginHorizontal: Spacings.s2,
-                                          marginBottom: Spacings.s4
+                                          marginBottom:     Spacings.s2
 
+                                      } }
+                                      containerStyle={ {
+                                          zIndex: 99
                                       } }
                                   />
 
@@ -174,11 +168,11 @@ const coverWidth  = PixelRatio.roundToNearestPixel( Devices.width / 3 * 2 );
 const coverHeight = PixelRatio.roundToNearestPixel( coverWidth / 16 * 9 );
 
 const styles = StyleSheet.create( {
-    container:     {
+    container: {
         height:    coverHeight + 24 + Spacings.s4,
         marginTop: Spacings.s2,
     },
-   
+
     cardContainer: {
         width:            coverWidth,
         height:           coverHeight,
@@ -190,5 +184,7 @@ const styles = StyleSheet.create( {
         //backgroundColor: "#fff",
         borderRadius: Spacings.s1,
     },
-
+    cardCover:     {
+        ...StyleSheet.absoluteFillObject
+    },
 } )
