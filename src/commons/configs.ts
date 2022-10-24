@@ -57,6 +57,12 @@ const configTypography = {
         fontFamily: "AvertaStd-Semibold",
         //color: Colors.white,
     },
+    bodyTitleExtra:    {
+        fontSize:   PixelRatio.roundToNearestPixel( 12 ),
+        fontFamily: "AvertaStd-ExtraBold",
+        marginHorizontal: Spacings.s2
+        //color: Colors.white,
+    },
     bodyContent:    {
         fontSize:   PixelRatio.roundToNearestPixel( 10 ),
         fontFamily: "AvertaStd-Regular",
