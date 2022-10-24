@@ -39,7 +39,7 @@ const CardDiscoverTrendingGraph = () => {
     ) );
     return (
         <View style={ styles.container }>
-            <Text sectionTitle>Radio Online</Text>
+            <Text sectionTitle>Bảng xếp hạng âm nhạc</Text>
             <View style={ styles.chart }>
                 <Header translation={ translation } index={ current }/>
                 <View>

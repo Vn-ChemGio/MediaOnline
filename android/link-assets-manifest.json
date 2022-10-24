@@ -74,6 +74,62 @@
       "sha1": "eeb0f5bb920494ed631e9f95c581598a8cc99fb7"
     },
     {
+      "path": "src/assets/fonts/AvertaStd-ThinItalic.otf",
+      "sha1": "05f490a18a6ee7c8bbeb4cf1c558783a44cb21a6"
+    },
+    {
+      "path": "src/assets/fonts/AvertaStd-Black.otf",
+      "sha1": "a48b42d0bed97d29fb7ae7e38e7ef0896d52717d"
+    },
+    {
+      "path": "src/assets/fonts/AvertaStd-BlackItalic.otf",
+      "sha1": "c24030c1131f3771d87c13d6c5d6978cec58f258"
+    },
+    {
+      "path": "src/assets/fonts/AvertaStd-Bold.otf",
+      "sha1": "e1c923502beaff1c0d40d2f6d10739719ba0856e"
+    },
+    {
+      "path": "src/assets/fonts/AvertaStd-BoldItalic.otf",
+      "sha1": "f5d801bea7f4f070354ee7903a82c5d5b852acbe"
+    },
+    {
+      "path": "src/assets/fonts/AvertaStd-ExtraBold.otf",
+      "sha1": "3e43259c311b7cf1342732e52e22740e030e5c66"
+    },
+    {
+      "path": "src/assets/fonts/AvertaStd-ExtraBoldItalic.otf",
+      "sha1": "3c88be99a01a504388bc0d560569de83850fc733"
+    },
+    {
+      "path": "src/assets/fonts/AvertaStd-Extrathin.otf",
+      "sha1": "1424860b58612435abdaa40bfc51b270b40f15d7"
+    },
+    {
+      "path": "src/assets/fonts/AvertaStd-ExtrathinItalic.otf",
+      "sha1": "fe6804e34f80771aa25a353da1759981259e1b87"
+    },
+    {
+      "path": "src/assets/fonts/AvertaStd-Light.otf",
+      "sha1": "db51227d1e671a7b2e950031ef9a0ee7fd327dc4"
+    },
+    {
+      "path": "src/assets/fonts/AvertaStd-LightItalic.otf",
+      "sha1": "976478c53cade0b855c493ed7064c6287235d231"
+    },
+    {
+      "path": "src/assets/fonts/AvertaStd-RegularItalic.otf",
+      "sha1": "b912521ba57d123105164d61a31a5385186b6c0f"
+    },
+    {
+      "path": "src/assets/fonts/AvertaStd-SemiboldItalic.otf",
+      "sha1": "d6053e6e297a0c41412eb1dc559d0379e39935ca"
+    },
+    {
+      "path": "src/assets/fonts/AvertaStd-Thin.otf",
+      "sha1": "b251b09e4b294577e57697c951d00ce36c45438b"
+    },
+    {
       "path": "src/assets/fonts/AvertaStd-Regular.otf",
       "sha1": "5bc1d41e5257be0d329df83a3eef34b83bc5a1e8"
     },

@@ -8,7 +8,7 @@ import { Devices }                                                   from "~comm
 const data               = [
     {
         "label":     "Trong nước",
-        "title":     "Đại hội Đảng XVII",
+        "title":     "Tổng thống Nga Putin tuyên bố thiết quân luật tại 4 tỉnh sáp nhập từ Ukraine",
         "content":   "Tổng thống Nga Putin tuyên bố thiết quân luật tại 4 tỉnh sáp nhập từ Ukraine.",
         "link":      "https://vnexpress.net/nga-ban-hanh-thiet-quan-luat-o-4-tinh-ukraine-4525535.html",
         "published": 1666181384000,
@@ -16,7 +16,7 @@ const data               = [
     },
     {
         "label":     "Trong nước",
-        "title":     "Tin bão số 10",
+        "title":     "iPhone 14 Pro Max nâng cấp đáng kể về camera với độ phân giải cao, chụp tối tốt, nhưng sự đơn giản trong sử dụng mới là lợi thế của sản phẩm",
         "content":   "iPhone 14 Pro Max nâng cấp đáng kể về camera với độ phân giải cao, chụp tối tốt, nhưng sự đơn giản trong sử dụng mới là lợi thế của sản phẩm.",
         "link":      "https://vnexpress.net/camera-tren-iphone-14-pro-max-don-gian-tao-khac-biet-4525452.html",
         "published": 1666181166000,
@@ -63,16 +63,19 @@ const CardDiscoverEvents = () => {
                                       flex
                                       imageSource={ { uri: item.thumbnail } }
                                       imageStyle={ styles.cardItemImage }
+                                      overlayColor={Colors.grey1}
                                       overlayType={ Image.overlayTypes.BOTTOM }
                                       content={ [
-                                          { text: item.title, text90: true, $textGeneral: true, numberOfLines: 1, color: Colors.white },
-                                          { text: item.content, text100: true, $textGeneral: true, numberOfLines: 1, color: Colors.white }
+                                          { text: item.label, cardBodyHighLight: true },
+                                          { text: item.title, bodyTitle: true, numberOfLines: 2, color: Colors.white },
+                                          //  { text: item.content, text100: true, $textGeneral: true, numberOfLines: 1, color: Colors.white }
                                       ] }
                                       contentStyle={ {
                                           flex:             1,
                                           alignItems:       "flex-start",
                                           justifyContent:   "flex-end",
                                           marginHorizontal: Spacings.s2,
+                                          marginBottom:     Spacings.s2
 
                                       } }
                                   />
@@ -107,7 +110,7 @@ const CardDiscoverEvents = () => {
                           </Card>
 
                       ) }
-                      keyExtractor={(item , index)=> `Discovery-Card-Event-${index}`}
+                      keyExtractor={ ( item, index ) => `Discovery-Card-Event-${ index }` }
             />
         </View>
     );
@@ -120,8 +123,8 @@ const coverHeight = PixelRatio.roundToNearestPixel( coverWidth / 3 * 2 );
 
 const styles = StyleSheet.create( {
     container:     {
-        height:          coverHeight + 40 + 24 + Spacings.s4,
-        marginTop:       Spacings.s2,
+        height:    coverHeight + 40 + 24 + Spacings.s4,
+        marginTop: Spacings.s2,
     },
     cardContainer: {
         width:            coverWidth,

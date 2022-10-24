@@ -48,23 +48,29 @@ const configTypography = {
     sectionTitle: {
         fontSize:   18,
         lineHeight: 24,
-        fontWeight: "800",
-        //fontFamily: "AvertaStd-Semibold",
+        fontFamily: "AvertaStd-Bold",
         marginBottom:      Spacings.s2,
         paddingHorizontal: Spacings.s4,
     },
     bodyTitle:    {
         fontSize:   PixelRatio.roundToNearestPixel( 12 ),
-        //fontWeight: "700",
         fontFamily: "AvertaStd-Semibold",
         //color: Colors.white,
     },
     bodyContent:    {
         fontSize:   PixelRatio.roundToNearestPixel( 10 ),
-        //fontWeight: "700",
         fontFamily: "AvertaStd-Regular",
-        //color: Colors.white,
     },
+    cardBodyHighLight:{
+        fontSize:   PixelRatio.roundToNearestPixel( 8 ),
+        padding: 1,
+        borderRadius: 2,
+        fontFamily: "AvertaStd-Semibold",
+        backgroundColor:Colors.white,
+        color:Colors.red10,
+        textTransform:"uppercase"
+    },
+    
     welcomeText:     {
         fontSize:   normalizedFontSize( 24 ),
         fontWeight: "700",

@@ -175,13 +175,13 @@ const coverHeight = PixelRatio.roundToNearestPixel( coverWidth / 16 * 9 );
 
 const styles = StyleSheet.create( {
     container:     {
-        height:    coverHeight + 40 + Spacings.s4,
+        height:    coverHeight + 24 + Spacings.s4,
         marginTop: Spacings.s2,
     },
    
     cardContainer: {
         width:            coverWidth,
-        height:           coverHeight + 40,
+        height:           coverHeight,
         marginHorizontal: Spacings.s1,
     },
     cardItemImage: {
@@ -189,9 +189,6 @@ const styles = StyleSheet.create( {
         height: coverHeight,
         //backgroundColor: "#fff",
         borderRadius: Spacings.s1,
-    },
-    cardCover:     {
-        height: coverHeight,
     },
 
 } )

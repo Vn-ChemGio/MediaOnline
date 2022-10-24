@@ -29,6 +29,20 @@
 		<string>Poppins-ThinItalic.otf</string>
 		<string>AvertaStd-Regular.otf</string>
 		<string>AvertaStd-Semibold.otf</string>
+		<string>AvertaStd-ThinItalic.otf</string>
+		<string>AvertaStd-Black.otf</string>
+		<string>AvertaStd-BlackItalic.otf</string>
+		<string>AvertaStd-Bold.otf</string>
+		<string>AvertaStd-BoldItalic.otf</string>
+		<string>AvertaStd-ExtraBold.otf</string>
+		<string>AvertaStd-ExtraBoldItalic.otf</string>
+		<string>AvertaStd-Extrathin.otf</string>
+		<string>AvertaStd-ExtrathinItalic.otf</string>
+		<string>AvertaStd-Light.otf</string>
+		<string>AvertaStd-LightItalic.otf</string>
+		<string>AvertaStd-RegularItalic.otf</string>
+		<string>AvertaStd-SemiboldItalic.otf</string>
+		<string>AvertaStd-Thin.otf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

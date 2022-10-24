@@ -44,7 +44,7 @@ const data             = [
 const CardDiscoverNews = () => {
     return (
         <View style={ styles.container }>
-            <Text sectionTitle>Radio Online</Text>
+            <Text sectionTitle>Tin mới cập nhật</Text>
             <Card   style={  { marginLeft: Spacings.s4, marginRight: Spacings.s4 } }>
 
                 {
