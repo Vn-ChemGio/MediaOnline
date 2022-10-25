@@ -1,45 +1,13 @@
-import React                                                         from "react";
-import { FlatList, PixelRatio, StyleSheet, View }                    from "react-native";
-import { Avatar, Button, Card, Colors, Icon, Image, Spacings, Text } from "react-native-ui-lib";
-import IonIcon                                                       from "react-native-vector-icons/Ionicons";
-import { Devices }                                                   from "~commons";
+import React                                                   from "react";
+import { FlatList, PixelRatio, StyleSheet, View }              from "react-native";
+import { Avatar, Button, Card, Colors, Image, Spacings, Text } from "react-native-ui-lib";
+import IonIcon                                                 from "react-native-vector-icons/Ionicons";
+
+import { Devices }  from "~commons";
+import { NewsItem } from "~commons/interfaces/VOVNews";
 
 
-const data               = [
-    {
-        "label":     "Trong nước",
-        "title":     "Tổng thống Nga Putin tuyên bố thiết quân luật tại 4 tỉnh sáp nhập từ Ukraine",
-        "content":   "Tổng thống Nga Putin tuyên bố thiết quân luật tại 4 tỉnh sáp nhập từ Ukraine.",
-        "link":      "https://vnexpress.net/nga-ban-hanh-thiet-quan-luat-o-4-tinh-ukraine-4525535.html",
-        "published": 1666181384000,
-        "thumbnail": "https://vcdn1-vnexpress.vnecdn.net/2022/10/19/-9856-1666181264.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=NBvgQFbps-q5QcUnVSx9sw"
-    },
-    {
-        "label":     "Trong nước",
-        "title":     "iPhone 14 Pro Max nâng cấp đáng kể về camera với độ phân giải cao, chụp tối tốt, nhưng sự đơn giản trong sử dụng mới là lợi thế của sản phẩm",
-        "content":   "iPhone 14 Pro Max nâng cấp đáng kể về camera với độ phân giải cao, chụp tối tốt, nhưng sự đơn giản trong sử dụng mới là lợi thế của sản phẩm.",
-        "link":      "https://vnexpress.net/camera-tren-iphone-14-pro-max-don-gian-tao-khac-biet-4525452.html",
-        "published": 1666181166000,
-        "thumbnail": "https://vcdn1-sohoa.vnecdn.net/2022/10/19/-2676-1666174230.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=r3OkqSTXrl3jTz2mfMGLIw"
-    },
-    {
-        "label":     "Quốc tế",
-        "title":     "EU chuẩn bị trừng phạt Iran",
-        "content":   "EU cảnh báo đang chuẩn bị biện pháp trừng phạt Iran sau khi \"thu thập đầy đủ bằng chứng\" rằng nước này cung cấp UAV cho Nga dùng ở Ukraine.",
-        "link":      "https://vnexpress.net/eu-chuan-bi-trung-phat-iran-4525528.html",
-        "published": 1666180897000,
-        "thumbnail": "https://vcdn1-vnexpress.vnecdn.net/2022/10/19/-4029-1666179863.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=JpspWO5bjx5WTJepRpP8pQ"
-    },
-    {
-        "title":     "Thiết bị phát điện từ sóng công suất lớn nhất thế giới",
-        "content":   "Công ty Ocean Energy của Ireland đang phát triển một thiết bị năng lượng sóng nổi công suất lớn mang tên OE35 để khai thác sức mạnh của đại dương.",
-        "link":      "https://vnexpress.net/thiet-bi-phat-dien-tu-song-cong-suat-lon-nhat-the-gioi-4525138.html",
-        "published": 1666180800000,
-        "thumbnail": "https://vcdn1-vnexpress.vnecdn.net/2022/10/19/-6537-1666155693.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=gzq7yXCbIeN6JzHbhMHebg"
-    },
-
-]
-const CardDiscoverEvents = () => {
+const CardDiscoverEvents = ( { data }: { data: NewsItem[] } ) => {
     return (
         <View style={ styles.container }>
             <Text sectionTitle>Sự kiện trong tuần</Text>
@@ -67,7 +35,7 @@ const CardDiscoverEvents = () => {
                                   <Card.Section
                                       flex
                                       content={ [
-                                          { text: item.label, cardBodyHighLight: true },
+                                          { text: "Trong nước", cardBodyHighLight: true },
                                           { text: item.title, cardTitleOverlaySmall: true, numberOfLines: 2 },
                                           //  { text: item.content, text100: true, $textGeneral: true, numberOfLines: 1, color: Colors.white }
                                       ] }
@@ -79,9 +47,9 @@ const CardDiscoverEvents = () => {
                                           marginBottom:     Spacings.s2
 
                                       } }
-                                      containerStyle={{
-                                          zIndex:99
-                                      }}
+                                      containerStyle={ {
+                                          zIndex: 99
+                                      } }
                                   />
                               </View>
 
@@ -140,9 +108,9 @@ const styles = StyleSheet.create( {
         borderRadius: Spacings.s1,
     },
     cardCover:     {
-       ...StyleSheet.absoluteFillObject
+        ...StyleSheet.absoluteFillObject
     },
-    cardContent: {
+    cardContent:   {
         flex:             1,
         flexDirection:    "row",
         alignItems:       "center",

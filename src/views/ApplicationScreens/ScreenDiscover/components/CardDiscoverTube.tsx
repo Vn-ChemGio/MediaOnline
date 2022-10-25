@@ -1,113 +1,12 @@
-import * as React                                                  from "react";
-import { FlatList, PixelRatio, StyleSheet }                        from "react-native";
-import { Card, Colors, Image, Spacings, Text, ThemeManager, View } from "react-native-ui-lib";
-import { Devices }                                                 from "~commons";
+import * as React                                    from "react";
+import { FlatList, PixelRatio, StyleSheet }          from "react-native";
+import { Card, Colors, Image, Spacings, Text, View } from "react-native-ui-lib";
 
-const data             = [
-    {
-        "kind":    "youtube#searchResult",
-        "etag":    "oQ1b03DPTGEW6m7ifV8Am4TeUxw",
-        "id":      {
-            "kind":    "youtube#video",
-            "videoId": "EWybbFy__mw"
-        },
-        "snippet": {
-            "publishedAt":          "2021-08-31T11:00:20Z",
-            "channelId":            "UC_YlqtZlCE7wUXaxCt2M3-g",
-            "title":                "Đến tận cuối đời Bác mới thổ lộ lý do Bác không lập gia đình #shorts",
-            "description":          "Đến tận cuối đời Bác mới thổ lộ lý do Bác không lập gia đình #shorts Truyện Đêm Khuya VOV Hay Nhất : https://bit.ly/32US1fX ...",
-            "thumbnails":           {
-                "default": {
-                    "url":    "https://i.ytimg.com/vi/EWybbFy__mw/default.jpg",
-                    "width":  120,
-                    "height": 90
-                },
-                "medium":  {
-                    "url":    "https://i.ytimg.com/vi/EWybbFy__mw/mqdefault.jpg",
-                    "width":  320,
-                    "height": 180
-                },
-                "high":    {
-                    "url":    "https://i.ytimg.com/vi/EWybbFy__mw/hqdefault.jpg",
-                    "width":  480,
-                    "height": 360
-                }
-            },
-            "channelTitle":         "VOV Live - Đọc Truyện",
-            "liveBroadcastContent": "live",
-            "publishTime":          "2021-08-31T11:00:20Z"
-        }
-    },
-    {
-        "kind":    "youtube#searchResult",
-        "etag":    "7lRvBTXWmjncJBZc_jarPIwB0JU",
-        "id":      {
-            "kind":    "youtube#video",
-            "videoId": "0Fn0A3HumLc"
-        },
-        "snippet": {
-            "publishedAt":          "2022-06-02T03:00:00Z",
-            "channelId":            "UC_YlqtZlCE7wUXaxCt2M3-g",
-            "title":                "Trước Lúc Vĩnh Biệt Bác Nói: Bác Không Thể Bỏ Dân Mà Đi Được | Tư Liệu Lịch Sử Việt Nam #shorts",
-            "description":          "Trước Lúc Vĩnh Biệt Bác Nói: Bác Không Thể Bỏ Dân Mà Đi Được | Tư Liệu Lịch Sử Việt Nam #shorts Truyện Đêm Khuya VOV ...",
-            "thumbnails":           {
-                "default": {
-                    "url":    "https://i.ytimg.com/vi/0Fn0A3HumLc/default.jpg",
-                    "width":  120,
-                    "height": 90
-                },
-                "medium":  {
-                    "url":    "https://i.ytimg.com/vi/0Fn0A3HumLc/mqdefault.jpg",
-                    "width":  320,
-                    "height": 180
-                },
-                "high":    {
-                    "url":    "https://i.ytimg.com/vi/0Fn0A3HumLc/hqdefault.jpg",
-                    "width":  480,
-                    "height": 360
-                }
-            },
-            "channelTitle":         "VOV Live - Đọc Truyện",
-            "liveBroadcastContent": "none",
-            "publishTime":          "2022-06-02T03:00:00Z"
-        }
-    },
-    {
-        "kind":    "youtube#searchResult",
-        "etag":    "r8DYzC_HrskmkYnB69M40Cj-1YU",
-        "id":      {
-            "kind":    "youtube#video",
-            "videoId": "4SdWx295YAk"
-        },
-        "snippet": {
-            "publishedAt":          "2022-05-17T03:00:03Z",
-            "channelId":            "UC_YlqtZlCE7wUXaxCt2M3-g",
-            "title":                "Kể Chuyện Về Bác Hồ - Là Người Việt Nam Bạn Cần Ghi Nhớ | Tư Liệu Lịch Sử Việt Nam #shorts",
-            "description":          "Kể Chuyện Về Bác Hồ - Là Người Việt Nam Bạn Cần Ghi Nhớ | Tư Liệu Lịch Sử Việt Nam #shorts Truyện Đêm Khuya VOV Hay ...",
-            "thumbnails":           {
-                "default": {
-                    "url":    "https://i.ytimg.com/vi/4SdWx295YAk/default.jpg",
-                    "width":  120,
-                    "height": 90
-                },
-                "medium":  {
-                    "url":    "https://i.ytimg.com/vi/4SdWx295YAk/mqdefault.jpg",
-                    "width":  320,
-                    "height": 180
-                },
-                "high":    {
-                    "url":    "https://i.ytimg.com/vi/4SdWx295YAk/hqdefault.jpg",
-                    "width":  480,
-                    "height": 360
-                }
-            },
-            "channelTitle":         "VOV Live - Đọc Truyện",
-            "liveBroadcastContent": "none",
-            "publishTime":          "2022-05-17T03:00:03Z"
-        }
-    }
-]
-const CardDiscoverTube = () => {
+import { Devices }      from "~commons";
+import { YouTubeVideo } from "~commons/interfaces/VOVTube";
+
+
+const CardDiscoverTube = ( { data }: { data: YouTubeVideo[] } ) => {
     return (
         <View style={ styles.container }>
             <Text sectionTitle>VOVTube Update</Text>
