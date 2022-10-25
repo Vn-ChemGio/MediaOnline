@@ -135,7 +135,7 @@ const CardDiscoverTube = () => {
                                       flex
                                       content={ [
                                           item.snippet.liveBroadcastContent == "live" ? { text: item.snippet.liveBroadcastContent, cardBodyHighLight: true } : undefined,
-                                          { text: item.snippet.title, bodyTitle: true, numberOfLines: 2, color: Colors.white },
+                                          { text: item.snippet.title, cardTitleOverlaySmall: true, numberOfLines: 2 },
                                           //  { text: item.content, text100: true, $textGeneral: true, numberOfLines: 1, color: Colors.white }
                                       ] }
                                       contentStyle={ {

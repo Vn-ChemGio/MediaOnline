@@ -45,37 +45,68 @@ const configColor = {
 }
 
 const configTypography = {
-    sectionTitle: {
-        fontSize:   18,
-        lineHeight: 24,
-        fontFamily: "AvertaStd-Bold",
+    sectionTitle:      {
+        fontSize:          18,
+        lineHeight:        24,
+        fontFamily:        "Roboto-Bold",
+        color:             Colors.grey20,
         marginBottom:      Spacings.s2,
         paddingHorizontal: Spacings.s4,
     },
-    bodyTitle:    {
+    bodyTitle:         {
         fontSize:   PixelRatio.roundToNearestPixel( 12 ),
         fontFamily: "AvertaStd-Semibold",
         //color: Colors.white,
     },
     bodyTitleExtra:    {
-        fontSize:   PixelRatio.roundToNearestPixel( 12 ),
-        fontFamily: "AvertaStd-ExtraBold",
+        fontSize:         PixelRatio.roundToNearestPixel( 12 ),
+        fontFamily:       "AvertaStd-ExtraBold",
         marginHorizontal: Spacings.s2
         //color: Colors.white,
     },
-    bodyContent:    {
+    bodyContent:       {
         fontSize:   PixelRatio.roundToNearestPixel( 10 ),
         fontFamily: "AvertaStd-Regular",
     },
-    cardBodyHighLight:{
-        fontSize:   PixelRatio.roundToNearestPixel( 8 ),
-        padding: 2,
-        borderRadius: 2,
-        fontFamily: "AvertaStd-Semibold",
-        backgroundColor:Colors.red10,
-        color:Colors.white,
-        textTransform:"uppercase"
+    cardBodyHighLight: {
+        fontSize:        PixelRatio.roundToNearestPixel( 8 ),
+        padding:         2,
+        borderRadius:    2,
+        fontFamily:      "Roboto-Light",
+        backgroundColor: Colors.red10,
+        color:           Colors.white,
+        textTransform:   "uppercase"
     },
+    cardTitleOverlaySmall:    {
+        fontSize:   12,
+        lineHeight: 14,
+        fontFamily: "Roboto-Bold",
+        color:      Colors.white,
+    },
+    cardTitleOverlay:    {
+        fontSize:   18,
+        lineHeight: 22,
+        fontFamily: "Roboto-Regular",
+        color:      Colors.white,
+        textAlign:  "justify",
+    },
+    cardSubTitleOverlay: {
+        fontSize:   14,
+        lineHeight: 16,
+        fontFamily: "Roboto-Light",
+        color:      Colors.white,
+        textAlign:  "left",
+    },
+    cardContentOverlay:  {
+        fontSize:         14,
+        lineHeight:       18,
+        marginHorizontal: Spacings.s4,
+        fontFamily:       "Roboto-Regular",
+        color:            Colors.dark60,
+        textAlign:        "left",
+    },
+
+    /*
     
     welcomeText:     {
         fontSize:   normalizedFontSize( 24 ),
@@ -145,7 +176,7 @@ const configTypography = {
         fontFamily: "Poppins-Regular",
         lineHeight: 1.5,
         color:      "#FF6905",
-    }
+    }*/
 }
 
 const configSpacing = {

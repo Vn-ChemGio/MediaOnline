@@ -36,7 +36,7 @@ const VOVTubeCardItem = ( { item, index }: { item: YouTubeVideo, index: number }
                 />
             </View>
 
-            <View style={ styles.cardFollowers }>
+            <View style={ styles.cardContent }>
                 <VOVTubeInfoFollow name={ item.snippet.channelTitle } follower={ 555 }/>
                 <VOVTubeButtonFollow onPress={ () => {
                 } }/>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create( {
         marginHorizontal: Spacings.s2,
         marginBottom:     Spacings.s4
     },
-    cardFollowers:      {
+    cardContent: {
         flex:             1,
         flexDirection:    "row",
         alignItems:       "center",

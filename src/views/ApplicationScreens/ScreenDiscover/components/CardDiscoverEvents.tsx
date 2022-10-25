@@ -68,7 +68,7 @@ const CardDiscoverEvents = () => {
                                       flex
                                       content={ [
                                           { text: item.label, cardBodyHighLight: true },
-                                          { text: item.title, bodyTitle: true, numberOfLines: 2, color: Colors.white },
+                                          { text: item.title, cardTitleOverlaySmall: true, numberOfLines: 2 },
                                           //  { text: item.content, text100: true, $textGeneral: true, numberOfLines: 1, color: Colors.white }
                                       ] }
                                       contentStyle={ {
@@ -85,7 +85,7 @@ const CardDiscoverEvents = () => {
                                   />
                               </View>
 
-                              <View style={ styles.cardFollowers }>
+                              <View style={ styles.cardContent }>
                                   <View style={ { flex: 1 } }>
                                       <Text style={ { fontSize: 8, color: Colors.grey50, lineHeight: 10, } }
                                             numberOfLines={ 1 }>100 người quan tâm: </Text>
@@ -142,7 +142,7 @@ const styles = StyleSheet.create( {
     cardCover:     {
        ...StyleSheet.absoluteFillObject
     },
-    cardFollowers: {
+    cardContent: {
         flex:             1,
         flexDirection:    "row",
         alignItems:       "center",

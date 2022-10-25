@@ -1,47 +1,70 @@
-import React, { useEffect, useState } from "react";
-import { DrawerScreenProps }          from "@react-navigation/drawer";
-import { Colors }                     from "react-native-ui-lib";
-import Icon                           from "react-native-vector-icons/Ionicons"
-import parse                          from "rss-to-json";
+import React, { useEffect, useState }     from "react";
+import { DrawerScreenProps }              from "@react-navigation/drawer";
+import { Colors, LoaderScreen, Spacings } from "react-native-ui-lib";
+import Icon                               from "react-native-vector-icons/Ionicons"
+import parse                              from "rss-to-json";
 
-import { RSSItemNews, RSSParseInterface, ScreenVOVNewsNavigationParamList, getRssData } from "~commons";
-import { ActivityIndicatorView, AvatarHeaderFlatList, VOVNewsCardItem }                 from "~components";
+import { Devices, RSSParseInterface, ScreenVOVNewsNavigationParamList }                                          from "~commons";
+import { ActivityIndicatorView, AvatarHeaderFlatList, AvatarHeaderScrollView, VOVNewsCardItem, VOVTubeCardItem } from "~components";
+import { NewsItem }                                                                                              from "~commons/interfaces/VOVNews";
+import axios                                                                                                     from "axios";
+import { API_HOST }                                                                                              from "@env";
+import { View }                                                                                                  from "react-native";
 
 const ScreenVOVNewsChannel = ( props: DrawerScreenProps<ScreenVOVNewsNavigationParamList> ) => {
 
-    let [ data, setData ] = useState<RSSItemNews[]>( [] )
-    let channel           = props.route.params.channel;
+    let [ data, setData ]         = useState<NewsItem[]>( [] )
+    let [ skip, setSkip ]         = useState<number>( 0 )
+    let [ limit, setLimit ]       = useState<number>( 10 )
+    const [ loading, setLoading ] = useState<boolean>( true );
+    let channel                   = props.route.params.channel;
 
     useEffect( () => {
         (
             async () => {
-                let rss: RSSParseInterface = await parse( channel.rssUrl );
+                try {
+                    !loading && setLoading( true );
+                    let dataFetch: NewsItem[] = (
+                        await axios.get( `${ API_HOST }/VOVNews/${ channel.path }?skip=${ skip }&limit=${ limit }` )
+                    ).data;
 
-                setData( getRssData( rss, 30 ) )
+                    console.log( `${ API_HOST }/VOVNews/${ channel.path }?skip=${ skip }&limit=${ limit }`, dataFetch )
+                    setData( dataFetch );
+
+                } catch ( e ) {
+
+                } finally {
+                    setLoading( false )
+                }
+
             }
-        )();
+        )()
     }, [ channel.rssUrl ] )
 
-    return data.length ?
-           (
-               <AvatarHeaderFlatList
-                   rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ Colors.white }/> }
-                   rightTopIconOnPress={ () => {
-                       props.navigation.toggleDrawer();
-                   } }
-                   title={ "VOV News" }
-                   subtitle={ "Thông tin nhanh chóng, chính xác.\nTin tức cập nhật liên tục! " }
-                   data={ data }
-                   keyExtractor={ ( item: RSSItemNews ) => item.link }
-                   renderItem={ ( { item: { description, published, title, thumbnail, link } }: { item: RSSItemNews } ) => (
-                       <VOVNewsCardItem { ...{ description, published, title, link, image: { uri: thumbnail } } }/>
-                   ) }
-               />
-           )
-                       :
-           (
-               <ActivityIndicatorView color={ Colors.primaryVOVNews }/>
-           )
+    return (
+        <AvatarHeaderScrollView
+            rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ Colors.white }/> }
+            rightTopIconOnPress={ () => {
+                props.navigation.toggleDrawer();
+            } }
+            backgroundColor={ Colors.primaryVOVNews }
+            title={ "VOV News" }
+            subtitle={ "Thông tin nhanh chóng, chính xác.\nTin tức cập nhật liên tục! " }
+        >
+            {
+                loading ?
+                <View style={ { height: Devices.height * 0.3 } }>
+                    <LoaderScreen message={ "Đang tải dữ liệu" } color={ Colors.grey40 }/>
+                </View>
+                        :
+                data.map( ( item, index ) => (
+                    <VOVNewsCardItem item={ item } channel={ channel } index={ index } key={ index }/>
+                ) )
+            }
+
+            <View style={ { height: Spacings.s4 } }/>
+        </AvatarHeaderScrollView>
+    )
 
 
 };
