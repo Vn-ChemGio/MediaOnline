@@ -1,58 +1,16 @@
+import { API_HOST }                                         from "@env";
 import * as React                                           from "react";
 import { FlatList, PixelRatio, StyleSheet }                 from "react-native";
 import { Card, Colors, Spacings, Text, ThemeManager, View } from "react-native-ui-lib";
 import { Devices }                                          from "~commons";
-
-const data = [
-    {
-        name:        "VOV 1",
-        description: "Thời sự",
-        image:       require( "~assets/images/logo-vov1.png" )
-    },
-    {
-        name:        "VOV 2",
-        description: "VH - XH",
-        image:       require( "~assets/images/logo-vov2.png" )
-    },
-    {
-        name:        "VOV 3",
-        description: "Âm Nhạc",
-        image:       require( "~assets/images/logo-vov3.png" )
-    },
-   
-    {
-        name:        "VOV 4",
-        description: "Đông Bắc",
-        image:       require( "~assets/images/logo-vov4.png" )
-    },
-    {
-        name:        "VOV 4",
-        description: "Tây Bắc",
-        image:       require( "~assets/images/logo-vov4.png" )
-    },
-    {
-        name:        "VOV 4",
-        description: "Tây Nguyên",
-        image:       require( "~assets/images/logo-vov4.png" )
-    },
-    {
-        name:        "VOV 4",
-        description: "Tây Bắc",
-        image:       require( "~assets/images/logo-vov4.png" )
-    }, {
-        name:        "VOV 4",
-        description: "Tây Bắc",
-        image:       require( "~assets/images/logo-vov4.png" )
-    }
-]
-
+import { RadioItem }                                        from "~commons/interfaces/VOVRadio";
 
 ThemeManager.setComponentTheme( "Card", {
     borderRadius: Spacings.s1,
 } );
 
 
-const CardDiscoverRadio = () => {
+const CardDiscoverRadio = ( { data }: { data: RadioItem[] } ) => {
     return (
         <View style={ styles.container }>
             <Text sectionTitle>Radio Online</Text>
@@ -60,6 +18,7 @@ const CardDiscoverRadio = () => {
                       data={ data }
                       showsHorizontalScrollIndicator={ false }
                       style={ { marginHorizontal: -Spacings.s1 } }
+                      keyExtractor={ ( item, index ) => `${item.id}-${index}` }
                       renderItem={ ( { item, index, separators } ) => (
                           <Card
                               style={ [
@@ -70,10 +29,11 @@ const CardDiscoverRadio = () => {
                                   ) ? { marginRight: Spacings.s4 } : {}
                               ] }
                               onPress={ () => console.log( "press on a card" ) }
+                              key={ index }
                           >
                               <View style={ styles.cardItemImage }>
                                   <Card.Image
-                                      source={ item.image }
+                                      source={ { uri: `${ API_HOST }${ item.avatarUrl }` } }
                                       style={ styles.cardCover }
                                       resizeMethod={ "scale" } resizeMode={ "contain" }
                                   />
@@ -81,10 +41,10 @@ const CardDiscoverRadio = () => {
 
 
                               <View style={ styles.cardContent }>
-                                  <Text bodyTitle>{ item.name }</Text>
+                                  <Text bodyTitle>{ item.title }</Text>
 
                                   <Text bodyContent>
-                                      { item.description }
+                                      { item.subTitle }
                                   </Text>
                               </View>
                           </Card>
@@ -102,8 +62,8 @@ const coverHeight = PixelRatio.roundToNearestPixel( coverWidth / 3 * 2 );
 
 const styles = StyleSheet.create( {
     container:     {
-        height:          coverHeight + 25 + 24 + Spacings.s4,
-        marginTop:       Spacings.s2,
+        height:    coverHeight + 25 + 24 + Spacings.s4,
+        marginTop: Spacings.s2,
     },
     cardContainer: {
         width:            coverWidth,

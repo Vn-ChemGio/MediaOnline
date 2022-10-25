@@ -4,4 +4,5 @@ export interface NewsItem {
     content: string;
     published: number;
     thumbnail: string;
+    label: string;
 }
