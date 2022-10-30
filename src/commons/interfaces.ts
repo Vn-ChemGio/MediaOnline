@@ -1,13 +1,16 @@
-import { ComponentType }                                 from "react";
-import { CompositeNavigationProp, CompositeScreenProps } from "@react-navigation/native";
-import { BottomTabNavigationProp, BottomTabScreenProps } from "@react-navigation/bottom-tabs";
+import { ComponentType }                                                        from "react";
+import { CompositeNavigationProp, CompositeScreenProps, NavigatorScreenParams } from "@react-navigation/native";
+import { BottomTabNavigationProp, BottomTabScreenProps }                        from "@react-navigation/bottom-tabs";
 import { NativeStackScreenProps }                from "react-native-screens/native-stack";
 import { StackNavigationProp, StackScreenProps } from "@react-navigation/stack";
 
 // Router NavigationParamList
 export type RootStackNavigationParamList = {
-    Application: undefined,
+    Application: NavigatorScreenParams<ApplicationTabNavigationParamList>,
     Authenticate: undefined,
+    ScreenWebView: {
+        uri : string
+    }
 }
 
 export type ApplicationTabNavigationParamList = {
@@ -26,14 +29,6 @@ export type AuthenticateStackNavigationParamList = {
 };
 
 
-export type ScreenVOVNewsNavigationParamList = {
-    ScreenVOVNewsChannel: {
-    },
-    ScreenWebView: {
-        uri: string
-    }
-}
-
 export type ScreenVOVNewsChannelNavigationParamList = {
     [screenName: string]: {
         channel: VOVNewsChannelItem
@@ -41,9 +36,26 @@ export type ScreenVOVNewsChannelNavigationParamList = {
 }
 
 export type DiscoveryScreenNavigationProp = CompositeNavigationProp<
+    BottomTabNavigationProp<ApplicationTabNavigationParamList, 'ScreenDiscover'>,
+    StackNavigationProp<RootStackNavigationParamList>
+>;
+
+export type RadioScreenNavigationProp = CompositeNavigationProp<
+    BottomTabNavigationProp<ApplicationTabNavigationParamList, 'ScreenRadio'>,
+    StackNavigationProp<RootStackNavigationParamList>
+>;
+
+export type NewsScreenNavigationProp = CompositeNavigationProp<
     BottomTabNavigationProp<ApplicationTabNavigationParamList, 'ScreenVOVNews'>,
     StackNavigationProp<RootStackNavigationParamList>
 >;
+
+export type YouTubeScreenNavigationProp = CompositeNavigationProp<
+    BottomTabNavigationProp<ApplicationTabNavigationParamList, 'ScreenVOVTube'>,
+    StackNavigationProp<RootStackNavigationParamList>
+>;
+
+
 
 export interface TabBarItem {
     // type: typeof AntDesign ;
