@@ -1,4 +1,5 @@
 export * from "./StickyHeader";
+export * from "./VOVDiscover";
 export * from "./VOVNews";
 export * from "./VOVTube";
 
