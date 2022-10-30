@@ -3,11 +3,13 @@ import { FlatList, PixelRatio, StyleSheet, View }              from "react-nativ
 import { Avatar, Button, Card, Colors, Image, Spacings, Text } from "react-native-ui-lib";
 import IonIcon                                                 from "react-native-vector-icons/Ionicons";
 
-import { Devices }  from "~commons";
-import { NewsItem } from "~commons/interfaces/VOVNews";
+import { Devices, DiscoveryScreenNavigationProp } from "~commons";
+import { NewsItem }                               from "~commons/interfaces/VOVNews";
+import { useNavigation } from "@react-navigation/native";
 
 
 const CardDiscoverEvents = ( { data }: { data: NewsItem[] } ) => {
+    const navigation = useNavigation<DiscoveryScreenNavigationProp>()
     return (
         <View style={ styles.container }>
             <Text sectionTitle>Sự kiện trong tuần</Text>
@@ -24,7 +26,7 @@ const CardDiscoverEvents = ( { data }: { data: NewsItem[] } ) => {
                                       data.length - 1
                                   ) ? { marginRight: Spacings.s4 } : {}
                               ] }
-                              onPress={ () => console.log( "press on a card" ) }
+                              onPress={ () => navigation.navigate('ScreenVOVNews') }
                           >
 
                               <View style={ styles.cardItemImage }>
