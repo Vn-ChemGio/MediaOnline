@@ -1,72 +1,64 @@
-import React, { useEffect, useState }     from "react";
-import { DrawerScreenProps }              from "@react-navigation/drawer";
-import { Colors, LoaderScreen, Spacings } from "react-native-ui-lib";
-import Icon                               from "react-native-vector-icons/Ionicons"
-import parse                              from "rss-to-json";
+import axios                          from "axios";
+import React, { useEffect, useState } from "react";
+import { API_HOST }                   from "@env";
+import { createDrawerNavigator }      from "@react-navigation/drawer";
+import { Colors }                     from "react-native-ui-lib";
+import Icon                           from "react-native-vector-icons/Ionicons"
 
-import { Devices, RSSParseInterface, ScreenVOVNewsNavigationParamList }                                          from "~commons";
-import { ActivityIndicatorView, AvatarHeaderFlatList, AvatarHeaderScrollView, VOVNewsCardItem, VOVTubeCardItem } from "~components";
-import { NewsItem }                                                                                              from "~commons/interfaces/VOVNews";
-import axios                                                                                                     from "axios";
-import { API_HOST }                                                                                              from "@env";
-import { View }                                                                                                  from "react-native";
 
-const ScreenVOVNewsChannel = ( props: DrawerScreenProps<ScreenVOVNewsNavigationParamList> ) => {
+import { ICON_SIZE, ScreenVOVNewsChannelNavigationParamList, VOVNewsChannelItem } from "~commons";
+import { ActivityIndicatorView }                                                  from "~components";
+import { CustomDrawerContent }                                                    from "./components";
+import ScreenVOVNewsChannelItem                                                   from "./ScreenVOVNewsChannelItem";
 
-    let [ data, setData ]         = useState<NewsItem[]>( [] )
-    let [ skip, setSkip ]         = useState<number>( 0 )
-    let [ limit, setLimit ]       = useState<number>( 10 )
-    const [ loading, setLoading ] = useState<boolean>( true );
-    let channel                   = props.route.params.channel;
+const Drawer = createDrawerNavigator<ScreenVOVNewsChannelNavigationParamList>();
 
+const ScreenVOVNewsChannel = () => {
+    const [ listChannels, setListChannels ] = useState<VOVNewsChannelItem[]>( [] );
     useEffect( () => {
         (
             async () => {
-                try {
-                    !loading && setLoading( true );
-                    let dataFetch: NewsItem[] = (
-                        await axios.get( `${ API_HOST }/VOVNews/${ channel.path }?skip=${ skip }&limit=${ limit }` )
-                    ).data;
+                let list: VOVNewsChannelItem[] = (
+                    await axios.get( `${ API_HOST }/VOVNews` )
+                ).data;
 
-                    console.log( `${ API_HOST }/VOVNews/${ channel.path }?skip=${ skip }&limit=${ limit }`, dataFetch )
-                    setData( dataFetch );
-
-                } catch ( e ) {
-
-                } finally {
-                    setLoading( false )
-                }
-
+                setListChannels( list );
             }
         )()
-    }, [ channel.rssUrl ] )
+    }, [] )
+
 
     return (
-        <AvatarHeaderScrollView
-            rightTopIcon={ () => <Icon name="options-outline" size={ 24 } color={ Colors.white }/> }
-            rightTopIconOnPress={ () => {
-                props.navigation.toggleDrawer();
-            } }
-            backgroundColor={ Colors.primaryVOVNews }
-            title={ "VOV News" }
-            subtitle={ "Thông tin nhanh chóng, chính xác.\nTin tức cập nhật liên tục! " }
-        >
-            {
-                loading ?
-                <View style={ { height: Devices.height * 0.3 } }>
-                    <LoaderScreen message={ "Đang tải dữ liệu" } color={ Colors.grey40 }/>
-                </View>
-                        :
-                data.map( ( item, index ) => (
-                    <VOVNewsCardItem item={ item } channel={ channel } index={ index } key={ index }/>
-                ) )
-            }
+        listChannels.length ? <Drawer.Navigator screenOptions={ {
+                                headerShown:                 false,
+                                drawerPosition:              "right",
+                                drawerActiveBackgroundColor: Colors.primaryVOVNews,
+                                drawerActiveTintColor:       "#fff",
+                                drawerInactiveTintColor:     "#333",
+                                drawerLabelStyle:            {
+                                    marginLeft: -25,
+                                    //fontFamily:"Roboto-Medium",
+                                    fontSize: 15
+                                }
+                            } }
+                                                drawerContent={ ( props ) => <CustomDrawerContent { ...{
+                                                    ...props,
+                                                    listChannels
+                                                } } /> }>
 
-            <View style={ { height: Spacings.s4 } }/>
-        </AvatarHeaderScrollView>
-    )
+                                {
+                                    listChannels.map( ( channel, index ) =>
+                                        <Drawer.Screen name={ channel.name } component={ ScreenVOVNewsChannelItem }
+                                                       initialParams={ { channel: channel } } options={ {
+                                            drawerIcon: ( { color, focused } ) => <Icon
+                                                name={ focused ? channel.iconFocussed : channel.icon } { ...{ color } }
+                                                size={ ICON_SIZE }/>
+                                        } } key={ index }/>
+                                    ) }
 
-
+                            </Drawer.Navigator>
+                            : <ActivityIndicatorView color={ Colors.primaryVOVNews }/>
+    );
 };
 
 export default ScreenVOVNewsChannel;

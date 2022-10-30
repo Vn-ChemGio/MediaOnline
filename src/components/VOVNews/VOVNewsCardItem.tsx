@@ -6,10 +6,9 @@ import { ImageSourcePropType, PixelRatio, StyleSheet, View }  from "react-native
 import { Badge, Button, Card, Colors, Image, Spacings, Text } from "react-native-ui-lib";
 
 
-import { Devices, ScreenVOVNewsChannelStackNavigationParamList, VOVNewsChannelItem } from "~commons";
-import { NewsItem }                                                                  from "~commons/interfaces/VOVNews";
-import Icon                                                                          from "react-native-vector-icons/MaterialIcons";
-import IonIcon                                                                       from "react-native-vector-icons/Ionicons";
+import { Devices, ScreenVOVNewsNavigationParamList, VOVNewsChannelItem } from "~commons";
+import { NewsItem }                                                      from "~commons/interfaces/VOVNews";
+import Icon                                                              from "react-native-vector-icons/MaterialIcons";
 
 
 export interface VOVTubeCardItemProps {
@@ -21,7 +20,7 @@ export interface VOVTubeCardItemProps {
 }
 
 const VOVNewsCardItem = ( { item, channel, index }: { item: NewsItem, channel: VOVNewsChannelItem, index: number } ) => {
-    const navigation = useNavigation<StackNavigationProp<ScreenVOVNewsChannelStackNavigationParamList>>();
+    const navigation = useNavigation<StackNavigationProp<ScreenVOVNewsNavigationParamList>>();
 
     return (
         <Card

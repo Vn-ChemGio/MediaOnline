@@ -1,65 +1,22 @@
-import { API_HOST }                   from "@env";
-import { createDrawerNavigator }      from "@react-navigation/drawer";
-import axios                          from "axios";
-import React, { useEffect, useState } from "react";
-import { Colors }                     from "react-native-ui-lib";
-import Icon                           from "react-native-vector-icons/Ionicons";
+import React                    from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import { ICON_SIZE, ScreenVOVNewsNavigationParamList, VOVNewsChannelItem } from "~commons";
-import { ActivityIndicatorView }                                           from "~components";
-
-import { CustomDrawerContent }       from "./components";
-import ScreenVOVNewsChannelNavigator from "./ScreenVOVNewsChannelNavigator";
+import { ScreenVOVNewsNavigationParamList, } from "~commons";
+import ScreenVOVNewsChannel                  from "./ScreenVOVNewsChannel";
+import ScreenWebView                         from "./ScreenWebView";
 
 
-const Drawer        = createDrawerNavigator<ScreenVOVNewsNavigationParamList>();
-const ScreenVOVNews = () => {
-    const [ listChannels, setListChannels ] = useState<VOVNewsChannelItem[]>( [] );
-    useEffect( () => {
-        (
-            async () => {
-                let list: VOVNewsChannelItem[] = (
-                    await axios.get( `${ API_HOST }/VOVNews` )
-                ).data;
-
-                setListChannels( list );
-            }
-        )()
-    }, [] )
-
-
-    return (
-        listChannels.length ? <Drawer.Navigator screenOptions={ {
-                                headerShown:                 false,
-                                drawerPosition:              "right",
-                                drawerActiveBackgroundColor: Colors.primaryVOVNews,
-                                drawerActiveTintColor:       "#fff",
-                                drawerInactiveTintColor:     "#333",
-                                drawerLabelStyle:            {
-                                    marginLeft: -25,
-                                    //fontFamily:"Roboto-Medium",
-                                    fontSize: 15
-                                }
-                            } }
-                                                drawerContent={ ( props ) => <CustomDrawerContent { ...{
-                                                    ...props,
-                                                    listChannels
-                                                } } /> }>
-
-                                {
-                                    listChannels.map( ( channel, index ) =>
-                                        <Drawer.Screen name={ channel.name } component={ ScreenVOVNewsChannelNavigator }
-                                                       initialParams={ { channel: channel } } options={ {
-                                            drawerIcon: ( { color, focused } ) => <Icon
-                                                name={ focused ? channel.iconFocussed : channel.icon } { ...{ color } }
-                                                size={ ICON_SIZE }/>
-                                        } } key={ index }/>
-                                    ) }
-
-                            </Drawer.Navigator>
-                            : <ActivityIndicatorView color={ Colors.primaryVOVNews }/>
-    );
-};
+const Stack         = createStackNavigator<ScreenVOVNewsNavigationParamList>();
+const ScreenVOVNews = () => (
+    <Stack.Navigator screenOptions={ {
+        presentation: "transparentModal"
+    } }>
+        <Stack.Screen name="ScreenVOVNewsChannel" component={ ScreenVOVNewsChannel }
+                      options={ { headerShown: false } }
+        />
+        <Stack.Screen name="ScreenWebView" component={ ScreenWebView } initialParams={ { uri: "" } }/>
+    </Stack.Navigator>
+);
 
 export default ScreenVOVNews;
 

@@ -1,4 +1,8 @@
-import { ComponentType }        from "react";
+import { ComponentType }                                 from "react";
+import { CompositeNavigationProp, CompositeScreenProps } from "@react-navigation/native";
+import { BottomTabNavigationProp, BottomTabScreenProps } from "@react-navigation/bottom-tabs";
+import { NativeStackScreenProps }                from "react-native-screens/native-stack";
+import { StackNavigationProp, StackScreenProps } from "@react-navigation/stack";
 
 // Router NavigationParamList
 export type RootStackNavigationParamList = {
@@ -21,22 +25,25 @@ export type AuthenticateStackNavigationParamList = {
     ScreenForgotPassword: undefined;
 };
 
-export type ScreenVOVNewsNavigationParamList = {
-    [screenName: string]: {
-        channel: VOVNewsChannelItem
-    }
-}
 
-export type ScreenVOVNewsChannelStackNavigationParamList = {
+export type ScreenVOVNewsNavigationParamList = {
     ScreenVOVNewsChannel: {
-        channel: VOVNewsChannelItem
     },
     ScreenWebView: {
         uri: string
     }
 }
 
+export type ScreenVOVNewsChannelNavigationParamList = {
+    [screenName: string]: {
+        channel: VOVNewsChannelItem
+    }
+}
 
+export type DiscoveryScreenNavigationProp = CompositeNavigationProp<
+    BottomTabNavigationProp<ApplicationTabNavigationParamList, 'ScreenVOVNews'>,
+    StackNavigationProp<RootStackNavigationParamList>
+>;
 
 export interface TabBarItem {
     // type: typeof AntDesign ;
