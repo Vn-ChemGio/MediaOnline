@@ -39,6 +39,7 @@ export const ApplicationNavigator = () => {
             <Tab.Screen name="ScreenPersonal" component={ ScreenPersonal } options={ {
                 tabBarIcon:  () => <IonIcon name="ios-person" size={ 24 }/>,
                 tabBarLabel: "Cá nhân",
+                tabBarButton: () => null,
             } }/>
         </Tab.Navigator>
     );

@@ -1,9 +1,9 @@
-import { API_HOST }                       from "@env";
-import axios                              from "axios";
-import React, { useEffect, useState }     from "react";
-import { View }                           from "react-native";
-import { Colors, LoaderScreen, Spacings } from "react-native-ui-lib";
-import Icon                               from "react-native-vector-icons/Ionicons";
+import { API_HOST }                               from "@env";
+import axios                                      from "axios";
+import React, { useEffect, useState }             from "react";
+import { View }                                   from "react-native";
+import { Avatar, Colors, LoaderScreen, Spacings } from "react-native-ui-lib";
+import Feather                                    from "react-native-vector-icons/Feather";
 
 import { AvatarHeaderScrollView } from "~components";
 import {
@@ -53,8 +53,9 @@ const ScreenDiscover = ( { navigation }: { navigation: DiscoveryScreenNavigation
 
     return (
         <AvatarHeaderScrollView
-            rightTopIcon={ () => <Icon name="ios-search" size={ 24 } color={ Colors.white }/> }
+            rightTopIcon={ () => <Feather name={"user"} size={32} color={Colors.white}/> }
             rightTopIconOnPress={ () => {
+                navigation.navigate( "ScreenPersonal" )
             } }
             backgroundColor={ Colors.primaryVOVNews }
             title={ "VOV Center" }

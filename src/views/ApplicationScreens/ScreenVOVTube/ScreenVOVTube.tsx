@@ -74,7 +74,7 @@ const ScreenVOVTube = () => {
                           </View>
                                   :
                           data.map( ( item, index ) => (
-                              <VOVTubeCardItem item={ item } index={ index }/>
+                              <VOVTubeCardItem item={ item } index={ index } key={`Card-Tube-${ item.etag }-${index}`}/>
                           ) )
                       }
                   </>
