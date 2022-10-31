@@ -1,15 +1,16 @@
 import { ComponentType }                                                        from "react";
 import { CompositeNavigationProp, CompositeScreenProps, NavigatorScreenParams } from "@react-navigation/native";
 import { BottomTabNavigationProp, BottomTabScreenProps }                        from "@react-navigation/bottom-tabs";
-import { NativeStackScreenProps }                from "react-native-screens/native-stack";
-import { StackNavigationProp, StackScreenProps } from "@react-navigation/stack";
+import { NativeStackScreenProps }                                               from "react-native-screens/native-stack";
+import { StackNavigationProp, StackScreenProps }                                from "@react-navigation/stack";
+import ScreenPersonal                                                           from "~views/ApplicationScreens/ScreenPersonal/ScreenPersonal";
 
 // Router NavigationParamList
 export type RootStackNavigationParamList = {
     Application: NavigatorScreenParams<ApplicationTabNavigationParamList>,
-    Authenticate: undefined,
+    Authenticate: NavigatorScreenParams<AuthenticateStackNavigationParamList>,
     ScreenWebView: {
-        uri : string
+        uri: string
     }
 }
 
@@ -20,6 +21,7 @@ export type ApplicationTabNavigationParamList = {
     ScreenIndividual: undefined;
     ScreenVOVNews: undefined;
     ScreenVOVTube: undefined;
+    ScreenPersonal: undefined;
 };
 
 export type AuthenticateStackNavigationParamList = {
@@ -30,31 +32,22 @@ export type AuthenticateStackNavigationParamList = {
 
 
 export type ScreenVOVNewsChannelNavigationParamList = {
-    [screenName: string]: {
+    [ screenName: string ]: {
         channel: VOVNewsChannelItem
     }
 }
 
-export type DiscoveryScreenNavigationProp = CompositeNavigationProp<
-    BottomTabNavigationProp<ApplicationTabNavigationParamList, 'ScreenDiscover'>,
-    StackNavigationProp<RootStackNavigationParamList>
->;
+export type DiscoveryScreenNavigationProp = CompositeNavigationProp<BottomTabNavigationProp<ApplicationTabNavigationParamList, "ScreenDiscover">,
+    StackNavigationProp<RootStackNavigationParamList>>;
 
-export type RadioScreenNavigationProp = CompositeNavigationProp<
-    BottomTabNavigationProp<ApplicationTabNavigationParamList, 'ScreenRadio'>,
-    StackNavigationProp<RootStackNavigationParamList>
->;
+export type RadioScreenNavigationProp = CompositeNavigationProp<BottomTabNavigationProp<ApplicationTabNavigationParamList, "ScreenRadio">,
+    StackNavigationProp<RootStackNavigationParamList>>;
 
-export type NewsScreenNavigationProp = CompositeNavigationProp<
-    BottomTabNavigationProp<ApplicationTabNavigationParamList, 'ScreenVOVNews'>,
-    StackNavigationProp<RootStackNavigationParamList>
->;
+export type NewsScreenNavigationProp = CompositeNavigationProp<BottomTabNavigationProp<ApplicationTabNavigationParamList, "ScreenVOVNews">,
+    StackNavigationProp<RootStackNavigationParamList>>;
 
-export type YouTubeScreenNavigationProp = CompositeNavigationProp<
-    BottomTabNavigationProp<ApplicationTabNavigationParamList, 'ScreenVOVTube'>,
-    StackNavigationProp<RootStackNavigationParamList>
->;
-
+export type YouTubeScreenNavigationProp = CompositeNavigationProp<BottomTabNavigationProp<ApplicationTabNavigationParamList, "ScreenVOVTube">,
+    StackNavigationProp<RootStackNavigationParamList>>;
 
 
 export interface TabBarItem {

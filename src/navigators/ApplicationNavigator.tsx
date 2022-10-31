@@ -6,6 +6,7 @@ import { createBottomTabNavigator }          from "@react-navigation/bottom-tabs
 import { ApplicationTabNavigationParamList } from "~commons";
 
 import { ScreenDiscover, ScreenRadio, ScreenVOVNews, ScreenVOVTube } from "~views/ApplicationScreens";
+import ScreenPersonal                                                from "~views/ApplicationScreens/ScreenPersonal/ScreenPersonal";
 
 
 const Tab = createBottomTabNavigator<ApplicationTabNavigationParamList>();
@@ -35,7 +36,10 @@ export const ApplicationNavigator = () => {
                 tabBarIcon:  () => <IonIcon name="ios-compass" size={ 24 }/>,
                 tabBarLabel: "#VOVTube"
             } }/>
-
+            <Tab.Screen name="ScreenPersonal" component={ ScreenPersonal } options={ {
+                tabBarIcon:  () => <IonIcon name="ios-person" size={ 24 }/>,
+                tabBarLabel: "Cá nhân",
+            } }/>
         </Tab.Navigator>
     );
 };
