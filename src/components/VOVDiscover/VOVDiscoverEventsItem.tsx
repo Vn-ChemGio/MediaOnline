@@ -13,6 +13,7 @@ const VOVDiscoverEventsItem = ( { item, containerStyle }: { item: NewsItem, cont
         <Card
             style={ [ styles.cardContainer, containerStyle ] }
             onPress={ () => navigation.navigate( "ScreenWebView", {
+                title: item.title,
                 uri: item.link
             } ) }
         >

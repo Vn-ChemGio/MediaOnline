@@ -1,15 +1,15 @@
-import { ComponentType }                                                        from "react";
-import { CompositeNavigationProp, CompositeScreenProps, NavigatorScreenParams } from "@react-navigation/native";
-import { BottomTabNavigationProp, BottomTabScreenProps }                        from "@react-navigation/bottom-tabs";
-import { NativeStackScreenProps }                                               from "react-native-screens/native-stack";
-import { StackNavigationProp, StackScreenProps }                                from "@react-navigation/stack";
-import ScreenPersonal                                                           from "~views/ApplicationScreens/ScreenPersonal/ScreenPersonal";
+import { ComponentType }                                  from "react";
+import { CompositeNavigationProp, NavigatorScreenParams } from "@react-navigation/native";
+import { BottomTabNavigationProp }                        from "@react-navigation/bottom-tabs";
+import { StackNavigationProp }                            from "@react-navigation/stack";
 
 // Router NavigationParamList
 export type RootStackNavigationParamList = {
     Application: NavigatorScreenParams<ApplicationTabNavigationParamList>,
     Authenticate: NavigatorScreenParams<AuthenticateStackNavigationParamList>,
+    ScreenPersonal: undefined;
     ScreenWebView: {
+        title?: string,
         uri: string
     }
 }
@@ -21,7 +21,7 @@ export type ApplicationTabNavigationParamList = {
     ScreenIndividual: undefined;
     ScreenVOVNews: undefined;
     ScreenVOVTube: undefined;
-    ScreenPersonal: undefined;
+
 };
 
 export type AuthenticateStackNavigationParamList = {

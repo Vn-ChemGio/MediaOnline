@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NativeStackScreenProps } from "react-native-screens/native-stack";
 import { WebView } from "react-native-webview";
 

@@ -1,12 +1,9 @@
 import React      from "react";
 import IonIcon    from "react-native-vector-icons/Ionicons";
-import LottieView from "lottie-react-native";
-
 import { createBottomTabNavigator }          from "@react-navigation/bottom-tabs";
 import { ApplicationTabNavigationParamList } from "~commons";
 
 import { ScreenDiscover, ScreenRadio, ScreenVOVNews, ScreenVOVTube } from "~views/ApplicationScreens";
-import ScreenPersonal                                                from "~views/ApplicationScreens/ScreenPersonal/ScreenPersonal";
 
 
 const Tab = createBottomTabNavigator<ApplicationTabNavigationParamList>();
@@ -35,11 +32,6 @@ export const ApplicationNavigator = () => {
             <Tab.Screen name="ScreenVOVTube" component={ ScreenVOVTube } options={ {
                 tabBarIcon:  () => <IonIcon name="ios-compass" size={ 24 }/>,
                 tabBarLabel: "#VOVTube"
-            } }/>
-            <Tab.Screen name="ScreenPersonal" component={ ScreenPersonal } options={ {
-                tabBarIcon:  () => <IonIcon name="ios-person" size={ 24 }/>,
-                tabBarLabel: "Cá nhân",
-                tabBarButton: () => null,
             } }/>
         </Tab.Navigator>
     );

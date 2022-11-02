@@ -53,7 +53,10 @@ const VOVNewsCardItem = ({ item, channel, index }: { item: NewsItem, channel: VO
                     <View>
                         <Button label={"Chi tiết"} size={Button.sizes.large} link
                                 labelStyle={{ textTransform: "uppercase" }}
-                                onPress={() => navigation.navigate("ScreenWebView", { uri: item.link })}
+                                onPress={() => navigation.navigate("ScreenWebView", {
+                                    uri: item.link,
+                                    title: item.title
+                                })}
                         />
                     </View>
                     <View style={styles.cardActionButtonGroup}>

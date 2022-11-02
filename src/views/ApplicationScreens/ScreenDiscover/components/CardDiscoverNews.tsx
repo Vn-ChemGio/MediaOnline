@@ -8,7 +8,7 @@ import { DiscoveryScreenNavigationProp } from "~commons";
 
 const CardDiscoverNews = ( { data }: { data: NewsItem[] } ) => {
     const navigation = useNavigation<DiscoveryScreenNavigationProp>();
-    
+
     return (
         <View style={ styles.container }>
             <Text sectionTitle>Tin mới cập nhật</Text>
@@ -23,6 +23,7 @@ const CardDiscoverNews = ( { data }: { data: NewsItem[] } ) => {
                             right={ props => <List.Icon { ...props } icon="play"/> }
                             key={ index }
                             onPress = {()=>{ navigation.navigate('ScreenWebView',{
+                                title: item.title,
                                 uri: item.link
                             })}}
                         />
