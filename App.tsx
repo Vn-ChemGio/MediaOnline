@@ -1,5 +1,6 @@
 import { NavigationContainer }       from "@react-navigation/native";
-import React                         from "react";
+import React, { useEffect }          from "react";
+import { LogBox }                    from "react-native";
 import { Provider as PaperProvider } from "react-native-paper";
 import { Colors, Typography }        from "react-native-ui-lib";
 import { SafeAreaProvider }          from "react-native-safe-area-context";
@@ -9,11 +10,17 @@ import { configTheme, theme } from "~commons";
 import { RootNavigator }      from "./src/navigators";
 
 
+
+
 Colors.loadSchemes( configTheme.configColor )
 Typography.loadTypographies( configTheme.configTypography )
 const App = () => {
     console.log( new Date() );
-
+    
+    useEffect( () => {
+        LogBox.ignoreLogs( [ "VirtualizedLists should never be nested" ] )
+    }, [] )
+    
     return (
         <SafeAreaProvider>
             <PaperProvider theme={ theme } settings={ {

@@ -25,6 +25,8 @@ const AvatarHeaderScrollViewExtend = ( props: AvatarHeaderScrollViewProps ) => {
                 titleStyle={ styles.title }
                 showsVerticalScrollIndicator={ false }
                 parallaxHeight={ Devices.height * 0.4 }
+                bounces={false}
+                bouncesZoom={false}
                 { ...rest }
             >
                 { children }

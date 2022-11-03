@@ -1,6 +1,7 @@
-import * as React                                           from "react";
-import { FlatList, PixelRatio, StyleSheet }                 from "react-native";
-import { Card, Colors, Spacings, Text, ThemeManager, View } from "react-native-ui-lib";
+import * as React                             from "react";
+import { FlatList, StyleSheet }               from "react-native";
+import { Spacings, Text, ThemeManager, View } from "react-native-ui-lib";
+
 import { RadioItem }                                          from "~commons/interfaces/VOVRadio";
 import { VOVDiscoverRadiosItem, VOVDiscoverRadiosItemHeight } from "~components";
 
@@ -34,6 +35,6 @@ const styles = StyleSheet.create( {
         marginTop: Spacings.s2,
     },
     contentContainerStyle: {
-        paddingHorizontal: Spacings.s2
+        paddingHorizontal: Spacings.s3
     },
 } )

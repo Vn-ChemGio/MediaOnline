@@ -2,8 +2,8 @@ import * as React               from "react";
 import { FlatList, StyleSheet } from "react-native";
 import { Spacings, Text, View } from "react-native-ui-lib";
 
-import { YouTubeVideo }                                                                        from "~commons/interfaces/VOVTube";
-import { VOVDiscoverRadiosItemHeight, VOVDiscoverYouTubesItem, VOVDiscoverYouTubesItemHeight } from "~components";
+import { YouTubeVideo }                                           from "~commons/interfaces/VOVTube";
+import { VOVDiscoverYouTubesItem, VOVDiscoverYouTubesItemHeight } from "~components";
 
 
 const CardDiscoverTube = ( { data }: { data: YouTubeVideo[] } ) => {
@@ -14,7 +14,7 @@ const CardDiscoverTube = ( { data }: { data: YouTubeVideo[] } ) => {
                       data={ data }
                       showsHorizontalScrollIndicator={ false }
                       contentContainerStyle={ styles.contentContainerStyle }
-                      keyExtractor={ ( item, index ) => `Discovery-Card-Tube-${ item.etag }-${index}` }
+                      keyExtractor={ ( item, index ) => `Discovery-Card-Tube-${ item.etag }-${ index }` }
                       renderItem={ props => (
                           <VOVDiscoverYouTubesItem { ...props }/>
                       ) }
@@ -32,6 +32,7 @@ const styles = StyleSheet.create( {
         marginTop: Spacings.s2,
     },
     contentContainerStyle: {
-        paddingHorizontal: Spacings.s2
+        marginVertical:    Spacings.s1,
+        paddingHorizontal: Spacings.s3
     },
 } )

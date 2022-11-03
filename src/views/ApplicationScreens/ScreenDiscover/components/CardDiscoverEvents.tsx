@@ -30,7 +30,7 @@ const styles = StyleSheet.create( {
         marginTop: Spacings.s2,
     },
     contentContainerStyle: {
-        paddingHorizontal: Spacings.s2
+        paddingHorizontal: Spacings.s3
     },
 
 
