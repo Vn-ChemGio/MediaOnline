@@ -10,7 +10,6 @@ import {
     CardDiscoverEvents,
     CardDiscoverNews,
     CardDiscoverRadio,
-    CardDiscoverTrending,
     CardDiscoverTube
 } from "./components";
 
