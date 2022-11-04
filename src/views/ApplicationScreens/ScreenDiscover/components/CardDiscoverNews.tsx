@@ -31,7 +31,7 @@ const CardDiscoverNews = ( { data }: { data: NewsItem[] } ) => {
                         flex
                         content={ [
                             { text: firstData.title, cardTitleOverlay: true, numberOfLines: 1 },
-                            { text: firstData.content, cardSubTitleOverlay: true, numberOfLines: 3 },
+                            { text: firstData.content, cardContentOverlaySmall: true, numberOfLines: 3 },
                         ] }
                         contentStyle={ styles.cardSectionContent }
                         containerStyle={ {
@@ -40,11 +40,13 @@ const CardDiscoverNews = ( { data }: { data: NewsItem[] } ) => {
                     />
                 </View>
             </Card>
-            <FlatList horizontal nestedScrollEnabled={ true }
-                      showsHorizontalScrollIndicator={ false }
 
+            <FlatList nestedScrollEnabled={ true }
+                      showsHorizontalScrollIndicator={ false }
+                      numColumns={2}
                       contentContainerStyle={ styles.contentContainerStyle }
                       data={ rest.slice( 0, 6 ) }
+                      key={'#'}
                       keyExtractor={ ( item, index ) => `Discovery-Card-News-${ index }` }
                       renderItem={ props => (
                           <VOVDiscoverNewsItem { ...props }/>

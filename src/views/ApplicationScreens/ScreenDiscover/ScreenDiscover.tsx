@@ -80,7 +80,7 @@ const ScreenDiscover = ({ navigation }: { navigation: DiscoveryScreenNavigationP
                                 {/*<CardDiscoverTrending/>*/}
                             </>
                 }
-                <View style={{ height: Spacings.s4 }}/>
+                <View style={{ height: Spacings.s8 }}/>
 
 
             </AvatarHeaderScrollView>
